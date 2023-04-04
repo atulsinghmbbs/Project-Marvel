@@ -22,7 +22,7 @@ const Nav = () => {
 
       <div className='sign-up-details'>
         <ul>
-          <li>Signup</li>
+          <li>Sign up</li>
           <li>Login</li>
         </ul>
       </div>
