@@ -1,34 +1,28 @@
-import { GoogleLogin } from "react-google-login"
+import React from 'react'
+import { useAuth0 } from "@auth0/auth0-react";
+import createAuth0Client from '@auth0/auth0-spa-js';
+import "./Login.css"
 
 
-const clientId = "530760682193-sofqsmesd12559btv57726375g42ljit.apps.googleusercontent.com"
+const Login = () => {
 
+    const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0()
 
-function Login() {
+    console.log("current user details", user)
 
-    const onSuccess = (res) => {
-        console.log("Login success! current user:", res.profileObj);
-    }
-
-    const onFailure = (res) => {
-        console.log("Login Failed!", res)
-    }
 
     return (
-        <div id="signButton">
-            <GoogleLogin
-                clientId={clientId}
-                buttonText="Login"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                cookiePolicy={'single_host_origin'}
-                isSignedIn={true}
-            />
+        <div className='user-data'>
+            {/* {isAuthenticated && <h3 className='user-name'>{user.name}</h3>} */}
+            {isAuthenticated && <img className='user-image' src={user.picture} />}
+            {isAuthenticated ? (
+                <button className='btn-log' onClick={(e) => logout()}>Log out</button>
+            ) : (
+                <button className='btn-log' onClick={(e) => loginWithRedirect()}>Log in</button>
+            )}
 
         </div>
     )
 }
 
-
-
-export default Login;
+export default Login

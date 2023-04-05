@@ -1,0 +1,22 @@
+.user-data{
+    display: flex;
+    justify-content: center;
+}
+
+.user-image{
+    position:relative;
+    right: 20px;
+    border-radius: 50%;
+    max-width: 31%;
+    height: auto;   
+}
+
+
+
+.user-name{
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    right: -991px;
+
+}

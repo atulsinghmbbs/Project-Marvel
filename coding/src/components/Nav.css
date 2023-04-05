@@ -1,7 +1,8 @@
 .wrapper{
     display: flex;
     height: 3.75rem;
-    background-color: aqua;
+    background-color: #166AEA;
+    background: rgba(22, 106, 234, .72);
     align-items: center;
     justify-content: space-between;
 }
@@ -13,7 +14,7 @@
 
 .nav-items ul {
     display: flex;
-    margin-right: 400px;
+    margin-right: 340px;
     font-size: 1.1rem;
    
 }
@@ -25,7 +26,8 @@
 
 .sign-up-details ul{
     display: flex;
-    margin-right: 8rem;
+    margin-right: 2rem;
+    position: relative;
 }
 
 .sign-up-details ul li{

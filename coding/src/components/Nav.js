@@ -1,5 +1,7 @@
 import React from 'react'
 import "./Nav.css"
+import Login from './Login'
+
 
 const Nav = () => {
   return (
@@ -23,9 +25,10 @@ const Nav = () => {
       <div className='sign-up-details'>
         <ul>
           <li>Sign up</li>
-          <li>Login</li>
+          {/* <li><Login /></li> */}
         </ul>
       </div>
+      <Login />
     </div>
   )
 }
