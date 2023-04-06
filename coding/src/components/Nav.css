@@ -5,6 +5,11 @@
     background: rgba(22, 106, 234, .72);
     align-items: center;
     justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    z-index: 9999;
+    position: fixed;
+    width: 100%;
+    top: 0px;
     
 }
 
@@ -15,15 +20,17 @@
 
 .nav-items ul {
     display: flex;
-    margin-right: 340px;
+    margin-right: 510px;
     font-size: 1.1rem;
 }
 
 .nav-items ul li{
     list-style: none;
-    margin: 0 12px;
+    margin: 0 19px;
     position: relative;
     top: 7px;
+    color: white;
+    cursor: pointer;
    
 }
 
@@ -54,4 +61,11 @@
     border: none;
     background: #F99751;
     height: 30px;
+}
+
+.sign-up-btn:hover{
+    background-color: #9EF01A;
+    transition: .3s ease;
+    color: white;
+
 }

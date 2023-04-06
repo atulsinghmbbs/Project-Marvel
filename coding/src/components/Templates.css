@@ -1,0 +1,49 @@
+
+
+
+.template-heading{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 192px;
+    font-size: 55px;
+    
+}
+
+.explore-heading{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 208px;
+    font-size: 20px;
+    color: #166AEA; 
+}
+
+.parent-template-btn{
+    display: flex;
+    justify-content: center;
+}
+
+
+.template-btn{
+    height: 75px;
+    width: 220px;
+    border-radius: 100px;
+    font-size: 22px;
+    border: none;
+    background: #F99751;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   cursor: pointer;
+   position: relative;
+    bottom: 190px;
+}
+.template-btn:hover{
+    background-color: #9EF01A;
+    transition: .3s ease;
+    color: white;
+
+}
+
+.template-body{
+    background: #EDF6F9;
+}

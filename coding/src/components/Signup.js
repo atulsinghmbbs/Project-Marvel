@@ -20,7 +20,7 @@ function Signup() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(event)
+        console.log("datafjskf", event)
         if (formData.password !== formData.confirmPassword) {
             setPasswordsMatch(false);
         } else {

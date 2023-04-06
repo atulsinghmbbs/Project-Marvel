@@ -1,10 +1,65 @@
 
 .header-image{
-    background-image: url("C:\Users\HMK02\Downloads/header-image.png");
+    background-image: url(../images/header-image2.png);
     background-repeat: no-repeat;
-    height: 400px;
-    background-size:contain;
+    height: 484px;
+    margin-top: 60px;
+    background-size:cover;
     background-position: center center;
+    z-index: -9999;
 
 }
 
+
+.line-icon{
+    margin-left: 10x;
+}
+
+.header-heading{
+    font-size: 50px;
+    position: relative;
+    left: 64px;
+    top: 106px;
+    color: white;
+    font-weight: 400;
+}
+
+.header-heading-1{
+    font-size: 50px;
+    position: relative;
+    left: 64px;
+    top: 106px;
+    color: white;
+    font-weight: 400;
+    margin-top: -32px;
+
+}
+
+.header-caption{
+    position: relative;
+    left: 53px;
+    top: 92px;
+
+}
+
+
+.header-start-btn{
+    height: 73px;
+    width: 203px;
+    position: relative;
+    top: 120px;
+    left: 91px;
+    border-radius: 100px;
+    font-size: 22px;
+    border: none;
+    background: #F99751;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   cursor: pointer;
+}
+
+.header-start-btn:hover{
+    background-color: #9EF01A;
+    transition: .3s ease;
+    color: white;
+
+}

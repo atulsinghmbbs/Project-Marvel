@@ -1,6 +1,7 @@
 import Nav from './components/Nav';
-import { useEffect } from 'react';
 import Header from './components/Header';
+import Slider from './components/Slider';
+import Templates from './components/Templates';
 
 
 const App = () => {
@@ -9,6 +10,8 @@ const App = () => {
     <div>
       <Nav />
       <Header />
+      <Slider />
+      <Templates />
     </div>
   )
 }
