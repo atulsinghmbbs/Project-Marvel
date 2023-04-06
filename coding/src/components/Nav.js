@@ -1,8 +1,8 @@
-import React from 'react'
 import "./Nav.css"
 import Login from './Login'
 import { useState } from 'react'
 import { Popup } from 'reactjs-popup';
+import Signup from './Signup';
 
 
 
@@ -20,17 +20,16 @@ const Nav = () => {
           <li>About</li>
           <li>Blog</li>
           <li>Feedback</li>
+          <li>Services</li>
         </ul>
       </div>
 
       <div className='sign-up-details'>
         <ul>
           <li>
-            <button onClick={() => setIsOpen(!isOpen)}>Sign up</button>
+            <button className="sign-up-btn" onClick={() => setIsOpen(!isOpen)}>Sign up</button>
             <Popup open={isOpen} onClose={() => setIsOpen(!isOpen)}>
-              <form>
-                fdsjk
-              </form>
+              <Signup />
             </Popup>
           </li>
         </ul>

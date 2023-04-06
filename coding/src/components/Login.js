@@ -15,9 +15,9 @@ const Login = () => {
             {/* {isAuthenticated && <h3 className='user-name'>{user.name}</h3>} */}
             {isAuthenticated && <img className='user-image' src={user.picture} />}
             {isAuthenticated ? (
-                <button className='btn-log' onClick={(e) => logout()}>Log out</button>
+                <button className='btn-log-out' onClick={(e) => logout()}>Log out</button>
             ) : (
-                <button className='btn-log' onClick={(e) => loginWithRedirect()}>Log in</button>
+                <button className='btn-log-in' onClick={(e) => loginWithRedirect()}>Log in</button>
             )}
 
         </div>

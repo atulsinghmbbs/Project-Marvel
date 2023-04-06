@@ -20,3 +20,17 @@
     right: -991px;
 
 }
+.btn-log-in{
+    font-size: 12px;
+    padding: 7px;
+    position: absolute;
+    width: 100px;
+    top: 14px;
+    right: 30px;
+    border-radius: 14px;
+    outline: none;
+    border: none;
+    background: #F99751;
+    height: 30px;
+    letter-spacing: 1px;
+}
