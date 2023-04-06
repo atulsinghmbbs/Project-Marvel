@@ -1,0 +1,10 @@
+
+.header-image{
+    background-image: url("C:\Users\HMK02\Downloads/header-image.png");
+    background-repeat: no-repeat;
+    height: 400px;
+    background-size:contain;
+    background-position: center center;
+
+}
+
