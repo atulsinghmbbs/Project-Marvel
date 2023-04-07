@@ -1,0 +1,37 @@
+
+.slider-img{
+    position: relative;
+    bottom: 220px;
+    left: 1348px;
+}
+
+
+.slider-img{
+    animation-name: moving-image;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction:alternate-reverse;
+
+}
+
+
+
+@keyframes moving-image{
+    0%{
+        left: 0px;
+        opacity: 1;
+    }
+    50%{
+        opacity: .7;
+    }
+    75%{
+        opacity: .5;
+    }
+
+    100%{
+        left: 100vw;
+        opacity: .2;
+}
+
+}

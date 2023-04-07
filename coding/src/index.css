@@ -9,4 +9,5 @@ font-family: 'Inter', sans-serif;
 color: #000;
 font-weight: 500;
 height: 200vh;
+overflow-x: hidden;
 }
