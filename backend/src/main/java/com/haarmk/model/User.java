@@ -21,8 +21,13 @@ public class User {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+	
+	private String firstName;
+	
+	private String lastName;
+	
     @Column(unique = true,nullable = false)
-    private String username;
+    private String email;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @ManyToMany(cascade = CascadeType.ALL)

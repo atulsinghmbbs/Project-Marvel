@@ -39,13 +39,14 @@ public class AuthController {
 	    private Environment environment;
 	   
 	    @PostMapping(value = "/login")
+	    
 	    public ResponseEntity<LoginResDto> login(@RequestBody LoginDto loginDto){
 	    	
 	        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(),loginDto.getPassword()));
 	        SecretKey key = Keys.hmacShaKeyFor(environment.getProperty("JWT_KEY").getBytes());
 	         
 	        String jwt = Jwts.builder()
-	        		.setIssuer("relevel")
+	        		.setIssuer("haarmk")
 	        		.setSubject("JWT Token")
 	                .claim("username", authentication.getName())
 	                .claim("authorities", authentication.getAuthorities().stream().map((a)->a.getAuthority().toUpperCase()).collect(Collectors.joining(",")))

@@ -43,10 +43,10 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests(auth->{
                     auth
-                        .requestMatchers("/","/login","/signup","/h2-console/").permitAll()
+                        .requestMatchers("/","/login","/signup").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**","/swagger-ui.html").permitAll()
-                        .requestMatchers("/secure").authenticated()
+                        .requestMatchers("/haarmk/secure").authenticated()
                         .requestMatchers("/home").permitAll()
                         
                         .anyRequest().permitAll();

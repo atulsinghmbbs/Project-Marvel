@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { useState } from 'react';
+import { signUp } from '../services/userService';
 
 function Signup() {
     const [formData, setFormData] = useState({
@@ -20,12 +21,35 @@ function Signup() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("datafjskf", event)
+        //console.log("datafjskf", event)
+
+        console.log("==============================================================")
+      
         if (formData.password !== formData.confirmPassword) {
             setPasswordsMatch(false);
+            console.log("Password and confirm password should be same...")
         } else {
             // Handle form submission here
+            signUp(formData).then((resp)=>{
+
+                console.log(resp);
+                console.log("succesfully signUp.....")
+                console.log("=========================================================================")
+
+            }).catch((err)=>{
+
+                console.log(err);
+                console.log("signup failed....")
+                console.log("=========================================================================")
+
+
+            })
+            
         }
+        console.log("**********************************************************")
+
+        //console.log(formData)
+        
     }
 
     return (

@@ -27,7 +27,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider{
 		System.out.println(userService+"user service");
 		User user = userService.getUserByUsername(authentication.getName());
 		if(passwordEncoder.matches((String)authentication.getCredentials(), user.getPassword())) {
-			return new  UsernamePasswordAuthenticationToken(user.getUsername(),null,user.getAuthorities());
+			return new UsernamePasswordAuthenticationToken(user.getEmail(),null,user.getAuthorities());
 		}else {
 			throw new BadCredentialsException("invalid password");
 		}
