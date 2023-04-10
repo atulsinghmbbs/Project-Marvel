@@ -1,7 +1,9 @@
 import { MyAxios } from "./helper";
 
+import axios from "axios";
+
 export const signUp = (user) => {
 
-    return MyAxios.post("/register", user).then((respo)=>respo.data)
+    return axios.post("http://localhost:8888/haarmk/signup", user).then((respo)=>respo.data)
 
 }
