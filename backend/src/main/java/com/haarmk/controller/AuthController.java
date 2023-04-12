@@ -66,6 +66,6 @@ public class AuthController {
 	    	
 	    	
 	    	
-	    	return new ResponseEntity<User>(userService.addUser(user),HttpStatus.CREATED);
+	    	return new ResponseEntity<User>(userService.addUser(user, null),HttpStatus.CREATED);
 	    }
 }

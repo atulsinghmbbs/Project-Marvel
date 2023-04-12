@@ -48,7 +48,7 @@ public class SecurityConfig {
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**","/swagger-ui.html").permitAll()
                         .requestMatchers("/haarmk/secure").authenticated()
                         .requestMatchers("/home").permitAll()
-                        
+                        .requestMatchers("/feedback/register").permitAll()
                         .anyRequest().permitAll();
 
                 })
