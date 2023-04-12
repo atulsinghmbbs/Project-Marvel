@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Nav from "./Nav";
+import { logIn, loginWithJWT } from "../services/userService";
+
 
 function LoginWithMe() {
     const [email, setEmail] = useState("");
@@ -13,7 +15,27 @@ function LoginWithMe() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Email:", email, "Password:", password);
+        console.log("Email: ====", email, "Password:", password);
+        const loginFormData = {
+            "email": email,
+            "password":password
+        }
+
+        loginWithJWT(loginFormData).then((resp)=>{
+
+            console.log(resp);
+            console.log("succesfully signUp.....")
+            console.log("=========================================================================")
+
+        }).catch((err)=>{
+
+            console.log(err);
+            console.log("signup failed....")
+            console.log("=========================================================================")
+
+
+        })
+
     };
 
 
