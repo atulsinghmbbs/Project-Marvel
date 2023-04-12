@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
+@RequestMapping("/haarmk")
 public class HomeController {
     @GetMapping(value = "/")
     public String root(){

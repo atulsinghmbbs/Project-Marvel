@@ -1,6 +1,7 @@
 package com.haarmk.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +15,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import com.haarmk.config.filter.JwtValidatorFilter;
 import com.haarmk.service.JwtAuthenticationProvider;
@@ -39,10 +43,10 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests(auth->{
                     auth
-                        .requestMatchers("/","/login","/signup","/h2-console/").permitAll()
+                        .requestMatchers("/","/login","/signup").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**","/swagger-ui.html").permitAll()
-                        .requestMatchers("/secure").authenticated()
+                        .requestMatchers("/haarmk/secure").authenticated()
                         .requestMatchers("/home").permitAll()
                         
                         .anyRequest().permitAll();
@@ -60,5 +64,30 @@ public class SecurityConfig {
 	}
     
 
+    @Bean
+    public FilterRegistrationBean corsFilter() {
+    	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    	
+    	CorsConfiguration corsConn = new CorsConfiguration();
+    	
+    	corsConn.setAllowCredentials(true);
+    	corsConn.addAllowedOriginPattern("*");
+    	corsConn.addAllowedHeader("Authorization");
+    	corsConn.addAllowedHeader("Content-Type");
+    	corsConn.addAllowedHeader("Accept");
+    	corsConn.addAllowedMethod("POST");
+    	corsConn.addAllowedMethod("GET");
+    	corsConn.addAllowedMethod("DELETE");
+    	corsConn.addAllowedMethod("PUT");
+    	corsConn.addAllowedMethod("OPTIONS");
+    	corsConn.setMaxAge(3600L);
+    	
+    	source.registerCorsConfiguration("/**", corsConn);
+    	
+    	FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+    	
+    	return bean;
+    	
+    }
 
 }
