@@ -1,0 +1,115 @@
+
+.about-image{
+    background-image: url(../images/about-header1.jpg);
+    background-repeat: no-repeat;
+    height: 430px;
+    margin-top: 60px;
+    background-size:cover;
+    background-position: center center;
+    background-position: top;
+    z-index: -9999;
+    
+
+}
+.about-heading{
+    color: white;
+    position: relative;
+    left: 937px;
+    position: relative;
+    top: 28px;
+
+}
+
+
+.para-1{
+    color: white;
+    font-size: 20px;
+    width: 415px;
+    position: relative;
+    left: 839px;
+    top: 25px;
+    font-weight: 300;
+}
+
+.para-2{
+    color: white;
+    font-size: 20px;
+    width: 415px;
+    position: relative;
+    left: 839px;
+    top: 15px;
+    font-weight: 300;
+
+}
+
+.our-website-heading{
+    margin-top: 130px;
+}
+
+.hr-parent{
+    display: flex;
+    justify-content: center;
+}
+
+.hr{
+    margin: 1rem 0;
+    border: 0;  
+    border-top: 3px solid;
+    opacity: .30;
+    width: 1200px;
+
+
+}
+
+
+.about-icon-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+  
+  .image-and-title-wrapper {
+    flex-basis: calc(33.33% - 10px);
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  /* --------------------------------------------------get started start from here */
+
+  .get-started-about{
+    background: #5EFFCF;
+    display: flex;
+    align-items: center;
+    height: 300px;
+  }
+
+  .get-started-about p{
+    
+    font-size: 41px;
+    width: 823px;
+    font-weight: 450;
+    margin-left: 27px;
+  }
+
+  .about-start-btn{
+    height: 73px;
+    width: 203px;
+    position: relative;
+    top: -39px;
+    left: 250px;
+    border-radius: 100px;
+    font-size: 22px;
+    border: none;
+    background: #F99751;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+}
+
+.about-start-btn:hover{
+    background-color: #9EF01A;
+    transition: .3s ease;
+    color: white;
+
+}
+  
+

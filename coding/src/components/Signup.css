@@ -1,0 +1,10 @@
+
+.form-wrapper{
+    position: relative;
+    margin: auto;
+    pointer-events: auto;
+    background: black;
+    color: white;
+    height: 441px;
+    border-radius: 10px;
+}
