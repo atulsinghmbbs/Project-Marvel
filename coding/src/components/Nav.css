@@ -2,7 +2,7 @@
     display: flex;
     height: 3.75rem;
     background-color: #166AEA;
-    background: rgba(22, 106, 234, .72);
+    background: #3F5193;
     align-items: center;
     justify-content: space-between;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -55,7 +55,7 @@
     position: absolute;
     width: 100px;
     top: -7px;
-    right: 55px;
+    right: 146px;
     border-radius: 14px;
     outline: none;
     border: none;

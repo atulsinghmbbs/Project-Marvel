@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { useState } from 'react';
+import "./Signup.css"
 
 function Signup() {
     const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ function Signup() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("datafjskf", event)
+        console.log("data", event)
         if (formData.password !== formData.confirmPassword) {
             setPasswordsMatch(false);
         } else {
@@ -29,7 +30,7 @@ function Signup() {
     }
 
     return (
-        <form className="container mt-5" onSubmit={handleSubmit}>
+        <form className="form-wrapper container mt-5" onSubmit={handleSubmit}>
             <div className="row justify-content-center">
                 <div className="col-md-12">
                     <div className="form-group">

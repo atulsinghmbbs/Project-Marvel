@@ -5,10 +5,17 @@
 
 .user-image{
     position:relative;
-    right: 20px;
+    right: 108px;
     border-radius: 50%;
-    max-width: 31%;
-    height: auto;   
+    max-width: 34px;
+    height: 31px;   
+    transition: .3s ease;
+    bottom: 7px;
+}
+
+.user-image:hover{
+    max-width: 100px;
+    border-radius: 10%;
 }
 
 
@@ -26,7 +33,7 @@
     position: absolute;
     width: 100px;
     top: 14px;
-    right: 30px;
+    right: 64px;
     border-radius: 14px;
     outline: none;
     border: none;
@@ -38,4 +45,27 @@
     background-color: #9EF01A;
     transition: .3s ease;
     color: white;
+}
+
+
+.btn-log-out{
+    font-size: 12px;
+    padding: 7px;
+    position: absolute;
+    width: 100px;
+    top: 14px;
+    right: 64px;
+    border-radius: 14px;
+    outline: none;
+    border: none;
+    background: #F99751;
+    height: 30px;
+
+}
+
+.btn-log-out:hover{
+    background-color: #9EF01A;
+    transition: .3s ease;
+    color: white;
+
 }
