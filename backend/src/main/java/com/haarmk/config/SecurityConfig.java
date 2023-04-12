@@ -49,6 +49,9 @@ public class SecurityConfig {
                         .requestMatchers("/haarmk/secure").authenticated()
                         .requestMatchers("/haarmk/home").permitAll()
                         
+                        .requestMatchers("/home").permitAll()
+                        .requestMatchers("/feedback/register").permitAll()
+
                         .anyRequest().permitAll();
 
                 })
