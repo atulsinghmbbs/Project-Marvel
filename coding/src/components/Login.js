@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Login.css"
+
+import { NavLink } from 'react-router-dom';
+
 import { signUp } from '../services/userService';
 
 
-const Login = () => {
 
-    const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0()
+const Login = (props) => {
 
-    console.log("current user details", user)
+    // const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0()
 
+
+    console.log("current user details", props.user)
+    // console.log(props.loginWithRedirect);
 
     if(isAuthenticated){
         const userGoogleData = {
@@ -39,14 +44,9 @@ const Login = () => {
 
     return (
         <div className='user-data'>
-            {/* {isAuthenticated && <h3 className='user-name'>{user.name}</h3>} */}
-            {isAuthenticated && <img className='user-image' src={user.picture} />}
-            {isAuthenticated ? (
-                <button className='btn-log-out' onClick={(e) => logout()}>Log out</button>
-            ) : (
-                <button className='btn-log-in' onClick={(e) => loginWithRedirect()}>Log in</button>
-            )}
-
+            <NavLink to="/LoginWithMe">
+                <button className='btn-log-in'>Log in</button>
+            </NavLink>
         </div>
     )
    

@@ -1,4 +1,9 @@
 
+.image-slider{
+    height: 220px;
+}
+
+
 .slider-img{
     position: relative;
     bottom: 220px;
@@ -14,6 +19,7 @@
     animation-direction:alternate-reverse;
 
 }
+
 
 
 

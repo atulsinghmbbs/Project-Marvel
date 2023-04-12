@@ -1,7 +1,11 @@
 
 import React from 'react'
 import { useState } from 'react';
+
+import "./Signup.css"
+
 import { signUp } from '../services/userService';
+
 
 function Signup() {
     const [formData, setFormData] = useState({
@@ -21,10 +25,14 @@ function Signup() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        console.log("data", event)
+
         //console.log("datafjskf", event)
 
         console.log("==============================================================")
       
+
         if (formData.password !== formData.confirmPassword) {
             setPasswordsMatch(false);
             console.log("Password and confirm password should be same...")
@@ -53,7 +61,7 @@ function Signup() {
     }
 
     return (
-        <form className="container mt-5" onSubmit={handleSubmit}>
+        <form className="form-wrapper container mt-5" onSubmit={handleSubmit}>
             <div className="row justify-content-center">
                 <div className="col-md-12">
                     <div className="form-group">
