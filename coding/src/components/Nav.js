@@ -5,6 +5,7 @@ import { Popup } from 'reactjs-popup';
 import Signup from './Signup';
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { signUp } from "../services/userService";
 
 
 const Nav = (props) => {
@@ -12,6 +13,34 @@ const Nav = (props) => {
 
   const { isAuthenticated, logout, user } = useAuth0()
   console.log("user data ", user)
+  console.log("current user details", props.user)
+  // console.log(props.loginWithRedirect);
+
+  if(isAuthenticated){
+      const userGoogleData = {
+          "firstName":user.given_name,
+          "lastName":user.family_name,
+          "email":user.email,
+          "password":null,
+          
+      }
+      signUp(userGoogleData).then((resp)=>{
+
+          console.log(resp);
+          console.log("succesfully signUp.....")
+          console.log("=========================================================================")
+
+      }).catch((err)=>{
+
+          console.log(err);
+          console.log("signup failed....")
+          console.log("=========================================================================")
+
+
+      })
+  }else{
+      console.log("Invalid User credentials...")
+  }
 
   return (
 
