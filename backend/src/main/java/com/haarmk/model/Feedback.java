@@ -1,4 +1,4 @@
-package com.haarmk.feedbackmodel;
+package com.haarmk.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.haarmk.feedbackmodel.Feedback;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

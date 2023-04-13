@@ -1,4 +1,4 @@
-package com.haarmk.feedbackexception;
+package com.haarmk.exception;
 
 public class FeedbackException extends Exception {
 

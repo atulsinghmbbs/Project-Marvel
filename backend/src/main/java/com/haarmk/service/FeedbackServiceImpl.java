@@ -1,4 +1,4 @@
-package com.haarmk.feedbackservice;
+package com.haarmk.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,16 +6,17 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.haarmk.feedbackexception.FeedbackException;
-import com.haarmk.feedbackmodel.Feedback;
-import com.haarmk.feedbackmodel.feedbackdto;
-import com.haarmk.feedbackrepository.FeedbackRepository;
+import com.haarmk.dto.FeedbackDto;
+import com.haarmk.exception.FeedbackException;
+import com.haarmk.model.Feedback;
+import com.haarmk.repository.FeedbackRepo;
+import com.haarmk.service.interfaces.FeedbackService;
 
 @Service
 public class FeedbackServiceImpl implements  FeedbackService {
 	
 	 @Autowired
-	 private FeedbackRepository feedbackRepo;
+	 private FeedbackRepo feedbackRepo;
 	 
 
 	@Override
@@ -48,8 +49,8 @@ public class FeedbackServiceImpl implements  FeedbackService {
 	}
 
 	@Override
-	public List<feedbackdto> GetListofFeedback() throws FeedbackException {
-       List<feedbackdto> list = feedbackRepo.GetAllfeedback();
+	public List<FeedbackDto> GetListofFeedback() throws FeedbackException {
+       List<FeedbackDto> list = feedbackRepo.GetAllfeedback();
 		
 		if(list.isEmpty()) {
 			
