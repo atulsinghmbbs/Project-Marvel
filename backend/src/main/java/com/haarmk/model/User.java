@@ -14,10 +14,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
@@ -53,6 +54,10 @@ public class User {
     @Lob
     private byte[] imagedata;
     
-    @OneToMany(cascade = {CascadeType.PERSIST , CascadeType.MERGE})
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Feedback> listfed = new ArrayList<>();
+    
+    @OneToOne
+    @JoinColumn(name = "cartId", referencedColumnName = "CartId")
+    private ShoppingCart carts;
 }
