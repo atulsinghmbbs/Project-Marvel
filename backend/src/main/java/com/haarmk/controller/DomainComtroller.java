@@ -1,7 +1,9 @@
 package com.haarmk.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -20,6 +22,7 @@ import com.google.gson.Gson;
 import com.haarmk.dto.domain.CheckDomainNameAvailabilityReq;
 import com.haarmk.dto.domain.CheckDomainNameAvailabilityRes;
 import com.haarmk.dto.domain.DomainCheckData;
+import com.haarmk.dto.domain.DomainSearchReq;
 import com.haarmk.exception.DomainException;
 
 @RestController(value = "/domain")
@@ -93,6 +96,43 @@ public class DomainComtroller {
 	}
 	
 	
+	
+	
+	
+//	@PostMapping(value= "/search")
+//	public ResponseEntity<CheckDomainNameAvailabilityRes> searchDomain(@RequestParam String searchTerm) {
+//		String url = baseUrl+"/v4/domains:search";
+//		List<String> tlds = Arrays.asList("com","org","in");
+//		String[] rootDomain = searchTerm.split("\\.");
+//		String domain = rootDomain[0];
+//		String defaultTld = null;
+//		if(rootDomain.length == 2) {
+//			defaultTld = rootDomain[1];
+//			tlds.add(defaultTld);
+//			
+//		}
+//		
+//		DomainSearchReq domainSearchReq = new DomainSearchReq(1000,domain,tlds);
+//		gson.toJson(domainSearchReq);       
+//        HttpEntity<String> requestEntity = new HttpEntity<>(gson.toJson(domainSearchReq), getDomainHeader());        
+//        ResponseEntity<String> responseEntity = this.restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class);
+//        CheckDomainNameAvailabilityRes availabilityRes = gson.fromJson(responseEntity.getBody(), CheckDomainNameAvailabilityRes.class);
+//        
+        
+//        for(int i = 0; i < availabilityRes.getSuggestions().size(); i++) {
+//        	if(availabilityRes.getSuggestions().get(i).getDomainName().equals(searchTerm)) {
+//        		availabilityRes.setResult(availabilityRes.getSuggestions().get(i));
+//        	}else if (availabilityRes.getSuggestions().get(i).isPurchasable()) {
+//				suggestions.add(availabilityRes.getSuggestions().get(i));
+//			}
+//        }
+//        availabilityRes.setSuggestions(suggestions);
+//        if(availabilityRes.getSuggestions().isEmpty() && !availabilityRes.getResult().isPurchasable()) {
+//        	throw new DomainException("No domain found for: "+searchTerm);
+//        }
+//        
+//        return new ResponseEntity<>(availabilityRes, HttpStatus.OK);
+//	}
 	
 	
 	
