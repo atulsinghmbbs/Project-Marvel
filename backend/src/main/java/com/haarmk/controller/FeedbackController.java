@@ -1,4 +1,4 @@
-package com.haarmk.feedbackcontroller;
+package com.haarmk.controller;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.haarmk.feedbackexception.FeedbackException;
-import com.haarmk.feedbackmodel.Feedback;
-import com.haarmk.feedbackmodel.feedbackdto;
-import com.haarmk.feedbackservice.FeedbackService;
+import com.haarmk.dto.FeedbackDto;
+import com.haarmk.exception.FeedbackException;
+import com.haarmk.model.Feedback;
+import com.haarmk.service.interfaces.FeedbackService;
 
 import jakarta.validation.Valid;
 
@@ -49,11 +49,11 @@ public class FeedbackController {
 	}
 	
 	@GetMapping("/feedback")
-	public ResponseEntity<List<feedbackdto>>GetAllCustomer() throws FeedbackException{
+	public ResponseEntity<List<FeedbackDto>>GetAllCustomer() throws FeedbackException{
 		
-		List<feedbackdto> getcus = fedservice.GetListofFeedback();
+		List<FeedbackDto> getcus = fedservice.GetListofFeedback();
 		
-		return new ResponseEntity<List<feedbackdto>>(getcus , HttpStatus.OK);
+		return new ResponseEntity<List<FeedbackDto>>(getcus , HttpStatus.OK);
 	}
 	
 	

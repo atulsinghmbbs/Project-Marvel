@@ -1,4 +1,4 @@
-package com.haarmk.feedbackmodel;
+package com.haarmk.dto;
 
 import java.time.LocalDate;
 
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class feedbackdto {
+public class FeedbackDto {
 
 	private Integer feedBackId;
 	
@@ -24,7 +24,7 @@ public class feedbackdto {
 	
 	private String Lastname;
 
-	public feedbackdto(Integer feedBackId, String firstname, String lastname) {
+	public FeedbackDto(Integer feedBackId, String firstname, String lastname) {
 		super();
 		this.feedBackId = feedBackId;
 		this.firstname = firstname;
