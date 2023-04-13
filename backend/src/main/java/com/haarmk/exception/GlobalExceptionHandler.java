@@ -91,6 +91,16 @@ public class GlobalExceptionHandler {
 		
 	}
 	
+	@ExceptionHandler(DomainException.class)
+	public ResponseEntity<MyErrorInfo> doainExceptionHandler(DomainException exception,WebRequest req){
+		MyErrorInfo err = new MyErrorInfo();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(exception.getMessage());
+		err.setDetails(req.getDescription(false));		
+		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
 	
 	
 
