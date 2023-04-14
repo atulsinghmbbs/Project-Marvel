@@ -11,7 +11,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -24,7 +26,8 @@ import com.haarmk.dto.domain.DomainRegisterReq;
 import com.haarmk.dto.domain.DomainSearchReq;
 import com.haarmk.exception.DomainException;
 
-@RestController(value = "/domains")
+@RestController
+@RequestMapping("/domains")
 public class DomainController {
 	
 	@Autowired
@@ -37,7 +40,7 @@ public class DomainController {
 	
 	DomainSearchReq domainSearchReq = new DomainSearchReq(1000, null, null);
 	
-	@PostMapping(value= "/search")
+	@GetMapping(value= "/search")
 	public ResponseEntity<CheckDomainNameAvailabilityRes> chekDamainNameAvalabillity(@RequestParam String searchTerm) {
 		String urlCheckAvailability = baseUrl+"/v4/domains:checkAvailability";
 		String urlSearch = baseUrl+"/v4/domains:search";
