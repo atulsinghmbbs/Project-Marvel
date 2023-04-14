@@ -101,7 +101,58 @@ public class GlobalExceptionHandler {
 		
 	}
 	
+	@ExceptionHandler(UserException.class)
+	public ResponseEntity<MyErrorInfo> UserExpHandler(UserException ie,WebRequest req){
+		
+		
+		MyErrorInfo err = new MyErrorInfo();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	@ExceptionHandler(CartException.class)
+	public ResponseEntity<MyErrorInfo> CartExpHandler(CartException ie,WebRequest req){
+		
+		
+		MyErrorInfo err = new MyErrorInfo();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	@ExceptionHandler(ProductException.class)
+	public ResponseEntity<MyErrorInfo> ProductExpHandler(ProductException ie,WebRequest req){
+		
+		
+		MyErrorInfo err = new MyErrorInfo();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		
+	}
 	
-	
+	@ExceptionHandler(OrderException.class)
+	public ResponseEntity<MyErrorInfo> OrderExpHandler(OrderException ie,WebRequest req){
+		
+		
+		MyErrorInfo err = new MyErrorInfo();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		
+	}
 
 }
