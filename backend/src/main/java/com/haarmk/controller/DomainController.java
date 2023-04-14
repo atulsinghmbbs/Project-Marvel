@@ -20,11 +20,12 @@ import com.google.gson.Gson;
 import com.haarmk.dto.domain.CheckDomainNameAvailabilityReq;
 import com.haarmk.dto.domain.CheckDomainNameAvailabilityRes;
 import com.haarmk.dto.domain.DomainCheckData;
+import com.haarmk.dto.domain.DomainRegisterReq;
 import com.haarmk.dto.domain.DomainSearchReq;
 import com.haarmk.exception.DomainException;
 
-@RestController(value = "/domain")
-public class DomainComtroller {
+@RestController(value = "/domains")
+public class DomainController {
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -36,7 +37,7 @@ public class DomainComtroller {
 	
 	DomainSearchReq domainSearchReq = new DomainSearchReq(1000, null, null);
 	
-	@PostMapping(value= "/check-availability")
+	@PostMapping(value= "/search")
 	public ResponseEntity<CheckDomainNameAvailabilityRes> chekDamainNameAvalabillity(@RequestParam String searchTerm) {
 		String urlCheckAvailability = baseUrl+"/v4/domains:checkAvailability";
 		String urlSearch = baseUrl+"/v4/domains:search";
@@ -51,13 +52,14 @@ public class DomainComtroller {
 		}else {
 			checkDomainNameAvailabilityReq.getDomainNames().add(searchTerm+defaultTld);
 		}
+		
 //		Check availability
         HttpEntity<String> requestEntity = new HttpEntity<>(gson.toJson(checkDomainNameAvailabilityReq), getDomainHeader());        
         ResponseEntity<String> responseEntity = this.restTemplate.exchange(urlCheckAvailability, HttpMethod.POST, requestEntity, String.class);
         CheckDomainNameAvailabilityRes availabilityRes = gson.fromJson(responseEntity.getBody(), CheckDomainNameAvailabilityRes.class);
         
 //      search domain
-        domainSearchReq.setKeyword(rootDomain[0]);
+        domainSearchReq.setKeyword(domain);
         HttpEntity<String> requestEntitySearch = new HttpEntity<>(gson.toJson(domainSearchReq), getDomainHeader());        
         ResponseEntity<String> responseEntitySearch = this.restTemplate.exchange(urlSearch, HttpMethod.POST, requestEntitySearch, String.class);
         CheckDomainNameAvailabilityRes searchRes = gson.fromJson(responseEntitySearch.getBody(), CheckDomainNameAvailabilityRes.class);
@@ -70,7 +72,6 @@ public class DomainComtroller {
 				suggestions.add(searchRes.getSuggestions().get(i));
 			}
         }
-        System.out.println(availabilityRes);
         searchRes.setResult(availabilityRes.getSuggestions().get(0));
         searchRes.setSuggestions(suggestions);
         if(availabilityRes.getSuggestions().isEmpty() && !availabilityRes.getResult().isPurchasable()) {
@@ -81,31 +82,6 @@ public class DomainComtroller {
 	}
 	
 	
-//	private String domainNameSuggestion(String searchTerm) {
-//		CheckDomainNameAvailabilityReq checkDomainNameAvailabilityReq = new CheckDomainNameAvailabilityReq();
-//		String[] suggestedTLDs = {".in",".org",".io",".net",".ai",".store",".info",".online"};
-////		String[] suggestedDomainNamePrefix = {"",".in",".org",".io",".net",".ai",".store"};
-////		String[] suggestedDomainNameSuffix = {"info",".tech",".og",".io",".net",".ai",".store"};
-//		
-//		String[] rootDomain = searchTerm.split("\\.");
-//		String domain = rootDomain[0];
-//		String defaultTld = ".com";
-//		if(rootDomain.length == 2) {
-//			checkDomainNameAvailabilityReq.getDomainNames().add(searchTerm);
-//			defaultTld = rootDomain[1];
-//		}else {
-//			checkDomainNameAvailabilityReq.getDomainNames().add(searchTerm+defaultTld);
-//		}
-//		System.out.println(defaultTld);
-//		for(int i = 0; i < suggestedTLDs.length; i++) {
-//			if(! (suggestedTLDs[i]).equals("."+defaultTld)) {
-//				checkDomainNameAvailabilityReq.getDomainNames().add(domain + suggestedTLDs[i]);
-//			}
-//			
-//		}
-//		return gson.toJson(checkDomainNameAvailabilityReq);
-//	}
-	
 	private HttpHeaders getDomainHeader() {
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -115,7 +91,17 @@ public class DomainComtroller {
 	}
 	
 	
-	
+	@PostMapping(value= "/register-domain")
+	public ResponseEntity<CheckDomainNameAvailabilityRes> registerDomain(@RequestParam DomainRegisterReq domainRegisterReq) {
+		String urlCheckAvailability = baseUrl+"/v4/domains";
+        HttpEntity<String> requestEntity = new HttpEntity<>(gson.toJson(domainRegisterReq), getDomainHeader());        
+        ResponseEntity<String> responseEntity = this.restTemplate.exchange(urlCheckAvailability, HttpMethod.POST, requestEntity, String.class);
+        CheckDomainNameAvailabilityRes availabilityRes = gson.fromJson(responseEntity.getBody(), CheckDomainNameAvailabilityRes.class);
+ 
+        
+//        return new ResponseEntity<>(searchRes, HttpStatus.OK);
+        return null;
+	}
 	
 	
 	
