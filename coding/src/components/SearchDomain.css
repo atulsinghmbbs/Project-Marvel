@@ -1,0 +1,46 @@
+.search-domain-wrapper{
+    background-color: greenyellow;
+    height: 300px;
+    background-image: linear-gradient(#008080,white);
+}
+
+.domain-heading{
+    display: flex;
+    justify-content: center;
+}
+.domain-input-field{
+    display: flex;
+    justify-content: center;
+}
+
+.domain-input-field input{
+    margin-top: 60px;
+    width: 41%;
+    text-indent: 7px;
+    height: 38px;
+    border-radius: 8px;
+    border: none;
+}
+
+.domain-search-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.domain-search-btn button{
+    width: 10%;
+    height: 34px;
+    border-radius: 8px;
+    background: white;
+    border: none;
+    position: relative;
+    left: 19rem;
+    bottom: 2.3rem;
+    transition: .3s;
+}
+
+.domain-search-btn button:hover{
+    color: white;
+    background-color: black;
+    transition: .3s;
+}

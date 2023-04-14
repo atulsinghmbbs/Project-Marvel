@@ -10,6 +10,7 @@ import React from 'react'
 import LoginWithMe from './components/LoginWithMe';
 import AboutPage from './components/AboutPage';
 import BlogPage from './components/BlogPage';
+import SearchDomain from './components/SearchDomain';
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
             <Header />
             <Slider />
             <Templates />
+            <SearchDomain />
           </React.Fragment>
         } />
         <Route path='Domain' element={<Domain />} />
