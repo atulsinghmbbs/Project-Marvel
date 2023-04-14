@@ -11,7 +11,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -21,10 +24,12 @@ import com.haarmk.dto.domain.CheckDomainNameAvailabilityReq;
 import com.haarmk.dto.domain.CheckDomainNameAvailabilityRes;
 import com.haarmk.dto.domain.DomainCheckData;
 import com.haarmk.dto.domain.DomainRegisterReq;
+import com.haarmk.dto.domain.DomainRegisterRes;
 import com.haarmk.dto.domain.DomainSearchReq;
 import com.haarmk.exception.DomainException;
 
-@RestController(value = "/domains")
+@RestController
+@RequestMapping( value = "/domains")
 public class DomainController {
 	
 	@Autowired
@@ -37,8 +42,8 @@ public class DomainController {
 	
 	DomainSearchReq domainSearchReq = new DomainSearchReq(1000, null, null);
 	
-	@PostMapping(value= "/search")
-	public ResponseEntity<CheckDomainNameAvailabilityRes> chekDamainNameAvalabillity(@RequestParam String searchTerm) {
+	@GetMapping(value= "/search")
+	public ResponseEntity<CheckDomainNameAvailabilityRes> searchDamain(@RequestParam String searchTerm) {
 		String urlCheckAvailability = baseUrl+"/v4/domains:checkAvailability";
 		String urlSearch = baseUrl+"/v4/domains:search";
 		
@@ -87,20 +92,20 @@ public class DomainController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBasicAuth(environment.getProperty("NAME_USERNAME"), environment.getProperty("NAME_TOKEN"));
         return headers;
-
 	}
 	
 	
+	
 	@PostMapping(value= "/register-domain")
-	public ResponseEntity<CheckDomainNameAvailabilityRes> registerDomain(@RequestParam DomainRegisterReq domainRegisterReq) {
-		String urlCheckAvailability = baseUrl+"/v4/domains";
-        HttpEntity<String> requestEntity = new HttpEntity<>(gson.toJson(domainRegisterReq), getDomainHeader());        
-        ResponseEntity<String> responseEntity = this.restTemplate.exchange(urlCheckAvailability, HttpMethod.POST, requestEntity, String.class);
-        CheckDomainNameAvailabilityRes availabilityRes = gson.fromJson(responseEntity.getBody(), CheckDomainNameAvailabilityRes.class);
- 
-        
-//        return new ResponseEntity<>(searchRes, HttpStatus.OK);
-        return null;
+	public ResponseEntity<DomainRegisterRes> registerDomain(@RequestBody DomainRegisterReq domainRegisterReq) {
+//		domainRegisterReq.setPurchasePrice(null);
+		System.out.println(gson.toJson(domainRegisterReq));
+		String url = baseUrl+"/v4/domains";
+        HttpEntity<String> requestEntity = new HttpEntity<>(gson.toJson(domainRegisterReq), getDomainHeader());
+        ResponseEntity<String> responseEntity = this.restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class);
+        DomainRegisterRes registerRes = gson.fromJson(responseEntity.getBody(), DomainRegisterRes.class);
+        return new ResponseEntity<DomainRegisterRes>(registerRes, HttpStatus.CREATED);
+//		return null;
 	}
 	
 	

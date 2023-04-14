@@ -3,6 +3,13 @@
  */
 package com.haarmk.dto.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -11,22 +18,29 @@ import lombok.Data;
  */
 @Data
 public class DomainRegisterReq {
+	@NotBlank @NotEmpty @NotNull
+	private DomainReq domain;
+//	@JsonIgnore
+//	private Double purchasePrice;
+//	@JsonIgnore
+//	private String purchaseType;
+	private Integer years;
+//	@JsonIgnore
+//	private List<String> tldRequirements;
+//	@JsonIgnore
+//	private String promoCode;
+}
+
+@Data
+class DomainReq {
 	private String domainName;
 	private ContactsReq contacts;
 }
-
 @Data
 class ContactsReq {
-    private ContactInfoReq billing;
+	private ContactInfo registrant;
+    private ContactInfo admin;
+    private ContactInfo tech;
+    private ContactInfo billing;
 }
 
-@Data
-class ContactInfoReq {
-    private String firstName;
-    private String lastName;
-    private String address1;
-    private String city;
-    private String state;
-    private String country;
-    private String phone;
-}
