@@ -11,6 +11,7 @@ import LoginWithMe from './components/LoginWithMe';
 import AboutPage from './components/AboutPage';
 import BlogPage from './components/BlogPage';
 import SearchDomain from './components/SearchDomain';
+import DomainAvalibility from './components/DomainAvalibility';
 
 
 
@@ -33,6 +34,7 @@ const App = () => {
         <Route path='LoginWithMe' element={<LoginWithMe />} />
         <Route path='AboutPage' element={<AboutPage />} />
         <Route path='BlogPage' element={<BlogPage />} />
+        <Route path='DomainAvalibility' element={<DomainAvalibility />} />
       </Routes>
       <Footer />
     </BrowserRouter>
