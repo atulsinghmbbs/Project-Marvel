@@ -20,8 +20,8 @@ import lombok.Data;
 public class DomainRegisterReq {
 	@NotBlank @NotEmpty @NotNull
 	private DomainReq domain;
-//	@JsonIgnore
-//	private Double purchasePrice;
+	@JsonIgnore
+	private Double purchasePrice;
 //	@JsonIgnore
 //	private String purchaseType;
 	private Integer years;
@@ -29,18 +29,6 @@ public class DomainRegisterReq {
 //	private List<String> tldRequirements;
 //	@JsonIgnore
 //	private String promoCode;
-}
 
-@Data
-class DomainReq {
-	private String domainName;
-	private ContactsReq contacts;
-}
-@Data
-class ContactsReq {
-	private ContactInfo registrant;
-    private ContactInfo admin;
-    private ContactInfo tech;
-    private ContactInfo billing;
 }
 

@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -25,6 +26,10 @@ public class Beans {
 	
 	@Bean Gson getGson() {
 		return new GsonBuilder().create();
+	}
+	
+	@Bean ObjectMapper getObjectMapper() {
+		return new ObjectMapper();
 	}
 	
 }
