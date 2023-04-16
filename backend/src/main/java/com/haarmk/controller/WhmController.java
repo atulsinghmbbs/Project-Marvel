@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -41,6 +43,7 @@ public class WhmController {
 	
 	@GetMapping(value= "/info")
 	public ResponseEntity<JsonNode> getOrder() {		
+		
 		String url = baseUrl+"/json-api/listaccts?api.version=1";
         HttpEntity<String> requestEntity = new HttpEntity<>(getWhmHeader());
         ResponseEntity<String> responseEntity = this.restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
@@ -55,4 +58,24 @@ public class WhmController {
         return new ResponseEntity<JsonNode>(res, HttpStatus.OK);
 	}
 	
+	
+	@PostMapping(value= "/create-subdomain")
+	public ResponseEntity<JsonNode> createSubdomain(@RequestParam String subdomainName) {		
+		String url = baseUrl+"/json-api/create_subdomain?api.version=2&domain="+subdomainName+".haarmk.com&document_root=/home1/haarmkco";
+		System.out.println(getWhmHeader());
+		System.out.println(url);
+        HttpEntity<String> requestEntity = new HttpEntity<>(getWhmHeader());
+        ResponseEntity<String> responseEntity = this.restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
+        System.out.println("out of rest template!");
+        JsonNode res = null;
+		try {
+			res = objectMapper.readTree(responseEntity.getBody());
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+        return new ResponseEntity<JsonNode>(res, HttpStatus.OK);
+
+	}
 }

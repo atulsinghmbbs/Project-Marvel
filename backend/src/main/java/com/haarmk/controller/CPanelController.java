@@ -12,7 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -49,10 +51,8 @@ public class CPanelController {
 	@GetMapping(value= "/domains_data")
 	public ResponseEntity<JsonNode> getDomainData() {		
 		String url = baseUrl+"/execute/DomainInfo/domains_data";
-		System.out.println(url);
         HttpEntity<String> requestEntity = new HttpEntity<>(getWhmHeader());
         ResponseEntity<String> responseEntity = this.restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
-        System.out.println("out of rest template!");
         JsonNode res = null;
 		try {
 			res = objectMapper.readTree(responseEntity.getBody());
@@ -64,9 +64,10 @@ public class CPanelController {
         return new ResponseEntity<JsonNode>(res, HttpStatus.OK);
 	}
 	
-	@GetMapping(value= "/domains_data")
-	public ResponseEntity<JsonNode> createSubdomain() {		
-		String url = baseUrl+"/execute/DomainInfo/domains_data";
+	
+	@PostMapping(value= "/create-subdomain")
+	public ResponseEntity<JsonNode> createSubdomain(@RequestParam String subdomainName) {		
+		String url = baseUrl+"/execute/SubDomain/addsubdomain?domain="+subdomainName+".haarmk.com&rootdomain=haarmk.com";
 		System.out.println(url);
         HttpEntity<String> requestEntity = new HttpEntity<>(getWhmHeader());
         ResponseEntity<String> responseEntity = this.restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
@@ -80,6 +81,7 @@ public class CPanelController {
 			e.printStackTrace();
 		}
         return new ResponseEntity<JsonNode>(res, HttpStatus.OK);
+//		return null;
 	}
 //	void
 }
