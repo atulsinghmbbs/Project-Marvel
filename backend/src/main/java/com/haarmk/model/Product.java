@@ -21,6 +21,7 @@ public class Product  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer domainId;
 	
+	private String domainName;
 	private String domainSLD;
 	
 	private String domainTLD;

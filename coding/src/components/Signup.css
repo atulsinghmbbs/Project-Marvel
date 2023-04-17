@@ -1,10 +1,43 @@
+.sign-up-wrapper{
+    margin-left: 50rem;
+}
 
-.form-wrapper{
+.sign-up-wrapper h1{
+    color: #FF6551;  
+    font-size: 60px;
     position: relative;
-    margin: auto;
-    pointer-events: auto;
-    background: black;
+    right: -2px;
+    margin-bottom: 10px;
+}
+
+.signup-label{
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.signup-input{
+    border-radius: 8px;
+    text-indent: 5px;
+    width: 407px;
+    border-color: grey;
+}
+
+
+.btn-sign-in{
+
+    width: 59%;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    background: #3F5193;
     color: white;
-    height: 441px;
-    border-radius: 10px;
+    transition: .3s;
+}
+
+
+.btn-sign-in:hover{
+   transition: .3s;
+   background: #FF6551;
 }

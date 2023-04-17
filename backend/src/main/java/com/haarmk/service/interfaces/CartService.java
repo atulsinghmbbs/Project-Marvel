@@ -11,7 +11,8 @@ public interface CartService {
 	
 	public List<Product> getAllProducts(Integer userID) throws ProductException;
 	
-	public Product deleteProductByProductId(int productId,Integer userID) throws ProductException;
+	public Product deleteProductByProductId(Integer productId,Integer userID) throws ProductException;
+
 	
 	
 	

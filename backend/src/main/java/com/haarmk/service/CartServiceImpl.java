@@ -62,7 +62,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public Product deleteProductByProductId(int productId,Integer userID) throws ProductException {
+	public Product deleteProductByProductId(Integer productId,Integer userID) throws ProductException {
 		Integer cartId = cartRepo.getCartIdByUserId(userID);
 		
 		Optional<ShoppingCart> cart =cartRepo.findById(cartId);
