@@ -1,13 +1,12 @@
 import "./Nav.css"
 import Login from './Login'
 import { useState } from 'react'
-import { Popup } from 'reactjs-popup';
 import Signup from './Signup';
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
-const Nav = (props) => {
+const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const { isAuthenticated, logout, user } = useAuth0()
@@ -33,10 +32,10 @@ const Nav = (props) => {
       <div className='sign-up-details'>
         <ul>
           <li>
-            {isAuthenticated ? "" : (<button className="sign-up-btn" onClick={() => setIsOpen(!isOpen)}>Sign up</button>)}
-            <Popup open={isOpen} onClose={() => setIsOpen(!isOpen)}>
-              <Signup />
-            </Popup>
+            <NavLink to="/Signup">
+              {isAuthenticated ? "" : (<button className="sign-up-btn" onClick={() => setIsOpen(!isOpen)}>Sign up</button>)}
+            </NavLink>
+
           </li>
         </ul>
         {isAuthenticated ? (<button className='btn-log-out' onClick={(e) => logout()}>logout</button>) : (<Login />)}
