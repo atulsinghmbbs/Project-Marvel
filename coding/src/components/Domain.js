@@ -90,11 +90,6 @@ const Domain = () => {
     )
 
 }
-{/* <img src="./images/price-logo.png" alt="" height="100px" width="100px" /> */ }
-
-
-{/* <img src="./images/checked.png" alt="" height="32" widt="32" /> */ }
-
 export default Domain;
 
 

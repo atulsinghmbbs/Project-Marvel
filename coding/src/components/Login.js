@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-import { useAuth0 } from "@auth0/auth0-react";
 import "./Login.css"
 
 import { NavLink } from 'react-router-dom';
@@ -7,8 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { signUp } from '../services/userService';
 
 
+const Login = () => {
 
-const Login = (props) => {
 
 
     return (
@@ -18,8 +16,7 @@ const Login = (props) => {
             </NavLink>
         </div>
     )
-   
-      
+
 }
 
 export default Login
