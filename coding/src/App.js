@@ -43,7 +43,7 @@ const App = () => {
         <Route path='BlogPage' element={<BlogPage />} />
 
         <Route path='Signup' element={<Signup />} />
-
+       
         <Route path='DomainAvalibility' element={<DomainAvalibility />} />
 
       </Routes>

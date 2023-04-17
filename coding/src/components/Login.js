@@ -9,9 +9,6 @@ const Login = () => {
 
 
 
-const Login = (props) => {
-
-
     return (
         <div className='user-data'>
             <NavLink to="/LoginWithMe">
