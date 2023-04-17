@@ -1,10 +1,15 @@
 import "./Login.css"
+
 import { NavLink } from 'react-router-dom';
+
+import { signUp } from '../services/userService';
 
 
 const Login = () => {
 
 
+
+const Login = (props) => {
 
 
     return (
@@ -14,7 +19,6 @@ const Login = () => {
             </NavLink>
         </div>
     )
-
 
 }
 

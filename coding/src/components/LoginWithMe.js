@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+
 import "./LoginWithMe.css"
 
+
+import Nav from "./Nav";
+import { loginWithJWT } from "../services/userService";
 
 
 function LoginWithMe() {
@@ -12,10 +16,40 @@ function LoginWithMe() {
     console.log("current user details", user)
     console.log(loginWithRedirect);
 
-
+    
+    //const {http}= loginWithJWT();
+    
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Email:", email, "Password:", password);
+        console.log("Email: ====", email, "Password:", password);
+
+        
+
+        // http.post('/login',{userName:email,password:password}).then((resp)=>{
+        //     console.log(resp.data);
+
+        //     console.log("0000000000000000000000000000000000000000000000000000000000000000000")
+        // })
+
+        const loginFormData ={"username":email, "password":password}
+
+        loginWithJWT(loginFormData).then((resp)=>{
+
+            console.log(resp);
+            console.log("login successfully.....")
+            console.log("=========================================================================")
+            alert("login finally done and dusted")
+        }).catch((err)=>{
+
+            console.log(err);
+            console.log("login failed....")
+            console.log("=========================================================================")
+            alert("login finally kabhi aesa na ho")
+
+
+        })
+        console.log("========================Akash yadav ===========================")
+
     };
 
 
