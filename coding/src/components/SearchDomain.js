@@ -1,18 +1,13 @@
 import "./SearchDomain.css"
 import React from 'react'
 import { useState } from "react"
-import { NavLink } from "react-router-dom"
-// import { createContext } from "react"
-// import { Provider } from "react"
-import DomainAvalibility from "./DomainAvalibility"
+import { useNavigate } from "react-router-dom"
 
 const SearchDomain = () => {
 
-
-    // const InputDataContext = createContext()
-
-
     const [inputData, setInputData] = useState("")
+
+    const navigate = useNavigate()
 
     // =======================================================================
     // const [domainData, setDomainData] = useState([])
@@ -30,12 +25,11 @@ const SearchDomain = () => {
     // }, [])
     // ======================================================================
 
+    console.log("this is InputData", inputData);
 
-    function handleSubmit(e) {
-        e.preventDefault()
-        { <DomainAvalibility inputData={inputData} /> }
+    function submitDomain() {
+        navigate("./DomainAvalibility", { state: { inputData: inputData } })
     }
-
 
 
     return (
@@ -45,16 +39,11 @@ const SearchDomain = () => {
             </div>
 
             <div className="domain-input-field">
-                <form action="" onSubmit={handleSubmit}>
-                    <input type="text" value={inputData} onChange={(e) => setInputData(e.target.value)} placeholder="Seach Your domain Here" />
-                </form>
+                <input type="text" value={inputData} onChange={(e) => setInputData(e.target.value)} placeholder="Seach Your domain Here" />
             </div>
             <div className="domain-search-btn">
-                <NavLink inputData={inputData} to="/DomainAvalibility">
-                    <button>Search</button>
-                </NavLink>
+                <button onClick={submitDomain}>Search</button>
             </div>
-            {/* <DomainAvalibility inputData={inputData}  */}
 
         </div>
     )

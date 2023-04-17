@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Signup from './Signup';
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { signUp } from "../services/userService";
 
 
 const Nav = () => {
@@ -12,6 +11,7 @@ const Nav = () => {
 
   const { isAuthenticated, logout, user } = useAuth0()
   console.log("user data ", user)
+
   console.log("current user details", user)
   // console.log(props.loginWithRedirect);
 
@@ -40,6 +40,7 @@ const Nav = () => {
   } else {
     console.log("Invalid User credentials...")
   }
+
 
   return (
 
