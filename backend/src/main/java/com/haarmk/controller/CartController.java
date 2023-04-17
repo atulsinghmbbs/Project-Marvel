@@ -39,6 +39,7 @@ public class CartController {
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 	}
 	
+
 	@DeleteMapping("/deleteProductFromCart/{productId}/{userId}")
 	public ResponseEntity<Product> deleteProduct(@PathVariable("productId") Integer productId,@PathVariable("userId") Integer userId){
 		

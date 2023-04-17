@@ -36,7 +36,7 @@ public class ShoppingCart {
 	    
 	    private int  totalPrice;
 	    
-	    @ManyToMany(cascade = CascadeType.ALL)
+	    @ManyToMany(cascade = CascadeType.ALL.ALL , fetch = FetchType.EAGER)
 	    @JoinTable(
 	    	    name = "Product_Cart",
 	    	    joinColumns = @JoinColumn(name="CartId", referencedColumnName ="CartId"),

@@ -91,6 +91,7 @@ public class GlobalExceptionHandler {
 		
 	}
 	
+
 	@ExceptionHandler(DomainException.class)
 	public ResponseEntity<MyErrorInfo> doainExceptionHandler(DomainException exception,WebRequest req){
 		MyErrorInfo err = new MyErrorInfo();
@@ -101,6 +102,7 @@ public class GlobalExceptionHandler {
 		
 	}
 	
+
 	@ExceptionHandler(UserException.class)
 	public ResponseEntity<MyErrorInfo> UserExpHandler(UserException ie,WebRequest req){
 		

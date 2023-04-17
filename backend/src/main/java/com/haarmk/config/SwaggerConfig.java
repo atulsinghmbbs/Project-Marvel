@@ -17,14 +17,14 @@ public class SwaggerConfig {
 	  @Bean
 	  public GroupedOpenApi publicApi() {
 	      return GroupedOpenApi.builder()
-	              .group("relevel")
+	              .group("haarmk")
 	              .pathsToMatch("/","/**").build();
 	  }
 
 	  @Bean
 	  public OpenAPI springShopOpenAPI() {
 	      return new OpenAPI()
-	              .info(new Info().title("relevel API")
+	              .info(new Info().title("haarmk API")
 	              .description("test")
 	              .version("v0.0.1")
 	              .license(new License().name("Apache 2.0").url("http://springdoc.org")))
