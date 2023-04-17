@@ -1,35 +1,81 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import "./DomainAvalibility.css"
 
-const DomainAvalibility = ({ inputData }) => {
+const DomainAvalibility = () => {
 
-    console.log("kjhkj", inputData)
+    const [domainResult, setdomainResult] = useState([])
+    const [isLoading, setLoading] = useState(true)
+
+    const location = useLocation()
+    console.log("location wala data ", location.state);
 
 
 
-    const [domainData, setDomainData] = useState([])
-
-
-    const getDomainData = () => {
-        const getData = fetch("http://localhost:8888/domains/search?searchTerm=hi")
+    const getDomainData = async () => {
+        const getData = await fetch(`http://localhost:8888/domains/search?searchTerm=${location.state.inputData}`)
             .then((res) => res.json())
-            .then((data) => console.log(setDomainData(data)))
+            .then((data) => console.log(setdomainResult(data)))
+        setLoading(false)
     }
+    console.log("Your Result data", domainResult)
+    // console.log("Your suggestions data", domainResult.suggestions)
+
 
     useEffect(() => {
+        window.scroll(0, 0)
         getDomainData()
-        console.log("Your api data", domainData)
-    }, [])
+    }, [location.state.inputData])
+
+
+    function resultText() {
+
+        let resultText;
+        if (domainResult.result.purchasable === true) {
+            resultText =
+                <div>
+                    <p>This is available</p>
+                    <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{domainResult.result.purchasePrice}</p>
+                    <button>Buy Now</button>
+                </div>
+        } else {
+            resultText = <p>This is not available</p>;
+        }
+        return resultText
+    }
 
 
     return (
         <div style={{ marginTop: 100 }}>
-            <h1>hello:{inputData}</h1>
-            {/* {domainData.map((domain) => (
-                <h2>{domain}</h2>
-            ))} */}
+            <div className="result-box">
+                <h1>
+                    {!isLoading ? resultText() : "loading..."}
+
+                </h1>
+            </div>
+
+            <div className='suggestion-box'>
+
+                {!isLoading ? (
+                    domainResult.suggestions.map((item, i) => (
+                        <div key={i}>
+                            <h2 className='suggestion-heading'>{item.domainName}</h2>
+                            <p>{item.purchasePrice}</p>
+                            <i className="fa-solid fa-cart-plus"></i>
+                            <hr />
+                        </div>
+                    ))
+                ) : (
+                    <p>No suggestions available.</p>
+                )}
+
+            </div>
+
         </div>
+
     )
 }
 
 export default DomainAvalibility
+
