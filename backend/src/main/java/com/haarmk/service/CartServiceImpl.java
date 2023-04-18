@@ -36,7 +36,7 @@ public class CartServiceImpl implements CartService {
 				
 			}
 			products.add(product);
-			ShoppingCart newCart = new ShoppingCart(cartId, null, amount,products);
+			ShoppingCart newCart = new ShoppingCart(cartId, products);
 			
 			 cartRepo.save(newCart);
 			 return product;
@@ -82,7 +82,7 @@ public class CartServiceImpl implements CartService {
 				}
 				
 			}
-			ShoppingCart newCart = new ShoppingCart(cartId, null, amount,products);
+			ShoppingCart newCart = new ShoppingCart();
 		
 			
 			 cartRepo.save(newCart);

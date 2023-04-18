@@ -1,12 +1,11 @@
 package com.haarmk.controller;
 
-import java.util.Date;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-import javax.crypto.SecretKey;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,14 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.haarmk.dto.LoginDto;
 import com.haarmk.dto.LoginResDto;
+import com.haarmk.dto.OperationStatusDto;
+import com.haarmk.dto.PasswordResetRequestDto;
 import com.haarmk.model.User;
+import com.haarmk.service.interfaces.AuthService;
 import com.haarmk.service.interfaces.UserService;
+import com.haarmk.util.JwtUtil;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/haarmk")
+@RequestMapping("/auth")
 public class AuthController {
 	 	@Autowired
 	    private AuthenticationManager authenticationManager;
@@ -36,26 +38,23 @@ public class AuthController {
 	    @Autowired
 	    private UserService userService;
 	    @Autowired
-	    private Environment environment;
+	    private AuthService authService;
+	    @Autowired private JwtUtil jwtUtil;
+
 	   
 	    @PostMapping(value = "/login")
 	    
 	    public ResponseEntity<LoginResDto> login(@RequestBody LoginDto loginDto){
 	    	
 	        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(),loginDto.getPassword()));
-	        SecretKey key = Keys.hmacShaKeyFor(environment.getProperty("JWT_KEY").getBytes());
-	         
-	        String jwt = Jwts.builder()
-	        		.setIssuer("haarmk")
-	        		.setSubject("JWT Token")
-	                .claim("username", authentication.getName())
-	                .claim("authorities", authentication.getAuthorities().stream().map((a)->a.getAuthority().toUpperCase()).collect(Collectors.joining(",")))
-	                .setIssuedAt(new Date())
-	                .setExpiration(new Date(new Date().getTime()+ 30000000)) // expiration time of 8 hours
-	                .signWith(key).compact();
 	        
-	        		LoginResDto loginResDto = new LoginResDto();
-	        		loginResDto.setToken(jwt);
+	        
+	        Map<String, String> claims = new HashMap<>();
+	        claims.put("username", authentication.getName());
+	        claims.put("authorities", authentication.getAuthorities().stream().map((a)->a.getAuthority().toUpperCase()).collect(Collectors.joining(",")));
+	        String jwt = jwtUtil.generateToken(claims, 80000);
+    		LoginResDto loginResDto = new LoginResDto();
+    		loginResDto.setToken(jwt);
 	        return new ResponseEntity<LoginResDto>(loginResDto,HttpStatus.OK);
 	       
 	    }
@@ -70,4 +69,17 @@ public class AuthController {
 	    	
 	    	return new ResponseEntity<User>(userService.addUser(user),HttpStatus.CREATED);
 	    }
+	    
+	    @PostMapping(value = "/reset-password")
+	    public ResponseEntity<OperationStatusDto> passwordReset(@Valid @RequestBody PasswordResetRequestDto passwordResetRequestDto) {
+	    	authService.requestPasswordReset(passwordResetRequestDto.getEmail());
+			OperationStatusDto operationStatusDto = new OperationStatusDto();
+			operationStatusDto.setName("Reset Password");
+			operationStatusDto.setStatus("Success");
+			return new ResponseEntity<OperationStatusDto>(operationStatusDto,HttpStatus.OK);
+			
+	    	
+		}
+	    
+	    
 }

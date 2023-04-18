@@ -23,20 +23,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ShoppingCart {
-	   public static String ORDERED = "ordered";
-	    public static String PENDING = "pending";
-
-	    
+public class ShoppingCart {	    
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Integer CartId;
-
-	    public String status; //pending, ordere
-	    
-	    private int  totalPrice;
-	    
-	    @ManyToMany(cascade = CascadeType.ALL.ALL , fetch = FetchType.EAGER)
+	    private Integer CartId;    
+	    @ManyToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
 	    @JoinTable(
 	    	    name = "Product_Cart",
 	    	    joinColumns = @JoinColumn(name="CartId", referencedColumnName ="CartId"),

@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
    
     @Override
     public User getUserByUsername(String username){
-        return userRepo.findByEmail(username).orElseThrow(()->new UsernameNotFoundException("user not found with username"+username));
+        return userRepo.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("user not found with username"+username));
     }
 
 	
@@ -34,6 +34,13 @@ public class UserServiceImpl implements UserService {
 			return userRepo.save(user);
 			
 		}else throw new IllegalArgumentException("User allready exist...");
+	}
+
+
+
+	@Override
+	public User getUserByEmail(String email) {
+		 return userRepo.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("user not found with username"+email));
 	}
 
 
