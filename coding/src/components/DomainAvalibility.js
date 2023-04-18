@@ -5,7 +5,6 @@ import "./DomainAvalibility.css"
 import { addToCart } from './redux/action'
 import { useDispatch } from 'react-redux'
 
-
 const DomainAvalibility = () => {
 
     const [domainResult, setdomainResult] = useState([])
@@ -39,9 +38,11 @@ const DomainAvalibility = () => {
         let resultText;
         if (domainResult.result.purchasable === true) {
             resultText =
-                <div>
-                    <p>This is available</p>
-                    <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{domainResult.result.purchasePrice}</p>
+                <div className='available'>
+                    <p className='item'>This is available</p>
+                    <div className="price">
+                        <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{domainResult.result.purchasePrice}</p>
+                    </div>
                     <button>Buy Now</button>
                 </div>
         } else {
@@ -65,10 +66,11 @@ const DomainAvalibility = () => {
                 {!isLoading ? (
                     domainResult.suggestions.map((item, i) => (
                         <div key={i}>
-                            <h2 className='suggestion-heading'>{item.domainName}</h2>
-                            <p>{item.purchasePrice}</p>
-                            <i style={{ cursor: "pointer" }} className="fa-solid fa-cart-plus" onClick={() => dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }))} ></i>
-                            <hr />
+                            <div className='suggestion'>
+                                <h2 className='suggestion-heading'>{item.domainName}</h2>
+                                <p className='item-price'>{item.purchasePrice}</p>
+                                <i style={{ cursor: "pointer" }} className="fa-solid fa-cart-plus" onClick={() => dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }))} ></i>
+                            </div>
                         </div>
                     ))
                 ) : (
