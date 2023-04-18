@@ -62,3 +62,62 @@
 // }
 
 // export default Logout;
+
+
+
+// sign up form data 
+
+
+// google wali cssss btn
+
+// .continue-with-google-btn{
+//     width: 300px;
+//     padding: 13px;
+//     border-radius: 8px;
+//     font-size: 20px;
+//     border: 1px solid grey;
+//     cursor: pointer;
+//     background: #000;
+//     color: #000;
+//     position: relative;
+//     left: 58.2rem;
+//     margin-top: 40px;
+//     color: white;
+//     transition: .3s;
+    
+// }
+
+// .continue-with-google-btn:hover{
+//     background-color: #FFF;
+//     color: black;
+//     transition: .3s;
+
+// } 
+
+// -------------------------------------------------------------------------
+
+// reducer 
+
+// export const cartData = (state = { cartData: [] }, action) => {
+//     switch (action.type) {
+//         case ADD_TO_CART:
+//             console.log("add to cart reducer wala", action);
+//             return { ...state, cartData: [action.data, ...state.cartData] };
+
+//         case REMOVE_FROM_CART:
+//             console.log("remove in reducer", action);
+//             return {
+//                 ...state,
+//                 cartData: state.cartData.filter(
+//                     (item) => item.domainName !== action.payload.domainName
+//                 ),
+//             };
+
+//         default:    
+//             return state;
+
+//     }
+// }
+
+
+

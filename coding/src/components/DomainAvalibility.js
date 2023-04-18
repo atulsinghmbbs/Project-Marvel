@@ -2,11 +2,16 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import "./DomainAvalibility.css"
+import { addToCart } from './redux/action'
+import { useDispatch } from 'react-redux'
+
 
 const DomainAvalibility = () => {
 
     const [domainResult, setdomainResult] = useState([])
     const [isLoading, setLoading] = useState(true)
+
+    const dispatch = useDispatch()
 
     const location = useLocation()
     console.log("location wala data ", location.state);
@@ -62,7 +67,7 @@ const DomainAvalibility = () => {
                         <div key={i}>
                             <h2 className='suggestion-heading'>{item.domainName}</h2>
                             <p>{item.purchasePrice}</p>
-                            <i className="fa-solid fa-cart-plus"></i>
+                            <i style={{ cursor: "pointer" }} className="fa-solid fa-cart-plus" onClick={() => dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }))} ></i>
                             <hr />
                         </div>
                     ))

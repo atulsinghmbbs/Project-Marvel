@@ -16,6 +16,7 @@ import Signup from './components/Signup';
 
 import SearchDomain from './components/SearchDomain';
 import DomainAvalibility from './components/DomainAvalibility';
+import Checkout from './components/Checkout';
 
 
 
@@ -43,8 +44,9 @@ const App = () => {
         <Route path='BlogPage' element={<BlogPage />} />
 
         <Route path='Signup' element={<Signup />} />
-       
+
         <Route path='DomainAvalibility' element={<DomainAvalibility />} />
+        <Route path='Checkout' element={<Checkout />} />
 
       </Routes>
       <Footer />

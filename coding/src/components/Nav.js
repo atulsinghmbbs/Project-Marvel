@@ -23,22 +23,22 @@ const Nav = () => {
       "password": null,
 
     }
-    signUp(userGoogleData).then((resp) => {
+    //   signUp(userGoogleData).then((resp) => {
 
-      console.log(resp);
-      console.log("succesfully signUp.....")
-      console.log("=========================================================================")
+    //     console.log(resp);
+    //     console.log("succesfully signUp.....")
+    //     console.log("=========================================================================")
 
-    }).catch((err) => {
+    //   }).catch((err) => {
 
-      console.log(err);
-      console.log("signup failed....")
-      console.log("=========================================================================")
+    //     console.log(err);
+    //     console.log("signup failed....")
+    //     console.log("=========================================================================")
 
 
-    })
-  } else {
-    console.log("Invalid User credentials...")
+    //   })
+    // } else {
+    //   console.log("Invalid User credentials...")
   }
 
 
@@ -71,6 +71,10 @@ const Nav = () => {
         {isAuthenticated ? (<button className='btn-log-out' onClick={(e) => logout()}>logout</button>) : (<Login />)}
 
         {isAuthenticated && <img className='user-image' src={user.picture} />}
+
+        <NavLink to="/Checkout">
+          <i style={{ cursor: "pointer", marginLeft: 40 }} className="fa-solid fa-cart-plus"></i>
+        </NavLink>
 
 
       </div>
