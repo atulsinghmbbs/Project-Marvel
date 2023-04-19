@@ -1,7 +1,7 @@
 import '../css/RazorPay.css';
 
 
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 function RazPay() {
 
@@ -14,6 +14,7 @@ function RazPay() {
   async function fetchData() {
     const data = fetch(url).then((res) => res.json())
       .then((getData) => console.log("set damount data", setAmount(getData[0].id)))
+      
   }
 
   useEffect(() => {
@@ -28,7 +29,7 @@ function RazPay() {
     if (amount === "") {
       alert("please enter a valid amount");
     } else {
-      var options = {
+      const options = {
         key: "rzp_test_yKt32uKI6iM9vt",
         key_secret: "WdkV3mRiU6pFEy7AtPUNJ58i",
         amount: amount * 100,
@@ -50,8 +51,10 @@ function RazPay() {
           color: "#3399cc"
         }
       };
+      
       var pay = new window.Razorpay(options);
       pay.open();
+      
     }
   }
 

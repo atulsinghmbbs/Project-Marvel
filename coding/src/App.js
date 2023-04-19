@@ -17,6 +17,8 @@ import Signup from './components/Signup';
 import SearchDomain from './components/SearchDomain';
 import DomainAvalibility from './components/DomainAvalibility';
 import Checkout from './components/Checkout';
+import RazPay from './components/RazPay';
+import ResetPassword from './components/ResetPassword';
 
 
 
@@ -35,6 +37,7 @@ const App = () => {
             <Slider />
             <Templates />
             <SearchDomain />
+            {/* <RazPay/> */}
           </React.Fragment>
         } />
 
@@ -50,6 +53,7 @@ const App = () => {
 
       </Routes>
       <Footer />
+      <ResetPassword/>
     </BrowserRouter>
 
   )

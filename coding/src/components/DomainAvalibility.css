@@ -109,7 +109,7 @@
 .suggestion i{
     font-size: 25px;
     margin-right: 30px;
-
+    
 }
 
 
@@ -124,5 +124,20 @@
 
 
 .item-price{
-    margin-left: 500px;
+    margin-left: 980px;
+    position: absolute;
+}
+
+
+.not-available{
+    font-size: 22px;
+    margin-left: 155px;
+
+}
+
+
+.no-suggestion{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
 }

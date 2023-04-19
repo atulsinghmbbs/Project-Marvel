@@ -46,7 +46,7 @@ const DomainAvalibility = () => {
                     <button>Buy Now</button>
                 </div>
         } else {
-            resultText = <p>This is not available</p>;
+            resultText = <p className='not-available'>This domain is not available <br /> Some domains are given below, you can select</p>;
         }
         return resultText
     }
@@ -67,14 +67,14 @@ const DomainAvalibility = () => {
                     domainResult.suggestions.map((item, i) => (
                         <div key={i}>
                             <div className='suggestion'>
-                                <h2 className='suggestion-heading'>{item.domainName}</h2>
+                                <h3 className='suggestion-heading'>{item.domainName}</h3>
                                 <p className='item-price'>{item.purchasePrice}</p>
                                 <i style={{ cursor: "pointer" }} className="fa-solid fa-cart-plus" onClick={() => dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }))} ></i>
                             </div>
                         </div>
                     ))
                 ) : (
-                    <p>No suggestions available.</p>
+                    <p className='no-suggestion'>No suggestions available.</p>
                 )}
 
             </div>
