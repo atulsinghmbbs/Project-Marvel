@@ -35,6 +35,17 @@ public class UserServiceImpl implements UserService {
 			
 		}else throw new IllegalArgumentException("User allready exist...");
 	}
+	
+	@Override
+	public User updateUser(User user) {
+		Optional<User> existingUser = userRepo.findByEmail(user.getEmail());
+		
+		if(existingUser.isPresent()) {
+			
+			return userRepo.save(user);
+			
+		}else throw new IllegalArgumentException("User does not exist...");
+	}
 
 
 

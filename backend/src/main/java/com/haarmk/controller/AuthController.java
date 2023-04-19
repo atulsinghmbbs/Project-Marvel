@@ -12,14 +12,17 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.haarmk.dto.LoginDto;
 import com.haarmk.dto.LoginResDto;
 import com.haarmk.dto.OperationStatusDto;
+import com.haarmk.dto.PasswordResetReq;
 import com.haarmk.dto.PasswordResetRequestDto;
 import com.haarmk.model.User;
 import com.haarmk.service.interfaces.AuthService;
@@ -64,22 +67,51 @@ public class AuthController {
 	    	if(user.getPassword()!=null) {
 	    		user.setPassword(passwordEncoder.encode(user.getPassword()));
 	    	}
-	    		
-	    	
-	    	
 	    	return new ResponseEntity<User>(userService.addUser(user),HttpStatus.CREATED);
 	    }
 	    
-	    @PostMapping(value = "/reset-password")
-	    public ResponseEntity<OperationStatusDto> passwordReset(@Valid @RequestBody PasswordResetRequestDto passwordResetRequestDto) {
+	    @PostMapping(value = "/reset-password-request")
+	    public ResponseEntity<OperationStatusDto> passwordResetRequest(@Valid @RequestBody PasswordResetRequestDto passwordResetRequestDto) {
 	    	authService.requestPasswordReset(passwordResetRequestDto.getEmail());
 			OperationStatusDto operationStatusDto = new OperationStatusDto();
-			operationStatusDto.setName("Reset Password");
+			operationStatusDto.setOperation("Reset Password");
+			operationStatusDto.setStatus("Success");
+			return new ResponseEntity<OperationStatusDto>(operationStatusDto,HttpStatus.OK);
+		}
+	    
+	    
+	    @PostMapping(value = "/reset-password")
+	    public ResponseEntity<OperationStatusDto> passwordReset(@Valid @RequestBody PasswordResetReq passwordResetReq) {
+	    	authService.resetPassword(passwordResetReq.getToken(), passwordResetReq.getNewPassword());
+			OperationStatusDto operationStatusDto = new OperationStatusDto();
+			operationStatusDto.setOperation("Reset Password");
 			operationStatusDto.setStatus("Success");
 			return new ResponseEntity<OperationStatusDto>(operationStatusDto,HttpStatus.OK);
 			
 	    	
 		}
+	    
+	    
+	    @PostMapping(value = "/varify-email-request")
+	    public ResponseEntity<OperationStatusDto> varifyEmailRequest(@Valid @RequestBody PasswordResetRequestDto passwordResetRequestDto) {
+	    	authService.varifyEmailRequest(passwordResetRequestDto.getEmail());
+			OperationStatusDto operationStatusDto = new OperationStatusDto();
+			operationStatusDto.setOperation("Reset Password");
+			operationStatusDto.setStatus("Success");
+			return new ResponseEntity<OperationStatusDto>(operationStatusDto,HttpStatus.OK);
+		}
+	    
+	    
+	    @GetMapping(value = "/varify-email")
+	    public ResponseEntity<OperationStatusDto>  varifyEmail(@RequestParam String token) {
+	    	authService.varifyEmail(token);
+			OperationStatusDto operationStatusDto = new OperationStatusDto();
+			operationStatusDto.setOperation("Reset Password");
+			operationStatusDto.setStatus("Success");
+			return new ResponseEntity<OperationStatusDto>(operationStatusDto,HttpStatus.OK);
+		}
+	    
+	    
 	    
 	    
 }

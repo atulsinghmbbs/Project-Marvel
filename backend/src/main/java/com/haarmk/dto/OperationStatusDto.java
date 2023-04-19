@@ -11,6 +11,6 @@ import lombok.Data;
  */
 @Data
 public class OperationStatusDto {
-	private String name;
+	private String operation;
 	private String status;
 }

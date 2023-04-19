@@ -42,8 +42,6 @@ public class User {
 	private String username;
 	private String firstName;
 	private String lastName;
-    @Column(unique = true,nullable = false)
-    private String email;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @ManyToMany(cascade = CascadeType.ALL)
@@ -51,14 +49,13 @@ public class User {
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean CredentialsNonExpired;
-    private boolean enabled;
-    
-    @Lob
-    private byte[] imagedata;
-    
+    private boolean enabled;  
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Email> emails;
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Address> addresses;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Feedback> listfed = new ArrayList<>();
-    
     @OneToOne
     @JoinColumn(name = "cartId", referencedColumnName = "CartId")
     private ShoppingCart carts;
