@@ -6,6 +6,7 @@ import com.haarmk.repository.UserRepo;
 import com.haarmk.service.interfaces.UserService;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,8 +21,9 @@ public class UserServiceImpl implements UserService {
    
     @Override
     public User getUserByUsername(String username){
-        return userRepo.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("user not found with username"+username));
+        return userRepo.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("user not found with username: "+username));
     }
+    
 
 	
 
@@ -51,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserByEmail(String email) {
-		 return userRepo.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("user not found with username"+email));
+		 return userRepo.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("user not found with email: "+email));
 	}
 
 

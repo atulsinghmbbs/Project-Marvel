@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.token.TokenService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,30 +35,26 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-	 	@Autowired
-	    private AuthenticationManager authenticationManager;
-	    @Autowired
-	    private PasswordEncoder passwordEncoder;
-	    @Autowired
-	    private UserService userService;
-	    @Autowired
-	    private AuthService authService;
+	 	@Autowired private AuthenticationManager authenticationManager;
+	    @Autowired private PasswordEncoder passwordEncoder;
+	    @Autowired private UserService userService;
+	    @Autowired private AuthService authService;
 	    @Autowired private JwtUtil jwtUtil;
+
 
 	   
 	    @PostMapping(value = "/login")
 	    
 	    public ResponseEntity<LoginResDto> login(@RequestBody LoginDto loginDto){
-	    	
-	        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(),loginDto.getPassword()));
-	        
-	        
+	        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
+	        User user =  (User) authentication.getPrincipal();
 	        Map<String, String> claims = new HashMap<>();
-	        claims.put("username", authentication.getName());
+	        claims.put("username", user.getUsername());
 	        claims.put("authorities", authentication.getAuthorities().stream().map((a)->a.getAuthority().toUpperCase()).collect(Collectors.joining(",")));
 	        String jwt = jwtUtil.generateToken(claims, 80000);
     		LoginResDto loginResDto = new LoginResDto();
     		loginResDto.setToken(jwt);
+    		loginResDto.setType("Authorization: Bearer");
 	        return new ResponseEntity<LoginResDto>(loginResDto,HttpStatus.OK);
 	       
 	    }
@@ -94,7 +91,7 @@ public class AuthController {
 	    
 	    @PostMapping(value = "/varify-email-request")
 	    public ResponseEntity<OperationStatusDto> varifyEmailRequest(@Valid @RequestBody PasswordResetRequestDto passwordResetRequestDto) {
-	    	authService.varifyEmailRequest(passwordResetRequestDto.getEmail());
+	    	authService.verifyEmailRequest(passwordResetRequestDto.getEmail());
 			OperationStatusDto operationStatusDto = new OperationStatusDto();
 			operationStatusDto.setOperation("Reset Password");
 			operationStatusDto.setStatus("Success");
@@ -104,7 +101,7 @@ public class AuthController {
 	    
 	    @GetMapping(value = "/varify-email")
 	    public ResponseEntity<OperationStatusDto>  varifyEmail(@RequestParam String token) {
-	    	authService.varifyEmail(token);
+	    	authService.verifyEmail(token);
 			OperationStatusDto operationStatusDto = new OperationStatusDto();
 			operationStatusDto.setOperation("Reset Password");
 			operationStatusDto.setStatus("Success");

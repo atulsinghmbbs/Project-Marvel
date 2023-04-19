@@ -1,4 +1,4 @@
-package com.haarmk.config.filter;
+package com.haarmk.filter;
 
 import java.io.IOException;
 
@@ -29,12 +29,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class JwtValidatorFilter extends OncePerRequestFilter{
-	@Autowired
-	private Environment environment;
+	@Autowired private Environment environment;
 	@Autowired private JwtUtil jwtUtil;
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-		
 		
 		String jwt = request.getHeader(environment.getProperty("JWT_HEADER"));
 		
@@ -44,14 +42,11 @@ public class JwtValidatorFilter extends OncePerRequestFilter{
 
 				jwt = jwt.substring(7);
 
-				
 				Claims claims = jwtUtil.validateToken(jwt); 				
 				
 				String username= (String)(claims.get("username"));
 				
-				
 				String authorities= (String)claims.get("authorities");	
-				
 				
 				Authentication auth = new UsernamePasswordAuthenticationToken(username, null, AuthorityUtils.commaSeparatedStringToAuthorityList(authorities));
 		

@@ -26,9 +26,10 @@ public class CartController {
 	@PostMapping("/addProductInCart/{userId}")
 	public ResponseEntity<Product> AddProduct(@RequestBody Product product,@PathVariable("userId") Integer userId){
 		
-		Product addProduct = cartService.addProduct(product,userId);
+//		Product addProduct = cartService.addProduct(product,userId);
 		
-		return new ResponseEntity<Product>(addProduct, HttpStatus.CREATED);
+//		return new ResponseEntity<Product>(addProduct, HttpStatus.CREATED);
+		return null;
 	}
 	
 	@GetMapping("/getProductsFromCart/{userId}")
@@ -43,8 +44,9 @@ public class CartController {
 	@DeleteMapping("/deleteProductFromCart/{productId}/{userId}")
 	public ResponseEntity<Product> deleteProduct(@PathVariable("productId") Integer productId,@PathVariable("userId") Integer userId){
 		
-		Product product = cartService.deleteProductByProductId(productId,userId);
+//		Product product = cartService.deleteProductByProductId(productId,userId);
 		
-		return new ResponseEntity<Product>(product, HttpStatus.ACCEPTED);
+//		return new ResponseEntity<Product>(product, HttpStatus.ACCEPTED);
+		return null;
 	}
 }

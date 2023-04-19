@@ -3,8 +3,11 @@
  */
 package com.haarmk.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 /**
@@ -12,6 +15,7 @@ import lombok.Data;
  *
  */
 @Data
+@Entity
 public class Address {
 	@Id	@GeneratedValue
 	private Integer id;
@@ -19,6 +23,9 @@ public class Address {
 	private String addressLine2;
 	private String city;
 	private String postalCode;
+	@ManyToOne
 	private Country country;
-	private Boolean isPrimary;
+	@OneToOne
+	private User user;
+	
 }

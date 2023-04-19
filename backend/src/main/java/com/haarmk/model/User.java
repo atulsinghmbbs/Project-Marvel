@@ -27,7 +27,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "users")
 @Getter
 @Setter
 @ToString
@@ -48,15 +47,15 @@ public class User {
     private Set<Authority> authorities = new HashSet<>();
     private boolean accountNonExpired;
     private boolean accountNonLocked;
-    private boolean CredentialsNonExpired;
+    private boolean credentialsNonExpired;
     private boolean enabled;  
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    private List<Email> emails;
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    private List<Address> addresses;
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Feedback> listfed = new ArrayList<>();
-    @OneToOne
-    @JoinColumn(name = "cartId", referencedColumnName = "CartId")
-    private ShoppingCart carts;
+    private String email;
+    @OneToOne(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private Address addresses;;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.REFRESH})
+    private List<Feedback> feedbacks = new ArrayList<>();
+    @OneToOne(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private Cart cart = new Cart();
+    
+    
 }

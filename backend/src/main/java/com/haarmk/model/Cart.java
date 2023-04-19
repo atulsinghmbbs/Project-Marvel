@@ -1,5 +1,6 @@
 package com.haarmk.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,21 +20,17 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "Carts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ShoppingCart {	    
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Integer CartId;    
-	    @ManyToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
-	    @JoinTable(
-	    	    name = "Product_Cart",
-	    	    joinColumns = @JoinColumn(name="CartId", referencedColumnName ="CartId"),
-	    	    inverseJoinColumns = @JoinColumn(name="domainId", referencedColumnName = "domainID")
-	    )
-	    private List<Product> products;
+public class Cart {	    
+	    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Integer id;    
+	    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
+	    private List<Product> products = new ArrayList<>();
+	    @OneToOne
+	    private User user;
+	   
 	    
 }

@@ -3,6 +3,7 @@
  */
 package com.haarmk.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
@@ -12,6 +13,7 @@ import lombok.Data;
  */
 
 @Data
+@Entity
 public class Country {
 	@Id
 	private Integer code;

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.haarmk.dto.OrderDto;
-import com.haarmk.model.Order;
+import com.haarmk.model.Orders;
 import com.haarmk.service.interfaces.OrderService;
 
 import jakarta.validation.Valid;
@@ -40,14 +40,14 @@ public class OrderController {
     }
 
     @PostMapping("/addOrder")
-    public ResponseEntity<OrderDto> addOrder(@RequestBody @Valid Order order) {
+    public ResponseEntity<OrderDto> addOrder(@RequestBody @Valid Orders order) {
         OrderDto order1 = orderService.addOrder(order);
         return new ResponseEntity<OrderDto>(order1, HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "deleteOrder/{id}")
-    public ResponseEntity<Order> delete(@PathVariable("id") Long id) {
-        Order order = orderService.deleteOrder(id);
-        return new ResponseEntity<Order>(order, HttpStatus.OK);
+    public ResponseEntity<Orders> delete(@PathVariable("id") Long id) {
+        Orders order = orderService.deleteOrder(id);
+        return new ResponseEntity<Orders>(order, HttpStatus.OK);
     }
 }

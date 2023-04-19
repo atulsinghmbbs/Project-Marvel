@@ -170,5 +170,20 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
+	
+	
+	@ExceptionHandler(TokenException.class)
+	public ResponseEntity<ErrorDetails> tokenExceptionHandler(TokenException e,WebRequest req){
+		
+		
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
 
 }

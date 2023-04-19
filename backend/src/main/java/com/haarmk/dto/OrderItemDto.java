@@ -16,13 +16,13 @@ public class OrderItemDto {
     private String product;
     private Long order;
     public double getSubTotal;
-
-    public OrderItemDto(OrderItem orderItem) {
-        id = orderItem.getId();
-        quantity = orderItem.getQuantity();
-        price = orderItem.getPrice();
-        product = orderItem.getProduct().getDomainName();
-        order = orderItem.getOrder().getId();
-        getSubTotal = orderItem.getSubTotal();
-    }
+//
+//    public OrderItemDto(OrderItem orderItem) {
+//        id = orderItem.getId();
+//        quantity = orderItem.getQuantity();
+//        price = orderItem.getPrice();
+//        product = orderItem.getProduct();
+//        order = orderItem.getOrder().getId();
+//        getSubTotal = orderItem.getSubTotal();
+//    }
 }
