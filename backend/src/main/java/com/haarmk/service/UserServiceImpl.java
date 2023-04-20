@@ -6,6 +6,7 @@ import com.haarmk.repository.UserRepo;
 import com.haarmk.service.interfaces.UserService;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,8 +21,9 @@ public class UserServiceImpl implements UserService {
    
     @Override
     public User getUserByUsername(String username){
-        return userRepo.findByEmail(username).orElseThrow(()->new UsernameNotFoundException("user not found with username"+username));
+        return userRepo.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("user not found with username: "+username));
     }
+    
 
 	
 
@@ -34,6 +36,24 @@ public class UserServiceImpl implements UserService {
 			return userRepo.save(user);
 			
 		}else throw new IllegalArgumentException("User allready exist...");
+	}
+	
+	@Override
+	public User updateUser(User user) {
+		Optional<User> existingUser = userRepo.findByEmail(user.getEmail());
+		
+		if(existingUser.isPresent()) {
+			
+			return userRepo.save(user);
+			
+		}else throw new IllegalArgumentException("User does not exist...");
+	}
+
+
+
+	@Override
+	public User getUserByEmail(String email) {
+		 return userRepo.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("user not found with email: "+email));
 	}
 
 

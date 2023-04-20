@@ -15,16 +15,16 @@ public class GlobalExceptionHandler {
 
 
 	@ExceptionHandler(IllegalArgumentException.class)
-	public ResponseEntity<MyErrorInfo> myIllegalArgumentException(IllegalArgumentException me) {
+	public ResponseEntity<ErrorDetails> myIllegalArgumentException(IllegalArgumentException me) {
 		
-		MyErrorInfo err = new MyErrorInfo();
+		ErrorDetails err = new ErrorDetails();
 		
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage("Validation Error");
 		err.setDetails(me.getMessage());
 		
 		
-		return new ResponseEntity<MyErrorInfo>(err,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
 		
 		
 	}
@@ -32,16 +32,16 @@ public class GlobalExceptionHandler {
 	
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<MyErrorInfo> myInvalidDataExpHandler(MethodArgumentNotValidException me) {
+	public ResponseEntity<ErrorDetails> myInvalidDataExpHandler(MethodArgumentNotValidException me) {
 		
-		MyErrorInfo err = new MyErrorInfo();
+		ErrorDetails err = new ErrorDetails();
 		
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage("Validation Error");
 		err.setDetails(me.getBindingResult().getFieldError().getDefaultMessage());
 		
 		
-		return new ResponseEntity<MyErrorInfo>(err,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
 		
 		
 	}
@@ -51,25 +51,25 @@ public class GlobalExceptionHandler {
 	
 	
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<MyErrorInfo> myAnyExpHandler(Exception ie,WebRequest req){
+	public ResponseEntity<ErrorDetails> myAnyExpHandler(Exception ie,WebRequest req){
 		
 		
-		MyErrorInfo err = new MyErrorInfo();
+		ErrorDetails err = new ErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(ie.getMessage());
 		err.setDetails(req.getDescription(false));
 		
 		
-		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
 
 	
 	@ExceptionHandler(NoHandlerFoundException.class)
-	public ResponseEntity<MyErrorInfo> mynotFoundHandler(NoHandlerFoundException nfe,WebRequest req)  {
+	public ResponseEntity<ErrorDetails> mynotFoundHandler(NoHandlerFoundException nfe,WebRequest req)  {
 			
 	
-		MyErrorInfo err=new MyErrorInfo(LocalDateTime.now(), nfe.getMessage(), req.getDescription(false));
+		ErrorDetails err=new ErrorDetails(LocalDateTime.now(), nfe.getMessage(), req.getDescription(false));
 	
 		return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
 					
@@ -78,82 +78,111 @@ public class GlobalExceptionHandler {
 	
 
 	@ExceptionHandler(FeedbackException.class)
-	public ResponseEntity<MyErrorInfo> myAnyExpHandler(FeedbackException ie,WebRequest req){
+	public ResponseEntity<ErrorDetails> myAnyExpHandler(FeedbackException ie,WebRequest req){
 		
 		
-		MyErrorInfo err = new MyErrorInfo();
+		ErrorDetails err = new ErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(ie.getMessage());
 		err.setDetails(req.getDescription(false));
 		
 		
-		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
 	
 
 	@ExceptionHandler(DomainException.class)
-	public ResponseEntity<MyErrorInfo> doainExceptionHandler(DomainException exception,WebRequest req){
-		MyErrorInfo err = new MyErrorInfo();
+	public ResponseEntity<ErrorDetails> doainExceptionHandler(DomainException exception,WebRequest req){
+		ErrorDetails err = new ErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(exception.getMessage());
 		err.setDetails(req.getDescription(false));		
-		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
 	
 
 	@ExceptionHandler(UserException.class)
-	public ResponseEntity<MyErrorInfo> UserExpHandler(UserException ie,WebRequest req){
+	public ResponseEntity<ErrorDetails> UserExpHandler(UserException ie,WebRequest req){
 		
 		
-		MyErrorInfo err = new MyErrorInfo();
+		ErrorDetails err = new ErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(ie.getMessage());
 		err.setDetails(req.getDescription(false));
 		
 		
-		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
 	@ExceptionHandler(CartException.class)
-	public ResponseEntity<MyErrorInfo> CartExpHandler(CartException ie,WebRequest req){
+	public ResponseEntity<ErrorDetails> CartExpHandler(CartException ie,WebRequest req){
 		
 		
-		MyErrorInfo err = new MyErrorInfo();
+		ErrorDetails err = new ErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(ie.getMessage());
 		err.setDetails(req.getDescription(false));
 		
 		
-		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
 	@ExceptionHandler(ProductException.class)
-	public ResponseEntity<MyErrorInfo> ProductExpHandler(ProductException ie,WebRequest req){
+	public ResponseEntity<ErrorDetails> ProductExpHandler(ProductException ie,WebRequest req){
 		
 		
-		MyErrorInfo err = new MyErrorInfo();
+		ErrorDetails err = new ErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(ie.getMessage());
 		err.setDetails(req.getDescription(false));
 		
 		
-		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
 	
 	@ExceptionHandler(OrderException.class)
-	public ResponseEntity<MyErrorInfo> OrderExpHandler(OrderException ie,WebRequest req){
+	public ResponseEntity<ErrorDetails> OrderExpHandler(OrderException ie,WebRequest req){
 		
 		
-		MyErrorInfo err = new MyErrorInfo();
+		ErrorDetails err = new ErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(ie.getMessage());
 		err.setDetails(req.getDescription(false));
 		
 		
-		return new ResponseEntity<MyErrorInfo>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	@ExceptionHandler(EmailException.class)
+	public ResponseEntity<ErrorDetails> emailExceptionHandler(EmailException e,WebRequest req){
+		
+		
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	
+	@ExceptionHandler(TokenException.class)
+	public ResponseEntity<ErrorDetails> tokenExceptionHandler(TokenException e,WebRequest req){
+		
+		
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
 

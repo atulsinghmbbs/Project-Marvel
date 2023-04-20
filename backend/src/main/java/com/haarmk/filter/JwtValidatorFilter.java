@@ -1,4 +1,4 @@
-package com.haarmk.config.filter;
+package com.haarmk.filter;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-
+import com.haarmk.util.JwtUtil;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -29,11 +29,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class JwtValidatorFilter extends OncePerRequestFilter{
-	@Autowired
-	private Environment environment;
+	@Autowired private Environment environment;
+	@Autowired private JwtUtil jwtUtil;
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-		
 		
 		String jwt = request.getHeader(environment.getProperty("JWT_HEADER"));
 		
@@ -43,17 +42,11 @@ public class JwtValidatorFilter extends OncePerRequestFilter{
 
 				jwt = jwt.substring(7);
 
-				
-				SecretKey key= Keys.hmacShaKeyFor(environment.getProperty("JWT_KEY").getBytes());
-				
-				Claims claims= Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
-				
+				Claims claims = jwtUtil.validateToken(jwt); 				
 				
 				String username= (String)(claims.get("username"));
 				
-				
 				String authorities= (String)claims.get("authorities");	
-				
 				
 				Authentication auth = new UsernamePasswordAuthenticationToken(username, null, AuthorityUtils.commaSeparatedStringToAuthorityList(authorities));
 		

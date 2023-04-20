@@ -11,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.haarmk.dto.EmailDetails;
+import com.haarmk.exception.EmailException;
 import com.haarmk.service.interfaces.EmailService;
 
 import jakarta.mail.MessagingException;
@@ -31,19 +32,19 @@ public class EmailServiceImpl implements EmailService{
 	@Autowired private JavaMailSender emailSender;
 	@Autowired Environment environment;
 	@Value("${spring.mail.username}") private String sender;
-	@Override
-	public String sendSimpleMail(EmailDetails details) {
-		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-		simpleMailMessage.setFrom(sender);
-		simpleMailMessage.setTo(details.getRecipient());
-		simpleMailMessage.setText(details.getMsgBody());
-		simpleMailMessage.setSubject(details.getSubject());
-		emailSender.send(simpleMailMessage);
-		return "Email sent successfully !";
-	}
+//	@Override
+//	public String sendSimpleMail(EmailDetails details) {
+//		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+//		simpleMailMessage.setFrom(sender);
+//		simpleMailMessage.setTo(details.getRecipients());
+//		simpleMailMessage.setText(details.getMsgBody());
+//		simpleMailMessage.setSubject(details.getSubject());
+//		emailSender.send(simpleMailMessage);
+//		return "Email sent successfully !";
+//	}
 
 	@Override
-	public String sendMailWithAttachment(EmailDetails details) {
+	public void sendMail(EmailDetails details) {
 		MimeMessage message = emailSender.createMimeMessage();
 	   
 	    MimeMessageHelper mimeMessageHelper;
@@ -53,32 +54,33 @@ public class EmailServiceImpl implements EmailService{
             // Setting multipart as true for attachments to
             // be send
             mimeMessageHelper
-                = new MimeMessageHelper(message, true);
+                = new MimeMessageHelper(message, true,"utf-8");
             mimeMessageHelper.setFrom(sender);
-            mimeMessageHelper.setTo(details.getRecipient());
-            mimeMessageHelper.setText("<H1>Hello, I am HTML content!</H1>\n"+details.getMsgBody(),true);
+            mimeMessageHelper.setTo(details.getRecipients());
+            mimeMessageHelper.setText(details.getMsgBody(),details.getIsHtml());
             
             mimeMessageHelper.setSubject(
                 details.getSubject());
  
-            
-            FileSystemResource file
-                = new FileSystemResource(
-                    new File(details.getAttachment()));
- 
-            mimeMessageHelper.addAttachment(
-                file.getFilename(), file);
+            if(details.getAttachment() != null) {
+            	 FileSystemResource file
+                 = new FileSystemResource(
+                     new File(details.getAttachment()));
+  
+	             mimeMessageHelper.addAttachment(
+	                 file.getFilename(), file);
+            }
+           
  
             // Sending the mail
             emailSender.send(message);
-            return "Mail sent Successfully";
         }
  
         // Catch block to handle MessagingException
         catch (MessagingException e) {
  
             // Display message when exception occurred
-            return "Error while sending mail!!!";
+            throw new EmailException(e.getMessage());
         }
     
 	}
