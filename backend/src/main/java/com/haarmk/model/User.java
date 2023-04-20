@@ -34,28 +34,35 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	@Column(unique = true,nullable = false)
 	private String username;
 	private String firstName;
 	private String lastName;
+	@Column(unique = true,nullable = false)
+    private String email;
+    private String image;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @ManyToMany(cascade = CascadeType.ALL)
+    @Builder.Default
     private Set<Authority> authorities = new HashSet<>();
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;  
-    private String email;
     @OneToOne(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private Address addresses;;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.REFRESH})
+    @Builder.Default
     private List<Feedback> feedbacks = new ArrayList<>();
     @OneToOne(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @Builder.Default
     private Cart cart = new Cart();
+    @ManyToMany(mappedBy = "users", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @Builder.Default
+    private List<Servise> servises = new ArrayList<>();
     
     
 }

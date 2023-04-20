@@ -25,8 +25,6 @@ public class UserServiceImpl implements UserService {
     }
     
 
-	
-
 	@Override
 	public User addUser(User user) {
 		Optional<User> existingUser = userRepo.findByEmail(user.getEmail());
@@ -55,6 +53,18 @@ public class UserServiceImpl implements UserService {
 	public User getUserByEmail(String email) {
 		 return userRepo.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("user not found with email: "+email));
 	}
+
+
+	@Override
+	public Long getAutoIncrementValue() {
+		
+		return userRepo.getAutoIncrementValue().orElseThrow(()-> new RuntimeException("could not get next user id value"));
+	}
+
+
+
+
+
 
 
 
