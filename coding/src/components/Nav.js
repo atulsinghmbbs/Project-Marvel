@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Signup from './Signup';
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { signUp } from "../services/userService";
 
 
 const Nav = () => {
@@ -12,6 +11,7 @@ const Nav = () => {
 
   const { isAuthenticated, logout, user } = useAuth0()
   console.log("user data ", user)
+
   console.log("current user details", user)
   // console.log(props.loginWithRedirect);
 
@@ -23,23 +23,24 @@ const Nav = () => {
       "password": null,
 
     }
-    signUp(userGoogleData).then((resp) => {
+    //   signUp(userGoogleData).then((resp) => {
 
-      console.log(resp);
-      console.log("succesfully signUp.....")
-      console.log("=========================================================================")
+    //     console.log(resp);
+    //     console.log("succesfully signUp.....")
+    //     console.log("=========================================================================")
 
-    }).catch((err) => {
+    //   }).catch((err) => {
 
-      console.log(err);
-      console.log("signup failed....")
-      console.log("=========================================================================")
+    //     console.log(err);
+    //     console.log("signup failed....")
+    //     console.log("=========================================================================")
 
 
-    })
-  } else {
-    console.log("Invalid User credentials...")
+    //   })
+    // } else {
+    //   console.log("Invalid User credentials...")
   }
+
 
   return (
 
@@ -70,6 +71,10 @@ const Nav = () => {
         {isAuthenticated ? (<button className='btn-log-out' onClick={(e) => logout()}>logout</button>) : (<Login />)}
 
         {isAuthenticated && <img className='user-image' src={user.picture} />}
+
+        <NavLink to="/Checkout">
+          <i style={{ cursor: "pointer", marginLeft: 40 }} className="fa-solid fa-cart-plus"></i>
+        </NavLink>
 
 
       </div>

@@ -1,0 +1,143 @@
+/* .result-box{
+    width: 38%;
+    background: white;
+    height: 222px;
+    border: 1px solid grey;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+    margin-top: 120px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+
+.suggestion-box{
+    margin-top: 100px;
+}
+
+.suggestion-heading{
+    margin-left: 40px;
+    margin-bottom: 30px;
+} */
+
+.available{
+    overflow: hidden;
+    padding: 10px;
+    height: 80px;
+    width: 80%;
+    display: flex;
+    background-color: white;
+    color: black;
+    border: 2px solid gray;
+    margin-left: 150px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price{
+    margin-top: 15px;
+    margin-left: 500px;
+    height: 40px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    
+}
+
+.available button{
+    background-color: black;
+    color: white;
+    padding: 2px;
+    width: 180px;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+.available button:hover{
+    background-color: rgb(41, 41, 41);
+}
+
+.price i{
+    margin-top: -12px;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.item{
+    font-size: 35px;
+}
+
+
+
+.suggestion{
+    border: 2px solid gray;
+    padding: 10px;
+    height: 90px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+
+.suggestion-box{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: -139px;
+    
+}
+
+
+.suggestion{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 80px;
+    width: 1163px;
+}
+
+
+.suggestion i{
+    font-size: 25px;
+    margin-right: 30px;
+    
+}
+
+
+.doller{
+    height: 20px;
+    width: 20px;
+    border: 2px solid gray;
+    margin-top: -12px;
+    font-size: 18px;
+    margin-left: 600px;
+}
+
+
+.item-price{
+    margin-left: 980px;
+    position: absolute;
+}
+
+
+.not-available{
+    font-size: 22px;
+    margin-left: 155px;
+
+}
+
+
+.no-suggestion{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
