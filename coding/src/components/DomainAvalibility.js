@@ -6,6 +6,7 @@ import { addToCart } from './redux/action'
 import { useDispatch } from 'react-redux'
 
 
+
 const DomainAvalibility = () => {
 
     const [domainResult, setdomainResult] = useState([])
@@ -15,6 +16,7 @@ const DomainAvalibility = () => {
 
     const location = useLocation()
     console.log("location wala data ", location.state);
+
 
 
 
@@ -32,6 +34,7 @@ const DomainAvalibility = () => {
         window.scroll(0, 0)
         getDomainData()
     }, [location.state.inputData])
+
 
 
     function resultText() {

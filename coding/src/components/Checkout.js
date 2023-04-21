@@ -24,7 +24,7 @@ const Checkout = () => {
 
     return (
         <div style={{ marginTop: 100 }} >
-            <h1>This is checkout page</h1>
+            <h1 className='mycart-heading'>Your Cart</h1>
             <div>
                 {Array.isArray(select.cartData) && select.cartData.map((domain, i) => (
 

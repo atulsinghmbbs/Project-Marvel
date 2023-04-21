@@ -1,5 +1,5 @@
 .background-image{
-    background-image: url(../images/captain-marvel.jpg);
+    background-image: url(../images/gradientbg.jpg);
     background-repeat: no-repeat;
     height: 100vh;
     margin-top: 60px;
@@ -7,29 +7,44 @@
     background-position: center center;
     z-index: -9999;
 
+
 }
 
+
 .log-in-wrapper{
-    margin-left: 50rem;
+    height: 500px;
+    width: 33%;
+    border: 2px solid grey;
+    position: relative;
+    top: 25px;
+    margin-left: 33%;
+    background-color: azure;
+    border-radius: 20px;
+   
 }
+
 
 .log-in-wrapper h1{
     color: #FF6551;  
-    font-size: 60px;
+    font-size: 40px;
     position: relative;
-    right: -2px;
+    right: -80px;
     margin-bottom: 10px;
+    
 }
 
 .login-label{
-    font-size: 28px;
+    margin-top: 20px;
+    font-size: 24px;
     margin-bottom: 15px;
+    margin-left: 18px;
+    color: rgb(24, 26, 26);
 }
 
 .login-input{
     border-radius: 8px;
     text-indent: 5px;
-    width: 407px;
+    width: 390px;
     border-color: grey;
 }
 
@@ -43,12 +58,16 @@
     background: #3F5193;
     color: white;
     transition: .3s;
+    margin-left: 90px;
 }
 
 
 .login-withme-submit-btn:hover{
     transition: .3s;
     background: #FF6551;
+}
+.forgot-password{
+    margin-left: 297px;
 }
 
 .continue-with-google-btn{
@@ -63,6 +82,7 @@
  margin-top: 40px;
  color: white;
  transition: .3s;
+ margin-left: 90px;
         
 }
 
