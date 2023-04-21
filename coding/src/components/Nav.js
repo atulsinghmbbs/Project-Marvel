@@ -73,7 +73,7 @@ const Nav = () => {
         {isAuthenticated && <img className='user-image' src={user.picture} />}
 
         <NavLink to="/Checkout">
-          <i style={{ cursor: "pointer", marginLeft: 40 }} className="fa-solid fa-cart-plus"></i>
+          <i style={{ cursor: "pointer", marginLeft: 40 }} className="cart-icon fa-solid fa-cart-plus"></i>
         </NavLink>
 
 
