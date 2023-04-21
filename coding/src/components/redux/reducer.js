@@ -1,8 +1,6 @@
 import { ADD_TO_CART } from "./Constant";
 import { REMOVE_FROM_CART } from "./Constant";
-
-
-
+import { CLEAR_CART } from "./Constant";
 // export const cartData = (state = [], action) => {
 //     switch (action.type) {
 //         case ADD_TO_CART:
@@ -25,7 +23,6 @@ import { REMOVE_FROM_CART } from "./Constant";
 // }
 
 //
-
 
 export const cartData = (state = { cartData: [] }, action) => {
     switch (action.type) {

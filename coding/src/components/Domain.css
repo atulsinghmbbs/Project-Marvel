@@ -120,3 +120,81 @@
      position: relative;
             
 }
+/* media query=========== */
+
+@media only screen and (max-width: 991px) {
+    .free-heading,
+    .premium-heading {
+      font-size: 20px;
+    }
+  
+    .free-package {
+      font-size: 16px;
+    }
+  
+    .plans {
+      font-size: 16px;
+    }
+  
+    .btn-for-free,
+    .btn-for-premium {
+      margin-top: 20px;
+    }
+  
+    .checked-image {
+      margin-right: 8px;
+      margin-top: 2px;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .free-heading,
+    .premium-heading {
+      font-size: 18px;
+    }
+    .pricing-wrapper{
+        flex-wrap: wrap;
+    }
+    .price-list-free{
+        margin-bottom: 150px;
+        margin-left: 170px;
+    }
+    .price-list-premimum{
+        margin-left: 170px;
+    }
+    .price-list-premimum .ruppee {
+        font-size: 20px;
+        line-height: 28px;
+        margin-left: -1px;
+
+    }
+    .ruppee-img{
+        margin-left: -42px;
+    }
+
+    .free-package {
+      font-size: 14px;
+    }
+  
+    .plans {
+      font-size: 14px;
+    }
+  
+    .btn-for-free,
+    .btn-for-premium {
+      margin-top: 15px;
+    }
+  
+    .checked-image {
+      margin-right: 6px;
+      margin-top: 2px;
+    }
+  
+    .price-list-premimum .ruppee {
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+
+
+ 

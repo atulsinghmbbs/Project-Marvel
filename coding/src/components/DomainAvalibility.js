@@ -5,6 +5,7 @@ import "./DomainAvalibility.css"
 import { addToCart } from './redux/action'
 import { useDispatch } from 'react-redux'
 
+
 const DomainAvalibility = () => {
 
     const [domainResult, setdomainResult] = useState([])
@@ -19,7 +20,12 @@ const DomainAvalibility = () => {
 
     const API_KEY = 'RXPtbysguCADwc7fsCTVkzKaq4rWRO0M';
 
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> main
     const getDomainData = async () => {
         const getData = await fetch(`http://localhost:8888/domains/search?searchTerm=${location.state.inputData}`)
         .then((res) => res.json())
@@ -56,6 +62,7 @@ const DomainAvalibility = () => {
     }, [newPrice])
 
     console.log("price", price)
+
 
 
 
