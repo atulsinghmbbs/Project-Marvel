@@ -5,11 +5,7 @@ import "./DomainAvalibility.css"
 import { addToCart } from './redux/action'
 import { useDispatch } from 'react-redux'
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> ad3503570e6bd64b041fc3550b237288a1486f9a
 const DomainAvalibility = () => {
 
     const [domainResult, setdomainResult] = useState([])

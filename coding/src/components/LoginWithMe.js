@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./LoginWithMe.css"
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+
 import Nav from "./Nav";
 import { loginWithJWT } from "../services/userService";
 import { NavLink } from "react-router-dom";
