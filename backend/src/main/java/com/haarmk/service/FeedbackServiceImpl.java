@@ -83,7 +83,7 @@ public class FeedbackServiceImpl implements  FeedbackService {
 	@Override
 	public Feedback updatefeedback(Feedback feedback) throws FeedbackException {
 		
-	       Optional<Feedback> emp = feedbackRepo.findById(feedback.getFeedBackId());
+	       Optional<Feedback> emp = feedbackRepo.findById(feedback.getId());
 			
 			if(emp.isPresent()) {
 				

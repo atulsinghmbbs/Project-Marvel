@@ -19,7 +19,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import com.haarmk.config.filter.JwtValidatorFilter;
+import com.haarmk.filter.JwtValidatorFilter;
 import com.haarmk.service.JwtAuthenticationProvider;
 import com.haarmk.service.UserServiceImpl;
 import com.haarmk.service.interfaces.UserService;

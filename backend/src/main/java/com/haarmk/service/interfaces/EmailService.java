@@ -11,7 +11,7 @@ import com.haarmk.dto.EmailDetails;
  */
 public interface EmailService {
 	
-	 String sendSimpleMail(EmailDetails details);
+//	 String sendSimpleMail(EmailDetails details);
 	 
-	 String sendMailWithAttachment(EmailDetails details);
+	 void sendMail(EmailDetails details);
 }

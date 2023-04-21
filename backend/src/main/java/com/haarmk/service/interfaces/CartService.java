@@ -7,14 +7,12 @@ import com.haarmk.model.Product;
 
 public interface CartService {
 	
-	public Product addProduct(Product product,Integer userID) throws ProductException;
+	List<Product> getAllProducts(Integer userID) throws ProductException;
 	
-	public List<Product> getAllProducts(Integer userID) throws ProductException;
-	
-	public Product deleteProductByProductId(Integer productId,Integer userID) throws ProductException;
+	Product removeProductByProductId(Integer productId,Integer userID) throws ProductException;
 
-	
-	
+	Product addProduct(Integer productId) throws ProductException;
+
 	
 	
 }

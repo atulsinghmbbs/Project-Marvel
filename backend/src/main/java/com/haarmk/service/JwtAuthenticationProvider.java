@@ -24,10 +24,10 @@ public class JwtAuthenticationProvider implements AuthenticationProvider{
 	    
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		System.out.println(userService+"user service");
-		User user = userService.getUserByUsername(authentication.getName());
+
+		User user = userService.getUserByEmail(authentication.getName());
 		if(passwordEncoder.matches((String)authentication.getCredentials(), user.getPassword())) {
-			return new UsernamePasswordAuthenticationToken(user.getEmail(),null,user.getAuthorities());
+			return new UsernamePasswordAuthenticationToken(user,null,user.getAuthorities());
 		}else {
 			throw new BadCredentialsException("invalid password");
 		}

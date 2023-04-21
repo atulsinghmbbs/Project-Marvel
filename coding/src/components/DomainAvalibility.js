@@ -5,8 +5,11 @@ import "./DomainAvalibility.css"
 import { addToCart } from './redux/action'
 import { useDispatch } from 'react-redux'
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ad3503570e6bd64b041fc3550b237288a1486f9a
 const DomainAvalibility = () => {
 
     const [domainResult, setdomainResult] = useState([])
@@ -42,13 +45,15 @@ const DomainAvalibility = () => {
         let resultText;
         if (domainResult.result.purchasable === true) {
             resultText =
-                <div>
-                    <p>This is available</p>
-                    <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{domainResult.result.purchasePrice}</p>
+                <div className='available'>
+                    <p className='item'>This is available</p>
+                    <div className="price">
+                        <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{domainResult.result.purchasePrice}</p>
+                    </div>
                     <button>Buy Now</button>
                 </div>
         } else {
-            resultText = <p>This is not available</p>;
+            resultText = <p className='not-available'>This domain is not available <br /> Some domains are given below, you can select</p>;
         }
         return resultText
     }
@@ -68,14 +73,15 @@ const DomainAvalibility = () => {
                 {!isLoading ? (
                     domainResult.suggestions.map((item, i) => (
                         <div key={i}>
-                            <h2 className='suggestion-heading'>{item.domainName}</h2>
-                            <p>{item.purchasePrice}</p>
-                            <i style={{ cursor: "pointer" }} className="fa-solid fa-cart-plus" onClick={() => dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }))} ></i>
-                            <hr />
+                            <div className='suggestion'>
+                                <h3 className='suggestion-heading'>{item.domainName}</h3>
+                                <p className='item-price'>{item.purchasePrice}</p>
+                                <i style={{ cursor: "pointer" }} className="fa-solid fa-cart-plus" onClick={() => dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }))} ></i>
+                            </div>
                         </div>
                     ))
                 ) : (
-                    <p>No suggestions available.</p>
+                    <p className='no-suggestion'>No suggestions available.</p>
                 )}
 
             </div>

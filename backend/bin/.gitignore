@@ -34,5 +34,5 @@ build/
 
 
 ### condidentials files ###
-src/main/resources/database.properties
+src/main/resources/secure.properties
 
