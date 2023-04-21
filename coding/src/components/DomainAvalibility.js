@@ -112,4 +112,3 @@ const DomainAvalibility = () => {
 }
 
 export default DomainAvalibility
-

@@ -38,7 +38,7 @@ public class AuthServiceImpl implements AuthService {
     
 	public void requestPasswordReset(String email) {
 		
-//		userService.getUserByEmail(email);
+		userService.getUserByEmail(email);
 		Map<String, String> claims = new HashMap<>();
 		claims.put("email_reset_password", email);
 		String jwt = jwtUtil.generateToken(claims, 10000);

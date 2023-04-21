@@ -28,6 +28,8 @@ public class Product  {
 	private Double price;
 	@OneToOne
 	private Category category;
+	
 	@OneToMany(mappedBy = "product", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private List<ProductProperty> propreties = new ArrayList<>();
+	
 }

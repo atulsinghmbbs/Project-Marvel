@@ -13,7 +13,7 @@ function RazPay() {
 
   async function fetchData() {
     const data = fetch(url).then((res) => res.json())
-      .then((getData) => console.log("set damount data", setAmount(getData[0].id)))
+      .then((getData) => console.log(setAmount(getData[0].id)))
       
   }
 
