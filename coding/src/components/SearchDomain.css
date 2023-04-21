@@ -29,13 +29,13 @@
 
 .domain-search-btn button{
     width: 10%;
-    height: 34px;
+    height: 38px;
     border-radius: 8px;
     background: white;
     border: none;
     position: relative;
-    left: 19rem;
-    bottom: 2.3rem;
+    left: 22rem;
+    bottom: 2.4rem;
     transition: .3s;
 }
 

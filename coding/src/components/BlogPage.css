@@ -43,6 +43,7 @@
     font-weight: 500;
 }
 
+
 /* -------------------------------adds */
 
 .adds-block-parent{
@@ -118,3 +119,7 @@
  
 }
 
+.kuch-b-naam{
+    display: flex;
+    width: 50%;
+}

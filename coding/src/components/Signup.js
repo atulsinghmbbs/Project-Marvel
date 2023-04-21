@@ -2,6 +2,7 @@ import React from 'react'
 import "./Signup.css"
 import { Alert } from "react-bootstrap";
 import { useState } from 'react';
+
 import { signUp } from '../services/userService';
 
 
@@ -16,7 +17,7 @@ function Signup() {
         confirmPassword: "",
     });
     const [error, setError] = useState(null);
-    const[passwordsMatch,setPasswordsMatch] = useState()
+    const [PasswordsMatch, setPasswordsMatch] = useState()
 
     const handleInputChange = (event) => {
         setFormData({
@@ -40,46 +41,45 @@ function Signup() {
             setError(null);
         } else {
             setError("Passwords do not match");
-        
-    }
-
-
-        console.log("data", event)
-
-        //console.log("datafjskf", event)
-
-        console.log("==============================================================")
-      
-
-        if (formData.password !== formData.confirmPassword) {
-            setPasswordsMatch(false);
-            console.log("Password and confirm password should be same...")
-        } else {
-            // Handle form submission here
-            signUp(formData).then((resp)=>{
-
-                console.log(resp);
-                console.log("succesfully signUp.....")
-                console.log("=========================================================================")
-
-            }).catch((err)=>{
-
-                console.log(err);
-                console.log("signup failed....")
-                console.log("=========================================================================")
-
-
-            })
-            
         }
-        console.log("**********************************************************")
+    };
 
-        //console.log(formData)
-        
+
+    console.log("data")
+
+    //console.log("datafjskf", event)
+
+    console.log("==============================================================")
+
+
+    if (formData.password !== formData.confirmPassword) {
+        setPasswordsMatch(false);
+        console.log("Password and confirm password should be same...")
+    } else {
+        // Handle form submission here
+        signUp(formData).then((resp) => {
+
+            console.log(resp);
+            console.log("succesfully signUp.....")
+            console.log("=========================================================================")
+
+        }).catch((err) => {
+
+            console.log(err);
+            console.log("signup failed....")
+            console.log("=========================================================================")
+
+
+        })
+
     }
-    return(
-        <div style={{ marginTop: 80 }}>
-            <form onSubmit={handleSubmit}>
+    console.log("**********************************************************")
+
+    //console.log(formData)
+
+    return (
+        <div className="background-image-signup" style={{ marginTop: 0 }}>
+            <form onSubmit={handleSubmit} className='sign-root'>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <div className='sign-up-wrapper'>
                     <h1>Project-Marvel</h1>
@@ -123,8 +123,10 @@ function Signup() {
                 </div>
             </form>
 
-        </div>
-        );
-    }
+        </div >
+
+    )
+}
+
 export default Signup;
 

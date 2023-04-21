@@ -59,13 +59,14 @@
     padding: 7px;
     position: absolute;
     width: 100px;
-    top: -7px;
+    top: 4px;
     right: 146px;
     border-radius: 14px;
     outline: none;
     border: none;
     background: #F99751;
     height: 30px;
+    
 }
 
 .sign-up-btn:hover{
@@ -74,6 +75,7 @@
     color: white;
 
 }
+
 
 
 /* Media Queries for Mobile  */
@@ -152,3 +154,15 @@
 
 
   
+
+.cart-icon{
+    font-size: 20px;
+    position: relative;
+    bottom: 8px;
+    color: white;
+}
+
+.cart-icon:hover{
+    color: #9EF01A;
+}
+

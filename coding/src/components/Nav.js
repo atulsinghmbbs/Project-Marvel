@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Signup from './Signup';
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { signUp } from "../services/userService";
 
 
 const Nav = () => {
@@ -12,34 +11,36 @@ const Nav = () => {
 
   const { isAuthenticated, logout, user } = useAuth0()
   console.log("user data ", user)
+
   console.log("current user details", user)
   // console.log(props.loginWithRedirect);
 
-  if(isAuthenticated){
-      const userGoogleData = {
-          "firstName":user.given_name,
-          "lastName":user.family_name,
-          "email":user.email,
-          "password":null,
-          
-      }
-      signUp(userGoogleData).then((resp)=>{
+  if (isAuthenticated) {
+    const userGoogleData = {
+      "firstName": user.given_name,
+      "lastName": user.family_name,
+      "email": user.email,
+      "password": null,
 
-          console.log(resp);
-          console.log("succesfully signUp.....")
-          console.log("=========================================================================")
+    }
+    //   signUp(userGoogleData).then((resp) => {
 
-      }).catch((err)=>{
+    //     console.log(resp);
+    //     console.log("succesfully signUp.....")
+    //     console.log("=========================================================================")
 
-          console.log(err);
-          console.log("signup failed....")
-          console.log("=========================================================================")
+    //   }).catch((err) => {
+
+    //     console.log(err);
+    //     console.log("signup failed....")
+    //     console.log("=========================================================================")
 
 
-      })
-  }else{
-      console.log("Invalid User credentials...")
+    //   })
+    // } else {
+    //   console.log("Invalid User credentials...")
   }
+
 
   return (
 
@@ -72,6 +73,10 @@ const Nav = () => {
         {isAuthenticated && <img className='user-image' src={user.picture} />}
         <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
       <i className={isOpen ? "fas fa-times" : "fas fa-bars"}></i>
+
+        <NavLink to="/Checkout">
+          <i style={{ cursor: "pointer", marginLeft: 40 }} className="cart-icon fa-solid fa-cart-plus"></i>
+        </NavLink>
 
 
       </div>

@@ -1,0 +1,93 @@
+/* 
+body{
+  background-image: linear-gradient(to left,rgb(0, 13, 255), rgb(255, 255, 255));
+  background-repeat: no-repeat;
+  height: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+} */
+
+.App{
+  height: 550px;
+  width: 120%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(225, 225, 225, 0.775);
+  box-shadow: 0 0 5px 4px rgb(63, 63, 216);
+}
+
+
+.App h2{
+  height: 50px;
+  width: 100%;
+  background-color: rgb(0, 153, 213);
+  color: white;
+  border-top-right-radius: 18.2px;
+  border-top-left-radius: 18.2px;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+.App button{
+  height: 50px;
+  width: 100%;
+  background-color: rgb(0, 153, 213);
+  color: white;
+  border-bottom-right-radius: 18.2px;
+  border-bottom-left-radius: 18.2px;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+
+}
+
+
+.App button:hover{
+  background-color: rgba(38, 38, 235, 0.838);
+  transition: .3s;
+
+}
+
+.input{
+  display: flex;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
+.App input{
+  height: 40px;
+  width: 120px;
+  background-color: #fff;
+  border:none;
+  border-radius: 5px;
+  text-indent:50%;
+  font-size: 20px;
+  font-weight: 600;
+  outline: none;
+  border-radius: 5%;
+}
+
+.input p{
+  font-weight: 600;
+}
