@@ -58,7 +58,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Long getAutoIncrementValue() {
 		
-		return userRepo.getAutoIncrementValue().orElseThrow(()-> new RuntimeException("could not get next user id value"));
+		Optional<Long> lastId =  userRepo.getAutoIncrementValue();
+		if(lastId.isPresent()) {
+			return lastId.get();
+		}else {
+			return 0L;
+		}
 	}
 
 
