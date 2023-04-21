@@ -29,7 +29,7 @@ function RazPay() {
     if (amount === "") {
       alert("please enter a valid amount");
     } else {
-      const options = {
+      var options = {
         key: "rzp_test_yKt32uKI6iM9vt",
         key_secret: "WdkV3mRiU6pFEy7AtPUNJ58i",
         amount: amount * 100,

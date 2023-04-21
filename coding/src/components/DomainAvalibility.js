@@ -10,29 +10,60 @@ const DomainAvalibility = () => {
 
     const [domainResult, setdomainResult] = useState([])
     const [isLoading, setLoading] = useState(true)
+    const [price, setPrice] = useState("")
+    const[newPrice,setNewPrice] = useState("")
 
     const dispatch = useDispatch()
 
     const location = useLocation()
     console.log("location wala data ", location.state);
 
+    const API_KEY = 'RXPtbysguCADwc7fsCTVkzKaq4rWRO0M';
+
+<<<<<<< HEAD
+    
+=======
 
 
-
+>>>>>>> main
     const getDomainData = async () => {
         const getData = await fetch(`http://localhost:8888/domains/search?searchTerm=${location.state.inputData}`)
-            .then((res) => res.json())
-            .then((data) => console.log(setdomainResult(data)))
+        .then((res) => res.json())
+        .then((data) => console.log(setdomainResult(data)))
         setLoading(false)
     }
     console.log("Your Result data", domainResult)
-    // console.log("Your suggestions data", domainResult.suggestions)
-
-
+    
+    
     useEffect(() => {
         window.scroll(0, 0)
         getDomainData()
     }, [location.state.inputData])
+    
+    useEffect(() => {
+        if (domainResult.result) {
+            setNewPrice(domainResult.result.purchasePrice)
+        }
+    }, [domainResult])
+    
+    console.log("new price",newPrice)
+
+   
+
+    useEffect(() => {
+        fetch(`https://api.apilayer.com/exchangerates_data/convert?to=INR&from=USD&amount=${newPrice}`,{
+            headers:{
+                'apiKey':API_KEY
+            }
+        })
+            .then((response) => response.json())
+            .then((data) => console.log(setPrice(data)))
+
+    }, [newPrice])
+
+    console.log("price", price)
+
+
 
 
 
@@ -44,7 +75,7 @@ const DomainAvalibility = () => {
                 <div className='available'>
                     <p className='item'>This is available</p>
                     <div className="price">
-                        <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{domainResult.result.purchasePrice}</p>
+                        <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{price}</p>
                     </div>
                     <button>Buy Now</button>
                 </div>
