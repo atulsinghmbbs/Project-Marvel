@@ -1,12 +1,7 @@
 import React from 'react'
-
-import { useState } from 'react';
-
-
 import "./Signup.css"
 import { Alert } from "react-bootstrap";
 import { useState } from 'react';
-
 import { signUp } from '../services/userService';
 
 
@@ -21,6 +16,7 @@ function Signup() {
         confirmPassword: "",
     });
     const [error, setError] = useState(null);
+    const[passwordsMatch,setPasswordsMatch] = useState()
 
     const handleInputChange = (event) => {
         setFormData({
@@ -44,8 +40,8 @@ function Signup() {
             setError(null);
         } else {
             setError("Passwords do not match");
-        }
-    };
+        
+    }
 
 
         console.log("data", event)
@@ -81,9 +77,7 @@ function Signup() {
         //console.log(formData)
         
     }
-
-
-    return (
+    return(
         <div style={{ marginTop: 80 }}>
             <form onSubmit={handleSubmit}>
                 {error && <Alert variant="danger">{error}</Alert>}
@@ -130,7 +124,7 @@ function Signup() {
             </form>
 
         </div>
-    )
-}
+        );
+    }
 export default Signup;
 

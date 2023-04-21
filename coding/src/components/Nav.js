@@ -12,7 +12,7 @@ const Nav = () => {
 
   const { isAuthenticated, logout, user } = useAuth0()
   console.log("user data ", user)
-  console.log("current user details", props.user)
+  console.log("current user details", user)
   // console.log(props.loginWithRedirect);
 
   if(isAuthenticated){
@@ -70,11 +70,26 @@ const Nav = () => {
         {isAuthenticated ? (<button className='btn-log-out' onClick={(e) => logout()}>logout</button>) : (<Login />)}
 
         {isAuthenticated && <img className='user-image' src={user.picture} />}
+        <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
+      <i className={isOpen ? "fas fa-times" : "fas fa-bars"}></i>
 
 
       </div>
     </div>
+    {isOpen && (
+    <div className="nav-items-mobile">
+      <ul>
+        <NavLink to="/AboutPage"><li>About</li></NavLink>
+        <NavLink to="/BlogPage"><li>Blog</li></NavLink>
+        <li>Feedback</li>
+        <li>Services</li>
+      </ul>
+    </div>
+  )}
+</div>
   )
 }
 
 export default Nav
+
+

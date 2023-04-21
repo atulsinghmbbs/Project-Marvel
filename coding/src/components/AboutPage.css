@@ -8,15 +8,19 @@
     background-position: center center;
     background-position: top;
     z-index: -9999;
-    
+    min-width: 100%;
+    padding: 0 20px;
 
 }
+
+
 .about-heading{
     color: white;
     position: relative;
     left: 937px;
     position: relative;
     top: 28px;
+    font-size: 24px;
 
 }
 
@@ -93,7 +97,7 @@
 
   .about-start-btn{
     height: 73px;
-    width: 203px;
+    width: 166%;
     position: relative;
     top: -39px;
     left: 250px;
@@ -110,6 +114,101 @@
     transition: .3s ease;
     color: white;
 
-}
-  
+} 
 
+/* ================================ */
+
+/* For tablets */
+@media only screen and (max-width: 768px) {
+    .about-image {
+      height: 300px;
+      margin-top: 40px;
+    }
+
+    .about-heading{
+      margin-right: 240px;
+    }
+
+    .about-heading,
+    .para-1,
+    .para-2 { 
+      left: auto;
+      right: auto;
+      text-align: center;
+      font-size: 18 px
+    }
+    .our-website-heading-parent{
+      display: flex;
+      justify-content: center;
+    
+    }
+    .our-website-heading {
+      margin-top: 40px;
+      font-size: 25px;
+    }
+    .hr {
+      width: 90%;
+    }
+
+    .about-icon-wrapper {
+      margin-top: 50px;
+    }
+    .image-and-title-wrapper {
+      flex-basis: calc(50% - 10px);
+    }
+
+
+    .get-started-about p {
+      font-size: 30px;
+      width: auto;
+    }
+    .about-start-btn {
+      left: auto;
+      right: auto;
+      margin-top: 20px;
+    }
+  }
+  
+  /* For mobile phones */
+  @media only screen and (max-width: 480px) {
+    .about-image {
+      height: 200px;
+      margin-top: 20px;
+    }
+    .about-heading {
+      font-size: 20px;
+      top: 10px;
+    }
+    .para-1,
+    .para-2 {
+      font-size: 16px;
+      width: auto;
+      top: 10px;
+    }
+    .our-website-heading {
+      margin-top: 60px;
+    }
+    .hr {
+      width: 80%;
+    }
+    .about-icon-wrapper {
+      margin-top: 30px;
+    }
+    .image-and-title-wrapper {
+      flex-basis: calc(100% - 10px);
+    }
+    .get-started-about p {
+      font-size: 20px;
+      margin-left: 10px;
+    }
+    .about-start-btn {
+      font-size: 18px;
+      height: 60px;
+      width: 160px;
+      top: -30px;
+      left: auto;
+      right: auto;
+    }
+    
+  }
+  

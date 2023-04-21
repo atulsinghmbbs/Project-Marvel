@@ -10,9 +10,11 @@ const AboutPage = () => {
             <br />
             <p className='para-2'>Our goal is to provide every customer with a fully-featured hosting package, backed by top customer service and powered by renewable green energy.</p>
             <div>
+                <div className='our-website-heading-parent'>
                 <h1 className='text-center text-success our-website-heading'>
                     Our Website benefits and features that we provide include:-
                 </h1>
+                </div>
                 <div className='hr-parent'>
                     <hr className='hr ' />
                 </div>
