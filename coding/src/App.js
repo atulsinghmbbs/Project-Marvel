@@ -20,6 +20,9 @@ import Checkout from './components/Checkout';
 import RazPay from './components/RazPay';
 import ResetPassword from './components/ResetPassword';
 import EmailVerification from './components/EmailVerification';
+import FeedbackPanel from './components/FeedbackPanel';
+import DisplayFeedback from './components/DisplayFeedback';
+import StarRating from './components/StarRating';
 
 
 
@@ -38,7 +41,9 @@ const App = () => {
             <Slider />
             <Templates />
             <SearchDomain />
-            {/* <RazPay/> */}
+            <RazPay/>
+            <FeedbackPanel/>
+            <DisplayFeedback/>
           </React.Fragment>
         } />
 
@@ -56,6 +61,7 @@ const App = () => {
       </Routes>
       <Footer />
       <ResetPassword/>
+<StarRating/>
     </BrowserRouter>
 
   )
