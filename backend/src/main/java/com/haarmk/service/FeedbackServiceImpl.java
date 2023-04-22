@@ -1,27 +1,38 @@
 package com.haarmk.service;
 
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.haarmk.dto.FeedbackDto;
+import com.haarmk.dto.FeedbackResDto;
+import com.haarmk.exception.AuthenticationException;
 import com.haarmk.exception.FeedbackException;
 import com.haarmk.model.Feedback;
+import com.haarmk.model.User;
 import com.haarmk.repository.FeedbackRepo;
 import com.haarmk.service.interfaces.FeedbackService;
+import com.haarmk.service.interfaces.UserService;
 
 @Service
 public class FeedbackServiceImpl implements  FeedbackService {
 	
 	 @Autowired
 	 private FeedbackRepo feedbackRepo;
+	 @Autowired UserService userService;
 	 
 
 	@Override
 	public Feedback Registerfeedback(Feedback feedback) throws FeedbackException {
-        
+		
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User currentUser = userService.getUserByUsername(username);
+        feedback.setCreatedAt(LocalDateTime.now());
+        feedback.setUser(currentUser);
 		Feedback Regfed = feedbackRepo.save(feedback);
 		
 		if(Regfed == null) {
@@ -34,12 +45,13 @@ public class FeedbackServiceImpl implements  FeedbackService {
 	}
 
 	@Override
-	public Feedback GetFeedbackbyId(Integer feedbackId) throws FeedbackException {
-		 Optional<Feedback> getfed = feedbackRepo.findById(feedbackId);
+	public FeedbackResDto GetFeedbackbyId(Integer feedbackId) throws FeedbackException {
+		
+		 Optional<FeedbackResDto> getfed = feedbackRepo.getFeedbackById(feedbackId);
 			
 			if(getfed.isPresent()) {
 				
-				Feedback feedback = getfed.get();
+				FeedbackResDto feedback = getfed.get();
 				
 				return feedback;
 			}else {
@@ -49,8 +61,8 @@ public class FeedbackServiceImpl implements  FeedbackService {
 	}
 
 	@Override
-	public List<FeedbackDto> GetListofFeedback() throws FeedbackException {
-       List<FeedbackDto> list = feedbackRepo.GetAllfeedback();
+	public List<FeedbackResDto> GetListofFeedback() throws FeedbackException {
+       List<FeedbackResDto> list = feedbackRepo.getAllfeedback();
 		
 		if(list.isEmpty()) {
 			
@@ -65,14 +77,18 @@ public class FeedbackServiceImpl implements  FeedbackService {
 	@Override
 	public Feedback deletefeedback(Integer feedbackId) throws FeedbackException {
 		
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User currentUser = userService.getUserByUsername(username);
+		Optional<Feedback> foundFeedBack = feedbackRepo.findById(feedbackId);
 		
-		Optional<Feedback> del = feedbackRepo.findById(feedbackId);
-		
-		if(del.isPresent()) {
+		if(foundFeedBack.isPresent()) {
 			
-			feedbackRepo.deleteById(feedbackId);
-		   
-		   return del.get();
+			
+		   if (!currentUser.getUsername().equals(foundFeedBack.get().getUser().getUsername())){
+			   throw new AuthenticationException("unauthorized");
+		   }
+		   feedbackRepo.deleteById(feedbackId);
+		   return foundFeedBack.get();
 		   
 		 }else {
 			 
@@ -82,11 +98,14 @@ public class FeedbackServiceImpl implements  FeedbackService {
 
 	@Override
 	public Feedback updatefeedback(Feedback feedback) throws FeedbackException {
-		
-	       Optional<Feedback> emp = feedbackRepo.findById(feedback.getId());
+		   String username = SecurityContextHolder.getContext().getAuthentication().getName();
+	       User currentUser = userService.getUserByUsername(username);
+	       Optional<Feedback> foundFeedBack = feedbackRepo.findById(feedback.getId());
 			
-			if(emp.isPresent()) {
-				
+			if(foundFeedBack.isPresent()) {
+				if (!currentUser.getUsername().equals(foundFeedBack.get().getUser().getUsername())){
+					   throw new AuthenticationException("unauthorized");
+				   }
 
 			return feedbackRepo.save(feedback);
 			}else {

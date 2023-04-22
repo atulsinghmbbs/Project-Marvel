@@ -33,7 +33,7 @@ public class SwaggerConfig {
 	              .url("http://localhost:8080"))
 	              .components(new Components()
 	                      .addSecuritySchemes("bearer-key",
-	                      new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))
+	                      new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("Bearer").bearerFormat("JWT")))
 //	              .components(new Components().addSecuritySchemes("basicScheme", new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
 	              ;
 	  }

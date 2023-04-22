@@ -41,7 +41,7 @@ public class AuthServiceImpl implements AuthService {
 		userService.getUserByEmail(email);
 		Map<String, String> claims = new HashMap<>();
 		claims.put("email_reset_password", email);
-		String jwt = jwtUtil.generateToken(claims, 10000);
+		String jwt = jwtUtil.generateToken(claims, 1000*60*10);
 		Token token = tokenService.addToken(Token.builder().token(jwt).build());
 		String[] recipients = {email};
 		EmailDetails emailDetails = EmailDetails.builder()
@@ -82,7 +82,7 @@ public class AuthServiceImpl implements AuthService {
 		userService.getUserByEmail(email);
 		Map<String, String> claims = new HashMap<>();
 		claims.put("email_verification", email);
-		String jwt = jwtUtil.generateToken(claims, 10000);
+		String jwt = jwtUtil.generateToken(claims, 1000*60*1000);
 		Token token = tokenService.addToken(Token.builder().token(jwt).build());
 		String[] recipients = {email};
 		EmailDetails emailDetails = EmailDetails.builder()

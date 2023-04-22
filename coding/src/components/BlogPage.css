@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     margin-top: 60px;
+    /* width: 100%; */
 }
 
 .fist-blog-image{
@@ -13,7 +14,7 @@
 /* badge-box */
 
 .badge-box{
-    width: 610px;
+    width:  45%;
     height: 308px;
     background: white;
     border-radius: 20px;
@@ -21,8 +22,10 @@
     left: 8rem;
     bottom: 243px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    
+    text-align: center;   
 }
+
+
 .tech-btn{
     margin-top: 24px;
     margin-left: 44px;
@@ -52,7 +55,7 @@
 
 .adds-block{
     background: #D3D3D3;
-    width: 1100px;
+    width: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,6 +105,19 @@
     border-radius: 15px;
 }
 
+/* media queery========= */
+
+@media screen and(max-width:465px) {
+    .blog-first-image-wrapper{
+
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+        width: 100%;
+        
+    }
+ 
+}
 
 .kuch-b-naam{
     display: flex;

@@ -6,13 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.configurers.userdetails.DaoAuthenticationConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -21,8 +17,9 @@ import org.springframework.web.filter.CorsFilter;
 
 import com.haarmk.filter.JwtValidatorFilter;
 import com.haarmk.service.JwtAuthenticationProvider;
-import com.haarmk.service.UserServiceImpl;
 import com.haarmk.service.interfaces.UserService;
+
+import io.swagger.v3.oas.models.PathItem.HttpMethod;
 
 @Configuration
 @EnableWebSecurity
@@ -50,7 +47,8 @@ public class SecurityConfig {
                         .requestMatchers("/haarmk/home").permitAll()
                         
                         .requestMatchers("/home").permitAll()
-                        .requestMatchers("/feedback/register").permitAll()
+                        .requestMatchers("/users/**").authenticated()
+//                        .requestMatchers("/feedbacks/**",HttpMethod.POST,HttpMethod.PUT,HttpMethod.DELETE).authenticated()
 
                         .anyRequest().permitAll();
 
@@ -62,7 +60,7 @@ public class SecurityConfig {
 
  
     @Bean
-    public AuthenticationManager authenticationManager(UserServiceImpl userService) {
+    public AuthenticationManager authenticationManager(UserService userService) {
     	return new ProviderManager(jwtAuthenticationProvider);
 	}
     

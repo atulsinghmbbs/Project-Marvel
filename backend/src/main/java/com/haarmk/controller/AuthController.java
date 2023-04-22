@@ -1,8 +1,11 @@
 package com.haarmk.controller;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.token.TokenService;
+import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +29,15 @@ import com.haarmk.dto.LoginResDto;
 import com.haarmk.dto.OperationStatusDto;
 import com.haarmk.dto.PasswordResetReq;
 import com.haarmk.dto.PasswordResetRequestDto;
+import com.haarmk.dto.SignupDto;
+import com.haarmk.model.Authority;
+import com.haarmk.model.Cart;
+import com.haarmk.model.Feedback;
 import com.haarmk.model.User;
+import com.haarmk.model.UserNameSeq;
+import com.haarmk.repository.UserNameSeqRepo;
 import com.haarmk.service.interfaces.AuthService;
+import com.haarmk.service.interfaces.AuthorityService;
 import com.haarmk.service.interfaces.UserService;
 import com.haarmk.util.JwtUtil;
 
@@ -40,6 +51,8 @@ public class AuthController {
 	    @Autowired private UserService userService;
 	    @Autowired private AuthService authService;
 	    @Autowired private JwtUtil jwtUtil;
+	    @Autowired private AuthorityService authorityService;
+	    @Autowired private UserNameSeqRepo userNameSeqRepo;
 
 
 	   
@@ -51,7 +64,7 @@ public class AuthController {
 	        Map<String, String> claims = new HashMap<>();
 	        claims.put("username", user.getUsername());
 	        claims.put("authorities", authentication.getAuthorities().stream().map((a)->a.getAuthority().toUpperCase()).collect(Collectors.joining(",")));
-	        String jwt = jwtUtil.generateToken(claims, 80000);
+	        String jwt = jwtUtil.generateToken(claims, 8000000);
     		LoginResDto loginResDto = new LoginResDto();
     		loginResDto.setToken(jwt);
     		loginResDto.setType("Authorization: Bearer");
@@ -60,7 +73,18 @@ public class AuthController {
 	    }
 	    
 	    @PostMapping(value = "/signup")
-	    public ResponseEntity<User> signup(@RequestBody User user){
+	    public ResponseEntity<User> signup(@RequestBody SignupDto signupDto){
+	    	Authority authority = authorityService.getAuthorityByAuthorityName("ROLE_user");
+	    	Long next_id = userService.getAutoIncrementValue();
+//	    	UserNameSeq userNameSeq = userService.getAutoIncrementValue();
+	    	User user = User.builder()
+	    			.firstName(signupDto.getFirstName())
+	    			.lastName(signupDto.getLastName())
+	    			.email(signupDto.getEmail())
+	    			.username("HIPL"+(next_id+1))
+	    			.password(signupDto.getPassword())
+	    			.build();
+	    	user.getAuthorities().add(authority);
 	    	if(user.getPassword()!=null) {
 	    		user.setPassword(passwordEncoder.encode(user.getPassword()));
 	    	}
