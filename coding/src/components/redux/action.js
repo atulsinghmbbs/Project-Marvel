@@ -1,4 +1,5 @@
 import { ADD_TO_CART } from "./Constant";
+import { REMOVE_FROM_CART } from "./Constant";
 
 export const addToCart = (data) => {
     console.log("data in action", data);
@@ -9,8 +10,10 @@ export const addToCart = (data) => {
 }
 
 export const removeFromCart = (domainName) => ({
-    type: "REMOVE_FROM_CART",
+    type: REMOVE_FROM_CART,
     payload: {
         domainName: domainName,
     },
 });
+
+

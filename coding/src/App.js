@@ -19,6 +19,10 @@ import DomainAvalibility from './components/DomainAvalibility';
 import Checkout from './components/Checkout';
 import RazPay from './components/RazPay';
 import ResetPassword from './components/ResetPassword';
+import EmailVerification from './components/EmailVerification';
+import FeedbackPanel from './components/FeedbackPanel';
+import DisplayFeedback from './components/DisplayFeedback';
+import StarRating from './components/StarRating';
 
 
 
@@ -37,7 +41,9 @@ const App = () => {
             <Slider />
             <Templates />
             <SearchDomain />
-            {/* <RazPay/> */}
+            <RazPay/>
+            <FeedbackPanel/>
+            <DisplayFeedback/>
           </React.Fragment>
         } />
 
@@ -50,10 +56,12 @@ const App = () => {
 
         <Route path='DomainAvalibility' element={<DomainAvalibility />} />
         <Route path='Checkout' element={<Checkout />} />
+        <Route path='EmailVerification' element={<EmailVerification />} />
 
       </Routes>
       <Footer />
       <ResetPassword/>
+<StarRating/>
     </BrowserRouter>
 
   )

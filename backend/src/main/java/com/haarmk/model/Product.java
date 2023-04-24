@@ -37,4 +37,5 @@ public class Product  {
 	@CreationTimestamp
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false, updatable = false, insertable = false)
 	private OffsetDateTime createdAt;
+	
 }

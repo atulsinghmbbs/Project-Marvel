@@ -1,5 +1,4 @@
 import React from 'react'
-
 import "./Signup.css"
 import { Alert } from "react-bootstrap";
 import { useState } from 'react';
@@ -78,12 +77,9 @@ function Signup() {
 
     //console.log(formData)
 
-
-
-
     return (
-        <div style={{ marginTop: 80 }}>
-            <form onSubmit={handleSubmit}>
+        <div className="background-image-signup" style={{ marginTop: 0 }}>
+            <form onSubmit={handleSubmit} className='sign-root'>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <div className='sign-up-wrapper'>
                     <h1>Project-Marvel</h1>
@@ -127,7 +123,8 @@ function Signup() {
                 </div>
             </form>
 
-        </div>
+        </div >
+
     )
 }
 
