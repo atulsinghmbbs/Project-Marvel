@@ -7,30 +7,26 @@ import java.time.OffsetDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
- * @author Ankit Patel
+ * @author HMK05
  *
  */
-@Data
+
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Token {
-	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	@Column(unique = true, nullable = false)
-	private String token;
+@Data
+public class ServiceStaus {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+	private String status;
 	@CreationTimestamp
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false, updatable = false, insertable = false)
 	private OffsetDateTime createdAt;

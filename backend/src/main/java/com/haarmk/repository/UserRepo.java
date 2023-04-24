@@ -14,7 +14,7 @@ public interface UserRepo extends JpaRepository<User,Long> {
 
 	public Optional<User> findByUsername(String username);
 	
-	@Query(nativeQuery = true, value = "SELECT * FROM user ORDER BY ID DESC LIMIT 1")
+	@Query(nativeQuery = true, value = "SELECT id FROM user ORDER BY ID DESC LIMIT 1")
 	Optional<Long> getAutoIncrementValue();
     
     

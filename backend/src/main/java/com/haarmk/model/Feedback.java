@@ -1,10 +1,11 @@
 package com.haarmk.model;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Feedback {
 
-	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
+	@Id	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@NotNull(message = "can't set as null")
@@ -33,7 +33,9 @@ public class Feedback {
 	private Integer rating;
 	
 	private String comment;
-	private LocalDateTime createdAt;
+
+	@CreationTimestamp
+	private OffsetDateTime createdAt;
 	
 	@JsonIgnore 
 	@ManyToOne

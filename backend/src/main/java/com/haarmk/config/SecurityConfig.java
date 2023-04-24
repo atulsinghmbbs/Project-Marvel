@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,7 +20,6 @@ import com.haarmk.filter.JwtValidatorFilter;
 import com.haarmk.service.JwtAuthenticationProvider;
 import com.haarmk.service.interfaces.UserService;
 
-import io.swagger.v3.oas.models.PathItem.HttpMethod;
 
 @Configuration
 @EnableWebSecurity
@@ -40,15 +40,15 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests(auth->{
                     auth
-                        .requestMatchers("/","/login","/signup").permitAll()
+                        .requestMatchers("/","/auth/login","/auth/signup").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**","/swagger-ui.html").permitAll()
-                        .requestMatchers("/haarmk/secure").authenticated()
-                        .requestMatchers("/haarmk/home").permitAll()
-                        
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**","/swagger-ui.html", "/api-docs").permitAll()
+                        .requestMatchers("/secure").authenticated()
                         .requestMatchers("/home").permitAll()
-                        .requestMatchers("/users/**").authenticated()
-//                        .requestMatchers("/feedbacks/**",HttpMethod.POST,HttpMethod.PUT,HttpMethod.DELETE).authenticated()
+                        
+     
+                        .requestMatchers("/users", "/users/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/feedbacks/**", "/feedback").permitAll()
 
                         .anyRequest().permitAll();
 
