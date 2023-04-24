@@ -1,9 +1,12 @@
 package com.haarmk.model;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -48,7 +51,10 @@ public class User {
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
-    private boolean enabled;  
+    private boolean enabled;
+	@CreationTimestamp
+	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false, updatable = false, insertable = false)
+	private OffsetDateTime createdAt;
     @OneToOne(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private Address addresses;;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.REFRESH})
@@ -59,7 +65,8 @@ public class User {
     private Cart cart = new Cart();
     @ManyToMany(mappedBy = "users", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @Builder.Default
-    private List<Servise> servises = new ArrayList<>();
+    private List<Service> servises = new ArrayList<>();
+
     
     
 }

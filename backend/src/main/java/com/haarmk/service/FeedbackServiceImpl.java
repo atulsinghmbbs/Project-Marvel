@@ -2,6 +2,8 @@ package com.haarmk.service;
 
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,8 +33,9 @@ public class FeedbackServiceImpl implements  FeedbackService {
 		
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User currentUser = userService.getUserByUsername(username);
-        feedback.setCreatedAt(LocalDateTime.now());
+        feedback.setCreatedAt(OffsetDateTime.now());
         feedback.setUser(currentUser);
+        currentUser.getFeedbacks().add(feedback);
 		Feedback Regfed = feedbackRepo.save(feedback);
 		
 		if(Regfed == null) {
@@ -55,7 +58,7 @@ public class FeedbackServiceImpl implements  FeedbackService {
 				
 				return feedback;
 			}else {
-				throw new FeedbackException("Enter customer Id is not valid"+feedbackId);
+				throw new FeedbackException("Enter feedback id is not valid: "+feedbackId);
 			}
 			
 	}
@@ -80,13 +83,14 @@ public class FeedbackServiceImpl implements  FeedbackService {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User currentUser = userService.getUserByUsername(username);
 		Optional<Feedback> foundFeedBack = feedbackRepo.findById(feedbackId);
-		
+		System.out.println("hello");
 		if(foundFeedBack.isPresent()) {
 			
 			
 		   if (!currentUser.getUsername().equals(foundFeedBack.get().getUser().getUsername())){
 			   throw new AuthenticationException("unauthorized");
 		   }
+		   currentUser.getFeedbacks().remove(foundFeedBack.get());
 		   feedbackRepo.deleteById(feedbackId);
 		   return foundFeedBack.get();
 		   
@@ -106,8 +110,8 @@ public class FeedbackServiceImpl implements  FeedbackService {
 				if (!currentUser.getUsername().equals(foundFeedBack.get().getUser().getUsername())){
 					   throw new AuthenticationException("unauthorized");
 				   }
-
-			return feedbackRepo.save(feedback);
+				feedback.setUser(currentUser);
+				return feedbackRepo.save(feedback);
 			}else {
 				
 				throw new FeedbackException("Not Found........");

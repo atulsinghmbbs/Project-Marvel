@@ -3,8 +3,14 @@
  */
 package com.haarmk.model;
 
+import java.time.OffsetDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -17,15 +23,20 @@ import lombok.Data;
 @Data
 @Entity
 public class Address {
-	@Id	@GeneratedValue
+	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String addressLine1;
 	private String addressLine2;
 	private String city;
 	private String postalCode;
+	@CreationTimestamp
+	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false, updatable = false, insertable = false)
+	private OffsetDateTime createdAt;
 	@ManyToOne
 	private Country country;
 	@OneToOne
 	private User user;
+	
+	
 	
 }

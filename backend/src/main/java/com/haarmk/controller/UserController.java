@@ -25,6 +25,7 @@ import com.haarmk.dto.OperationStatusDto;
 import com.haarmk.model.User;
 import com.haarmk.service.interfaces.UserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.servlet.http.HttpServletRequest;
 
 
@@ -35,9 +36,11 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "/users")
+@SecurityRequirement(name = "bearer-key")
 public class UserController {
 	@Autowired UserService userService;
 	
+	@SecurityRequirement(name = "bearer-key")
 	@PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE} , value = "/upload-pic")
 	private ResponseEntity<OperationStatusDto> uploadProfilePicture(@RequestPart MultipartFile document, Principal principal) throws IOException {
 		User currentUser =  userService.getUserByUsername(principal.getName());

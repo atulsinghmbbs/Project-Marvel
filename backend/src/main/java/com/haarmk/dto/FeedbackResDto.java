@@ -3,10 +3,11 @@
  */
 package com.haarmk.dto;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,11 +21,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FeedbackResDto {
+public class FeedbackResDto{
 	private Integer id;
 	private String comment;
 	private Integer rating;
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	private LocalDateTime createdAt;
+	private OffsetDateTime createdAt;
 	private UserFeebackResDto user;
 }
