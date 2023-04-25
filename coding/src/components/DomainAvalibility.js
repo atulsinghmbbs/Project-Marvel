@@ -4,14 +4,16 @@ import { useLocation } from 'react-router-dom'
 import "./DomainAvalibility.css"
 import { addToCart } from './redux/action'
 import { useDispatch } from 'react-redux'
+import { bakendBaseUrl } from './BaseUrl'
+import { bakendHeader } from './BaseUrl'
 
 
 const DomainAvalibility = () => {
 
-    const [domainResult, setdomainResult] = useState([])
+    const [domainResult, setDomainResult] = useState([])
     const [isLoading, setLoading] = useState(true)
     const [price, setPrice] = useState("")
-    const[newPrice,setNewPrice] = useState("")
+    const [newPrice, setNewPrice] = useState("")
 
     const dispatch = useDispatch()
 
@@ -20,70 +22,72 @@ const DomainAvalibility = () => {
 
     const API_KEY = 'RXPtbysguCADwc7fsCTVkzKaq4rWRO0M';
 
-<<<<<<< HEAD
-    
-=======
 
-
->>>>>>> main
     const getDomainData = async () => {
-        const getData = await fetch(`http://localhost:8888/domains/search?searchTerm=${location.state.inputData}`)
-        .then((res) => res.json())
-        .then((data) => console.log(setdomainResult(data)))
+        const getData = await fetch(`${bakendBaseUrl}/domains/search?searchTerm=${location.state.inputData}`)
+            .then((res) => res.json())
+            .then((data) => setDomainResult(data))
+            .catch((err) => console.log("error", err))
         setLoading(false)
     }
     console.log("Your Result data", domainResult)
-    
-    
+
+
+
     useEffect(() => {
         window.scroll(0, 0)
         getDomainData()
     }, [location.state.inputData])
-    
+
     useEffect(() => {
         if (domainResult.result) {
             setNewPrice(domainResult.result.purchasePrice)
         }
     }, [domainResult])
-    
-    console.log("new price",newPrice)
 
-   
+    console.log("new price", newPrice)
+
+
 
     useEffect(() => {
-        fetch(`https://api.apilayer.com/exchangerates_data/convert?to=INR&from=USD&amount=${newPrice}`,{
-            headers:{
-                'apiKey':API_KEY
+        fetch(`https://api.apilayer.com/exchangerates_data/convert?to=INR&from=USD&amount=${newPrice}`, {
+            headers: {
+                'apiKey': API_KEY
             }
         })
             .then((response) => response.json())
             .then((data) => console.log(setPrice(data)))
 
     }, [newPrice])
-
     console.log("price", price)
 
 
 
-
-
     function resultText() {
-
-        let resultText;
-        if (domainResult.result.purchasable === true) {
-            resultText =
-                <div className='available'>
-                    <p className='item'>This is available</p>
-                    <div className="price">
-                        <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{price}</p>
+        let resultText
+        if (!isLoading) {
+            if (domainResult.result && domainResult.result.purchasable === true) {
+                resultText = (
+                    <div className='available'>
+                        <p className='item'>This is available</p>
+                        <div className="price">
+                            <i className="fa-sharp fa-solid fa-dollar-sign"></i><p>{price.result}</p>
+                        </div>
+                        <button>Buy Now</button>
                     </div>
-                    <button>Buy Now</button>
-                </div>
+                );
+            } else {
+                resultText = (
+                    <p className='not-available'>This domain is not available <br /> Some domains are given below, you can select</p>
+                );
+            }
         } else {
-            resultText = <p className='not-available'>This domain is not available <br /> Some domains are given below, you can select</p>;
+            return resultText;
         }
-        return resultText
     }
+
+
+
 
 
     return (

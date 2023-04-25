@@ -119,5 +119,35 @@
 //     }
 // }
 
+// -------------------------------------------
+
+// fetch(bakendBaseUrl + `/carts/add-domain?domainName=${select.cartData}`, {
+//     method: 'PUT',
+//     headers: bakendHeader,
+// })
+//     .then((response) => response.json())
+//     .then((json) => console.log("ressss", json))
+//     .catch((err) => console.log("error in checkout", err))
+
+
+// ----------------------------------------------------------------------
+
+//domainAvality wala
+    //     let resultText;
+    //     if (!isLoading && domainResult.result.purchasable === true) {
+    //         resultText =
+    //             <div className='available'>
+    //                 <p className='item'>This is available</p>
+    //                 <div className="price">
+    //                     <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{price}</p>
+    //                 </div>
+    //                 <button>Buy Now</button>
+    //             </div>
+    //     } else {
+    //         resultText = <p className='not-available'>This domain is not available <br /> Some domains are given below, you can select</p>;
+    //     }
+    //     return resultText
+    // }
+
 
 

@@ -1,16 +1,16 @@
-
+import { bakendBaseUrl } from "../components/BaseUrl";
 
 import axios from "axios";
 
 export const signUp = (user) => {
 
-    return axios.post("http://localhost:8888/haarmk/signup", user).then((respo)=>respo.data)
+    return axios.post(`${bakendBaseUrl}/auth/signup`, user).then((respo) => respo.data)
 
 }
 
-export  const loginWithJWT = (user) => {
+export const loginWithJWT = (user) => {
 
-    return axios.post("http://localhost:8888/haarmk/login", user).then((resp)=>resp.data)
+    return axios.post(`${bakendBaseUrl}/auth/login`, user).then((resp) => resp.data)
 
 }
 

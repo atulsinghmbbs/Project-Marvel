@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./LoginWithMe.css"
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-import Nav from "./Nav";
-import { loginWithJWT } from "../services/userService";
-import { NavLink } from "react-router-dom";
+import { NavLink, json } from "react-router-dom";
+import { bakendHeader, bakendBaseUrl } from "./BaseUrl";
 
 
 function LoginWithMe() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [verifyEmail, setVerifyEmail] = useState("");
+    const [loginToken, setLoginToken] = useState("")
 
     const { user, loginWithRedirect } = useAuth0()
     console.log("current user details", user)
@@ -22,36 +19,48 @@ function LoginWithMe() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Email: ====", email, "Password:", password);
+        console.log('email', email);
+        console.log('password', password);
 
 
-        const loginFormData = { "username": email, "password": password }
+        // const loginFormData = { "username": email, "password": password }
 
-        loginWithJWT(loginFormData).then((resp) => {
+        //     loginWithJWT(loginFormData).then((resp) => {
 
-            console.log(resp);
-            console.log("login successfully.....")
-            console.log("=========================================================================")
-            alert("login finally done and dusted")
-        }).catch((err) => {
+        //         console.log(resp);
+        //         console.log("login successfully.....")
+        //         console.log("=========================================================================")
+        //         alert("login finally done and dusted")
+        //     }).catch((err) => {
 
-            console.log(err);
-            console.log("login failed....")
-            console.log("=========================================================================")
-            alert("login finally kabhi aesa na ho")
+        //         console.log(err);
+        //         console.log("login failed....")
+        //         console.log("=========================================================================")
+        //         alert("login finally kabhi aesa na ho")
 
 
+        //     })
+        //     console.log("========================Akash yadav ===========================")
+
+        // };
+
+        fetch(`${bakendBaseUrl}/auth/login`, {
+            method: 'POST',
+            body: JSON.stringify({
+                email: email,
+                password: password
+
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
         })
-        console.log("========================Akash yadav ===========================")
-
-    };
-
-
-    function verficationEmail(e) {
-        e.preventDefault()
-        console.log(verifyEmail)
-        alert("check your email to reset password")
-
+            .then((response) => response.json())
+            .then((json) => {
+                setLoginToken(json.token);
+                localStorage.setItem("loginToken", json.token);
+                console.log("Take your token:", localStorage.getItem("loginToken"));
+            });
     }
 
 
@@ -62,7 +71,7 @@ function LoginWithMe() {
                 <div className="log-in-wrapper">
                     <h1 className="login-page-heading">Project Marvel</h1>
 
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="form">
                         <label className="login-label">
                             User ID
                             <br />

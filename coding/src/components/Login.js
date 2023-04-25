@@ -2,7 +2,6 @@ import "./Login.css"
 
 import { NavLink } from 'react-router-dom';
 
-import { signUp } from '../services/userService';
 
 
 const Login = () => {

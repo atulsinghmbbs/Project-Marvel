@@ -55,7 +55,7 @@ const App = () => {
 
       </Routes>
       <Footer />
-      <ResetPassword/>
+      {/* <ResetPassword/> */}
     </BrowserRouter>
 
   )
