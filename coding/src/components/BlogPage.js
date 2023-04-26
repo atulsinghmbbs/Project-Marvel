@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import './BlogPage.css'
 
 const BlogPage = () => {
@@ -76,4 +76,5 @@ const BlogPage = () => {
     )
 }
 
-export default BlogPage;
+ export default BlogPage;
+
