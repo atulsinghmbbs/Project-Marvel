@@ -185,5 +185,32 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
+	
+	@ExceptionHandler(AuthenticationException.class)
+	public ResponseEntity<ErrorDetails> athenticationExceptionHandler(TokenException e,WebRequest req){
+		
+		
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	@ExceptionHandler(HaarmkException.class)
+	public ResponseEntity<ErrorDetails> haarmkExceptionHandler(HaarmkException e,WebRequest req){
+		
+		
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
 
 }

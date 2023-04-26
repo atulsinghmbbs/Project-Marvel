@@ -15,6 +15,7 @@
 	<description>hosting site</description>
 	<properties>
 		<java.version>17</java.version>
+		 
 	</properties>
 	<dependencies>
 		<dependency>
@@ -86,6 +87,17 @@
 		    <version>0.11.5</version>
 		    <scope>runtime</scope>
 		</dependency>
+		<!--dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.datatype</groupId>
+		    <artifactId>jackson-datatype-jsr310</artifactId>
+		    <version>2.14.1</version>
+		</dependency-->
+
+
 		
 		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
 		<dependency>
@@ -93,6 +105,11 @@
 		    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 		    <version>2.0.2</version>
 		</dependency>
+		
+
+
+
+		
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>

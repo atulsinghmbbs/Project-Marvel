@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     margin-top: 60px;
+    /* width: 100%; */
 }
 
 .fist-blog-image{
@@ -22,8 +23,10 @@
     bottom: 243px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     text-align: center;
-    
+
 }
+
+
 .tech-btn{
     margin-top: 24px;
     margin-left: 44px;
@@ -103,6 +106,19 @@
     border-radius: 15px;
 }
 
+/* media queery========= */
+
+@media screen and(max-width:465px) {
+    .blog-first-image-wrapper{
+
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+        width: 100%;
+        
+    }
+ 
+}
 
   /* media query==================== */
 @media screen and (max-width:465px){
