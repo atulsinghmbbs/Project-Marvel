@@ -23,6 +23,7 @@ import EmailVerification from './components/EmailVerification';
 import FeedbackPanel from './components/FeedbackPanel';
 import DisplayFeedback from './components/DisplayFeedback';
 import StarRating from './components/StarRating';
+import UserPanel from './components/UserPanel';
 
 
 
@@ -64,6 +65,10 @@ const App = () => {
       {/* <ResetPassword/> */}
 
       <ResetPassword/>
+
+      <StarRating/>
+      <UserPanel/>
+
 <StarRating/>
 
     </BrowserRouter>
