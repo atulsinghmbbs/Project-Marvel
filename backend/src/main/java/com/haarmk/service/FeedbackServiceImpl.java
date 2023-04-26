@@ -1,27 +1,41 @@
 package com.haarmk.service;
 
+
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.haarmk.dto.FeedbackDto;
+import com.haarmk.dto.FeedbackResDto;
+import com.haarmk.exception.AuthenticationException;
 import com.haarmk.exception.FeedbackException;
 import com.haarmk.model.Feedback;
+import com.haarmk.model.User;
 import com.haarmk.repository.FeedbackRepo;
 import com.haarmk.service.interfaces.FeedbackService;
+import com.haarmk.service.interfaces.UserService;
 
 @Service
 public class FeedbackServiceImpl implements  FeedbackService {
 	
 	 @Autowired
 	 private FeedbackRepo feedbackRepo;
+	 @Autowired UserService userService;
 	 
 
 	@Override
 	public Feedback Registerfeedback(Feedback feedback) throws FeedbackException {
-        
+		
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User currentUser = userService.getUserByUsername(username);
+        feedback.setCreatedAt(OffsetDateTime.now());
+        feedback.setUser(currentUser);
+        currentUser.getFeedbacks().add(feedback);
 		Feedback Regfed = feedbackRepo.save(feedback);
 		
 		if(Regfed == null) {
@@ -34,23 +48,24 @@ public class FeedbackServiceImpl implements  FeedbackService {
 	}
 
 	@Override
-	public Feedback GetFeedbackbyId(Integer feedbackId) throws FeedbackException {
-		 Optional<Feedback> getfed = feedbackRepo.findById(feedbackId);
+	public FeedbackResDto GetFeedbackbyId(Integer feedbackId) throws FeedbackException {
+		
+		 Optional<FeedbackResDto> getfed = feedbackRepo.getFeedbackById(feedbackId);
 			
 			if(getfed.isPresent()) {
 				
-				Feedback feedback = getfed.get();
+				FeedbackResDto feedback = getfed.get();
 				
 				return feedback;
 			}else {
-				throw new FeedbackException("Enter customer Id is not valid"+feedbackId);
+				throw new FeedbackException("Enter feedback id is not valid: "+feedbackId);
 			}
 			
 	}
 
 	@Override
-	public List<FeedbackDto> GetListofFeedback() throws FeedbackException {
-       List<FeedbackDto> list = feedbackRepo.GetAllfeedback();
+	public List<FeedbackResDto> GetListofFeedback() throws FeedbackException {
+       List<FeedbackResDto> list = feedbackRepo.getAllfeedback();
 		
 		if(list.isEmpty()) {
 			
@@ -65,14 +80,19 @@ public class FeedbackServiceImpl implements  FeedbackService {
 	@Override
 	public Feedback deletefeedback(Integer feedbackId) throws FeedbackException {
 		
-		
-		Optional<Feedback> del = feedbackRepo.findById(feedbackId);
-		
-		if(del.isPresent()) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User currentUser = userService.getUserByUsername(username);
+		Optional<Feedback> foundFeedBack = feedbackRepo.findById(feedbackId);
+		System.out.println("hello");
+		if(foundFeedBack.isPresent()) {
 			
-			feedbackRepo.deleteById(feedbackId);
-		   
-		   return del.get();
+			
+		   if (!currentUser.getUsername().equals(foundFeedBack.get().getUser().getUsername())){
+			   throw new AuthenticationException("unauthorized");
+		   }
+		   currentUser.getFeedbacks().remove(foundFeedBack.get());
+		   feedbackRepo.deleteById(feedbackId);
+		   return foundFeedBack.get();
 		   
 		 }else {
 			 
@@ -82,13 +102,16 @@ public class FeedbackServiceImpl implements  FeedbackService {
 
 	@Override
 	public Feedback updatefeedback(Feedback feedback) throws FeedbackException {
-		
-	       Optional<Feedback> emp = feedbackRepo.findById(feedback.getFeedBackId());
+		   String username = SecurityContextHolder.getContext().getAuthentication().getName();
+	       User currentUser = userService.getUserByUsername(username);
+	       Optional<Feedback> foundFeedBack = feedbackRepo.findById(feedback.getId());
 			
-			if(emp.isPresent()) {
-				
-
-			return feedbackRepo.save(feedback);
+			if(foundFeedBack.isPresent()) {
+				if (!currentUser.getUsername().equals(foundFeedBack.get().getUser().getUsername())){
+					   throw new AuthenticationException("unauthorized");
+				   }
+				feedback.setUser(currentUser);
+				return feedbackRepo.save(feedback);
 			}else {
 				
 				throw new FeedbackException("Not Found........");

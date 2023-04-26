@@ -21,14 +21,14 @@ import com.haarmk.service.interfaces.EmailService;
 public class EmailSenderController {
 	@Autowired EmailService emailService;
 	
-	@PostMapping(value = "/simple")
-	public String sedAMail(@RequestBody EmailDetails emailDetails) {
-		return emailService.sendSimpleMail(emailDetails);
-	}
+//	@PostMapping(value = "/simple")
+//	public String sedAMail(@RequestBody EmailDetails emailDetails) {
+//		return emailService.sendSimpleMail(emailDetails);
+//	}
 	
 	
 	@PostMapping(value = "/withAttachment")
-	public String sedAMailWithAttachment(@RequestBody EmailDetails emailDetails) {
-		return emailService.sendMailWithAttachment(emailDetails);
+	public void sedAMailWithAttachment(@RequestBody EmailDetails emailDetails) {
+		emailService.sendMail(emailDetails);
 	}
 }

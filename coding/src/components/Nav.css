@@ -19,20 +19,25 @@
 }
 
 .nav-items ul {
-    display: flex;
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
     margin-right: 510px;
     font-size: 1.1rem;
 }
 
 .nav-items ul li{
-    list-style: none;
+    list-style: none; 
     margin: 0 19px;
     position: relative;
     top: 7px;
-    color: white;
+     color: white;
     cursor: pointer;
-   
+  transition:0.2s; 
+ 
 }
+
 
 .sign-up-details ul{
     display: flex;
@@ -54,13 +59,14 @@
     padding: 7px;
     position: absolute;
     width: 100px;
-    top: -7px;
+    top: 4px;
     right: 146px;
     border-radius: 14px;
     outline: none;
     border: none;
     background: #F99751;
     height: 30px;
+    
 }
 
 .sign-up-btn:hover{
@@ -69,3 +75,94 @@
     color: white;
 
 }
+
+
+
+/* Media Queries for Mobile  */
+/* 
+@media only screen and (max-width: 480px) {
+    .nav-items ul {
+      margin: 0;
+      padding: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .nav-items ul li {
+      margin: 10px 0;
+      text-align: center;
+      flex-basis: 100%; 
+    }
+    
+    .sign-up-details ul {
+      display: none;
+    }
+    
+    .sign-up-btn {
+      right: 20px;
+      position: static;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+    
+    .logo img {
+      margin-left: 20px;
+    }
+  } */
+
+ /* Media Queries for Tablet */ 
+/*  
+ @media only screen and (max-width: 768px) {
+    .nav-items ul {
+      margin-right: 200px;
+    }
+    
+    .sign-up-btn {
+      right: 60px;
+    }
+  }  */
+
+
+  .menu-icon {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .nav-items-mobile {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .nav-items-mobile ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-items-mobile ul li {
+    margin-bottom: 10px;
+  }
+  
+
+
+
+  
+
+.cart-icon{
+    font-size: 20px;
+    position: relative;
+    bottom: 8px;
+    color: white;
+}
+
+.cart-icon:hover{
+    color: #9EF01A;
+}
+

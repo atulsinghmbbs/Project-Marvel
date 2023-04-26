@@ -1,96 +1,71 @@
 package com.haarmk.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.haarmk.exception.HaarmkException;
 import com.haarmk.exception.ProductException;
+import com.haarmk.model.Cart;
 import com.haarmk.model.Product;
-import com.haarmk.model.ShoppingCart;
-import com.haarmk.repository.CartRepo;
+import com.haarmk.model.ProductCategory;
+import com.haarmk.model.User;
 import com.haarmk.service.interfaces.CartService;
+import com.haarmk.service.interfaces.ProductCategoryService;
+import com.haarmk.service.interfaces.ProductService;
+import com.haarmk.service.interfaces.UserService;
 
 
 @Service
 public class CartServiceImpl implements CartService {
-
-	@Autowired
-	private CartRepo cartRepo;
+	@Autowired UserService userService;
+	@Autowired ProductService productService;
+	@Autowired ProductCategoryService productCategoryService;
 	
+
 	@Override
-	public Product addProduct(Product product,Integer userID) throws ProductException {
-		
-		Integer cartId = cartRepo.getCartIdByUserId(userID);
-		
-		Optional<ShoppingCart> cart =cartRepo.findById(cartId);
-		
-		if(cart.isPresent()) {
-			List<Product>  list = new ArrayList<>();
-			List<Product> products = cart.get().getProducts();
-			int amount = 0;
-			for(int i=0; i<products.size(); i++) {
-				amount+=products.get(i).getPurchasePrice();
-				
+	public Cart addProduct(Integer productId, String username) throws ProductException {
+			User currentUser = userService.getUserByUsername(username);
+			Product foundProduct =  productService.getProductById(productId);
+			if(!currentUser.getCart().getProducts().contains(foundProduct)) {
+			currentUser.getCart().getProducts().add(foundProduct);
+				userService.updateUser(currentUser);
 			}
-			products.add(product);
-			ShoppingCart newCart = new ShoppingCart(cartId, null, amount,products);
-			
-			 cartRepo.save(newCart);
-			 return product;
-		}else {
-			throw new ProductException("Invalid credentials....");
+			return currentUser.getCart();
+	}
+
+	@Override
+	public Cart removeProduct(Integer productId, String username) throws ProductException {
+		User currentUser = userService.getUserByUsername(username);
+		Product foundProduct =  productService.getProductById(productId);
+		if(currentUser.getCart().getProducts().contains(foundProduct)) {;
+			currentUser.getCart().getProducts().remove(foundProduct);
+			userService.updateUser(currentUser);
 		}
+		return currentUser.getCart();
+	}
+
+	@Override
+	public Cart getCart(String username) {
+		User currentUser = userService.getUserByUsername(username);
+		return currentUser.getCart();
 
 	}
 
 	@Override
-	public List<Product> getAllProducts(Integer userID) throws ProductException {
-		Integer cartId = cartRepo.getCartIdByUserId(userID);
-		
-		Optional<ShoppingCart> cart =  cartRepo.findById(cartId);
-		
-		if(cart.isPresent()) {
-			List<Product> products = cart.get().getProducts();
-			
-			 return products;
-		}else {
-			throw new ProductException("Invalid userID....");
+	public Cart addDomainToCart(String domainName, String username) throws ProductException {
+		Product foundProduct = null;
+		try {
+			foundProduct = productService.getProductByName(domainName);
+		} catch (HaarmkException e) {
+			Product newProduct = new Product();
+			ProductCategory productCategory = productCategoryService.getProductCategoryByName("domain");
+			newProduct.setCategory(productCategory);
+			newProduct.setName(domainName);
+			System.out.println(newProduct);
+			foundProduct = productService.addProduct(newProduct);
 		}
+		return this.addProduct(foundProduct.getId(), username);
 	}
-
-	@Override
-	public Product deleteProductByProductId(Integer productId,Integer userID) throws ProductException {
-		Integer cartId = cartRepo.getCartIdByUserId(userID);
-		
-		Optional<ShoppingCart> cart =cartRepo.findById(cartId);
-		
-		if(cart.isPresent()) {
-			List<Product>  list = new ArrayList<>();
-			List<Product> products = cart.get().getProducts();
-			int amount=0;
-			Product p=null ;
-			for(int i=0; i<products.size(); i++) {
-				if(products.get(i).getDomainId()!=productId) {
-					list.add(products.get(i));
-					amount+=products.get(i).getPurchasePrice();
-					
-				}else {
-					p = products.get(i);
-				}
-				
-			}
-			ShoppingCart newCart = new ShoppingCart(cartId, null, amount,products);
-		
-			
-			 cartRepo.save(newCart);
-			 return p;
-		}else {
-			throw new ProductException("Invalid credentials....");
-		}
-
-	}
+	
 
 }

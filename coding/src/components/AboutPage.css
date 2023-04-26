@@ -8,15 +8,18 @@
     background-position: center center;
     background-position: top;
     z-index: -9999;
-    
+    min-width: 100%;
+    padding: 0 20px;
 
 }
+
+
 .about-heading{
     color: white;
     position: relative;
     left: 937px;
-    position: relative;
     top: 28px;
+    font-size: 24px;
 
 }
 
@@ -93,7 +96,7 @@
 
   .about-start-btn{
     height: 73px;
-    width: 203px;
+    width: 166%;
     position: relative;
     top: -39px;
     left: 250px;
@@ -110,6 +113,214 @@
     transition: .3s ease;
     color: white;
 
-}
+
+} 
+
+/* ================================ */
+
+/* For tablets */
+@media only screen and (max-width: 768px) {
+    .about-image {
+      height: 300px;
+      margin-top: 40px;
+    }
+
+    .about-heading{
+      margin-right: 240px;
+    }
+
+    .about-heading,
+    .para-1,
+    .para-2 { 
+      left: auto;
+      right: auto;
+      text-align: center;
+      font-size: 18 px
+    }
+    .our-website-heading-parent{
+      display: flex;
+      justify-content: center;
+    
+    }
+    .our-website-heading {
+      margin-top: 40px;
+      font-size: 25px;
+    }
+    .hr {
+      width: 90%;
+    }
+
+    .about-icon-wrapper {
+      margin-top: 50px;
+    }
+    .image-and-title-wrapper {
+      flex-basis: calc(50% - 10px);
+    }
+
+
+    .get-started-about p {
+      font-size: 30px;
+      width: auto;
+    }
+    .about-start-btn {
+      left: auto;
+      right: auto;
+      margin-top: 20px;
+    }
+  }
   
+  /* For mobile phones */
+  @media only screen and (max-width: 480px) {
+    .about-image {
+      height: 200px;
+      margin-top: 20px;
+    }
+    .about-heading {
+      font-size: 20px;
+      top: 10px;
+    }
+    .para-1,
+    .para-2 {
+      font-size: 16px;
+      width: auto;
+      top: 10px;
+    }
+    .our-website-heading {
+      margin-top: 60px;
+    }
+    .hr {
+      width: 80%;
+    }
+    .about-icon-wrapper {
+      margin-top: 30px;
+    }
+    .image-and-title-wrapper {
+      flex-basis: calc(100% - 10px);
+    }
+    .get-started-about p {
+      font-size: 20px;
+      margin-left: 10px;
+    }
+    .about-start-btn {
+      font-size: 18px;
+      height: 60px;
+      width: 160px;
+      top: -30px;
+      left: auto;
+      right: auto;
+    }
+    
+  }
+  
+
+  
+/* ======================== */
+/* for screens smaller than 768px (tablets and phones) */
+@media only screen and (max-width: 900px) {
+    /* adjust the padding to fit the screen */
+    .about-image {
+      padding: 20px;
+      width: 200%;
+      
+
+    }
+    
+    /* decrease the font size of the heading */
+    .about-heading {
+      font-size: 28px;
+      left: 128px;
+      top: 28px;
+      position: relative;
+    }
+    
+    /* decrease the font size of the paragraphs */
+    .para-1, .para-2 {
+      font-size: 16px;
+      line-height: 1.5;
+      left: -2px;
+      margin: 20px 0;
+    }
+    
+    /* decrease the font size of the section heading */
+    .our-website-heading {
+        font-size: 15px;
+        /* margin: 30px 0; */
+        margin-top: 182px;
+        margin-left: -308px;
+     
+    }
+    }
+
+    /* center the horizontal line */
+    .hr-parent {
+      display: flex;
+      justify-content: center;
+      width: 70%;
+      margin-left: -33px;
+    }
+    
+    /* adjust the width of the horizontal line */
+    .hr {
+      width: 80%;
+    }
+    
+    /* use relative units for the images and titles */
+    .about-icon-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-left: -39px;
+    }
+    
+    .image-and-title-wrapper {
+      width: 48%;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .image-and-title-wrapper img {
+      height: 60%;
+      width: auto;
+      max-height: 80px;
+      max-width: 80px;
+    }
+    
+    .image-and-title-wrapper h3 {
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    
+    /* adjust the font size and padding of the button */
+    .about-start-btn {
+      font-size: 16px;
+      padding: 10px 20px;
+      height: 73px;
+      width: 182px;
+      position: relative;
+      top: 66px;
+      left: -462px;
+    }
+    .get-started-about{
+       margin-left: -33px;
+    }
+    .get-started-about p {
+        font-size: 20px;
+        width: 823px;
+        font-weight: 450;
+  }
+
+  /* @media only screen and (max-width: 900px) {
+    .about-image {
+        padding: 20px;
+        width: 200%;
+        
+  
+      }
+      .our-website-heading {
+        font-size: 15px;
+        margin-top: 181px;
+        margin-left: -567px;
+
+  }
+} */
 
