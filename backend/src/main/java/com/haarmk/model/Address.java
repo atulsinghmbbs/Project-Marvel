@@ -7,6 +7,9 @@ import java.time.OffsetDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,8 +35,10 @@ public class Address {
 	@CreationTimestamp
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false, updatable = false, insertable = false)
 	private OffsetDateTime createdAt;
-	@ManyToOne
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Country country;
+	@JsonIgnore
 	@OneToOne
 	private User user;
 	
