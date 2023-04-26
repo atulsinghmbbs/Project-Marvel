@@ -61,9 +61,16 @@ const App = () => {
 
       </Routes>
       <Footer />
+
+      {/* <ResetPassword/> */}
+
       <ResetPassword/>
+
       <StarRating/>
       <UserPanel/>
+
+<StarRating/>
+
     </BrowserRouter>
 
   )
