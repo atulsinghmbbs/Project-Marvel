@@ -52,17 +52,17 @@ const Nav = () => {
       </div>
       <div className='nav-items'>
         <ul>
-          <NavLink to="/AboutPage"><li>About</li></NavLink>
-          <NavLink to="/BlogPage"><li>Blog</li></NavLink>
-          <li>Feedback</li>
-          <li>Services</li>
+          <NavLink to="/AboutPage"  className="hello"><li>About</li></NavLink>
+          <NavLink to="/BlogPage" className="hello"><li>Blog</li></NavLink>
+          <NavLink to="/FeedbackPanel"  className="hello"><li>Feedback</li></NavLink>
+          <NavLink to="/DisplayFeedback"  className="hello"><li>Services</li></NavLink>
         </ul>
       </div>
 
       <div className='sign-up-details'>
         <ul>
           <li>
-            <NavLink to="/Signup">
+            <NavLink to="/Signup" className="hello">
               {isAuthenticated ? "" : (<button className="sign-up-btn" onClick={() => setIsOpen(!isOpen)}>Sign up</button>)}
             </NavLink>
 
@@ -72,13 +72,16 @@ const Nav = () => {
 
         {isAuthenticated && <img className='user-image' src={user.picture} />}
 
-        <NavLink to="/Checkout">
+        <NavLink to="/Checkout" className="hello">
           <i style={{ cursor: "pointer", marginLeft: 40 }} className="cart-icon fa-solid fa-cart-plus"></i>
-        </NavLink>
+        </NavLink>
 
 
+        </div>
       </div>
+
     </div>
+
   )
 }
 

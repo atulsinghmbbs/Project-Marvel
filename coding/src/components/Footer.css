@@ -17,7 +17,8 @@
 
 .footer-container{
     margin-top: auto;
-    margin-top: 143vh;
+    /* margin-top: 143vh; */
+    /* position: relative; */
 }
 
 /* media query */
