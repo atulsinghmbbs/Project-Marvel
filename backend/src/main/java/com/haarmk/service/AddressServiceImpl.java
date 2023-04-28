@@ -26,15 +26,15 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public Address RegisterAddress(Address address) throws AddressException {
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();
-		
-		User currentUser = userService.getUserByUsername(username);
-        if(address == null) {
-        	
-        }
+//		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//		
+//		User currentUser = userService.getUserByUsername(username);
+//        if(address == null) {
+//        	
+//        }
         
-        currentUser.setAddresses(address);
-        address.setUser(currentUser);
+//        currentUser.setAddresses(address);
+//        address.setUser(currentUser);
         
         Address regaddress = addressrepo.save(address);
 		

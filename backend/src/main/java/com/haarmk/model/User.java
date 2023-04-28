@@ -55,8 +55,8 @@ public class User {
 	@CreationTimestamp
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false, updatable = false, insertable = false)
 	private OffsetDateTime createdAt;
-    @OneToOne(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    private Address addresses;;
+//    @OneToOne(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+//    private Address addresses;;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.REFRESH})
     @Builder.Default
     private List<Feedback> feedbacks = new ArrayList<>();
