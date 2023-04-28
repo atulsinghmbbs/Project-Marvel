@@ -49,6 +49,7 @@
 
 .template-body{
     background: #EDF6F9;
+    margin-top: -20px;
 }
 
 /* image css */
@@ -142,6 +143,7 @@
       margin: 20px 0;
       font-size: 24px;
     }
+
 }
 
 /* media query================== */
@@ -195,6 +197,11 @@
    */
 
    @media (max-width: 768px) {
+
+
+/* media query================================ */
+   @media screen and (max-width: 768px) {
+ 
     .template-body {
       padding: 20px;
     }
@@ -223,9 +230,16 @@
     .naming-upper-first-image, .naming-upper-second-image, .naming-lower-first-image, .naming-lower-second-image {
       text-align: center;
       margin-top: 10px;
+      left: 1px;
     }
   }
 
+  @media screen and (max-width:480px) {
+    .naming-upper-first-image .naming-upper-second-image{
+        left: 1px;
+    }
+    
+  }
 
   @media only screen and (min-width:280px) and (max-width: 450px) {
     .template-body {
