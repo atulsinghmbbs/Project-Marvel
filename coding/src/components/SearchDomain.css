@@ -50,3 +50,45 @@
     background-color: black;
     transition: .3s;
 }
+
+
+/* media queryyy================================== */
+@media only screen and (max-width: 991px){
+.search-domain-wrapper {
+    width: 100%;
+}
+.domain-search-btn{
+    margin-left: -228px;
+}
+   .domain-heading {
+    font-size: calc(1.375rem + 1.5vw);
+    margin-top: 14px;
+    position: relative;
+}
+.domain-heading h1{
+    position: relative;
+    top: 21px;
+}
+.domain-input-field{
+    margin-left: -79px;
+}
+}
+
+@media screen and (max-width:480px){
+    .domain-search-btn{
+        margin-left: -460px;
+    }
+    .domain-input-field{
+        margin-left: -85px;
+    }
+    .domain-heading{
+        font-size: calc(1.375rem + 1.5vw);
+        margin-top: 2px;
+        position: relative;
+    }
+    
+    .domain-heading h1{
+        position: relative;
+        top: 21px;
+    }
+}

@@ -20,6 +20,24 @@ const AboutPage = () => {
                     <hr className='hr ' />
                 </div>
 
+            <div className="about-icon-wrapper">
+                <div className='image-and-title-wrapper'>
+                    <img src="./images/free-domain-hosting.png" alt="" height="120" width="100" />
+                    <h3>Free Domain Hosting</h3>
+                </div>
+                <div className='image-and-title-wrapper'>
+                    <img src="./images/service-and-reliability.png" alt="" height="100" width="100" />
+                    <h3>Security and Reliability</h3>
+                </div>
+                <div className='image-and-title-wrapper'>
+                    <img src="./images/Easy-to-use.png" alt="" height="100" width="100" />
+                    <h3>Easy to use design </h3>
+                </div>
+                <div className='image-and-title-wrapper'>
+                    <img src="./images/guranteeduuptime.png" alt="" height="100" width="100" />
+                    <h3>Guarante Uptime</h3>
+
+
 
                 <div className="about-icon-wrapper">
                     <div className='image-and-title-wrapper'>
@@ -46,6 +64,7 @@ const AboutPage = () => {
                         <img src="./images/target.png" alt="" height="100" width="100" />
                         <h3>And Much More</h3>
                     </div>
+
                 </div>
                 {/* ----------------get started here */}
 
