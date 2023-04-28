@@ -4,8 +4,13 @@ import "./LoginWithMe.css"
 import { NavLink, json } from "react-router-dom";
 import { bakendHeader, bakendBaseUrl } from "./BaseUrl";
 
+
+
+// import { loginWithJWT } from "../services/userService";
+// import  NavLink  from "react-router-dom";
+
 import { loginWithJWT } from "../services/userService";
-import { NavLink } from "react-router-dom";
+
 
 
 
@@ -13,6 +18,7 @@ function LoginWithMe() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginToken, setLoginToken] = useState("")
+    const [expirationTime, setExpirationTime] = useState("")
 
     const { user, loginWithRedirect } = useAuth0()
     console.log("current user details", user)
@@ -62,10 +68,19 @@ function LoginWithMe() {
             .then((response) => response.json())
             .then((json) => {
                 setLoginToken(json.token);
+                setExpirationTime(json.expiresAt)
                 localStorage.setItem("loginToken", json.token);
+                localStorage.setItem("expirationTime", expirationTime)
                 console.log("Take your token:", localStorage.getItem("loginToken"));
+                console.log("your Expiration time:", localStorage.getItem("expirationTime"));
             });
     }
+
+
+
+
+    console.log('dsjlk', loginToken)
+    console.log('fnssl', expirationTime)
 
 
 

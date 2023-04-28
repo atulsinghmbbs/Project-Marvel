@@ -12,3 +12,24 @@ min-height: 100vh;
 overflow-x: hidden;
 background-color: #EDF8F9;
 }
+
+.refresh-btn{
+  height: 73px;
+  width: 203px;
+  position: relative;
+  top: 120px;
+  left: 91px;
+  border-radius: 80px;
+  font-size: 22px;
+  border: none;
+  background: #2F4F4F;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}
+
+.refresh-btn:hover{
+  background-color: #9EF01A;
+  transition: .3s ease;
+  color: white;
+
+}
