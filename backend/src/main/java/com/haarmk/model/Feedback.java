@@ -1,20 +1,18 @@
 package com.haarmk.model;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.OffsetDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.haarmk.model.User;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,22 +24,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Feedback {
 
-	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
+	@Id	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@NotNull(message = "can't set as null")
-	private Integer serviceRating;
+	@Min(0)
+	@Max(5)
+	private Integer rating;
 	
-	@NotNull(message = "can't set as null")
-	private Integer overallRating;
-	
-	private String comments;
+	private String comment;
 
-	private LocalDate feedBackDate;
+	@CreationTimestamp
+	private OffsetDateTime createdAt;
 	
-	@JsonIgnore
-	@ManyToOne(cascade = {CascadeType.PERSIST , CascadeType.MERGE}) 
+	@JsonIgnore 
+	@ManyToOne
 	private User user;
 	 
 }

@@ -4,6 +4,10 @@ import "./LoginWithMe.css"
 import { NavLink, json } from "react-router-dom";
 import { bakendHeader, bakendBaseUrl } from "./BaseUrl";
 
+import { loginWithJWT } from "../services/userService";
+import { NavLink } from "react-router-dom";
+
+
 
 function LoginWithMe() {
     const [email, setEmail] = useState("");
@@ -14,7 +18,7 @@ function LoginWithMe() {
     const { user, loginWithRedirect } = useAuth0()
     console.log("current user details", user)
     console.log(loginWithRedirect);
-
+ 
 
     //const {http}= loginWithJWT();
 

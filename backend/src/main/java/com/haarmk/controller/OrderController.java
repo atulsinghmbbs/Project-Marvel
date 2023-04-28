@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.haarmk.dto.OrderDto;
+import com.haarmk.dto.OrderReqDto;
 import com.haarmk.model.Orders;
 import com.haarmk.service.interfaces.OrderService;
 
@@ -27,22 +27,22 @@ public class OrderController {
  
 
     @GetMapping("/getAllOrders")
-    public ResponseEntity<List<OrderDto>> findAll() {
-    	List<OrderDto> orders = orderService.getAllOrders();
-    	return new ResponseEntity<List<OrderDto>>(orders, HttpStatus.OK);
+    public ResponseEntity<List<OrderReqDto>> findAll() {
+    	List<OrderReqDto> orders = orderService.getAllOrders();
+    	return new ResponseEntity<List<OrderReqDto>>(orders, HttpStatus.OK);
 
     }
 
     @GetMapping("/getOrder/{id}")
-    public ResponseEntity<OrderDto> findById(@PathVariable("id") Long id) {
-          OrderDto orderDto = orderService.getOrderById(id);
-          return new ResponseEntity<OrderDto>(orderDto, HttpStatus.OK);
+    public ResponseEntity<OrderReqDto> findById(@PathVariable("id") Long id) {
+          OrderReqDto orderDto = orderService.getOrderById(id);
+          return new ResponseEntity<OrderReqDto>(orderDto, HttpStatus.OK);
     }
 
     @PostMapping("/addOrder")
-    public ResponseEntity<OrderDto> addOrder(@RequestBody @Valid Orders order) {
-        OrderDto order1 = orderService.addOrder(order);
-        return new ResponseEntity<OrderDto>(order1, HttpStatus.CREATED);
+    public ResponseEntity<Orders> addOrder(@RequestBody @Valid OrderReqDto orderReqDto) {
+        Orders order = orderService.addOrder(orderReqDto);
+        return new ResponseEntity<Orders>(order, HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "deleteOrder/{id}")

@@ -143,4 +143,8 @@ const DomainAvalibility = () => {
 
 }
 
+<<<<<<< HEAD
 export default DomainAvalibility;
+=======
+export default DomainAvalibility
+>>>>>>> 7e8e0be1d121bc2b636bd61b1aabe4dd007bf2de

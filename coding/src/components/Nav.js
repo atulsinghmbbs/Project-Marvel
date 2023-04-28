@@ -58,8 +58,38 @@ const Nav = () => {
           <img src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" />
         </NavLink>
       </div>
+<<<<<<< HEAD
       {isMobile ? (<h1 style={{ marginRight: 100 }}><i onClick={showItems} class="fa-solid fa-bars"></i></h1>)
         : (
+=======
+      <div className='nav-items'>
+        <ul>
+          <NavLink to="/AboutPage"><li>About</li></NavLink>
+          <NavLink to="/BlogPage"><li>Blog</li></NavLink>
+          <li>Feedback</li>
+          <li>Services</li>
+        </ul>
+      </div>
+
+      <div className='sign-up-details'>
+        <ul>
+          <li>
+            <NavLink to="/Signup">
+              {isAuthenticated ? "" : (<button className="sign-up-btn" onClick={() => setIsOpen(!isOpen)}>Sign up</button>)}
+            </NavLink>
+
+          </li>
+        </ul>
+        {isAuthenticated ? (<button className='btn-log-out' onClick={(e) => logout()}>logout</button>) : (<Login />)}
+
+        {isAuthenticated && <img className='user-image' src={user.picture} />}
+        <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
+      <i className={isOpen ? "fas fa-times" : "fas fa-bars"}></i>
+
+        <NavLink to="/Checkout">
+          <i style={{ cursor: "pointer", marginLeft: 40 }} className="cart-icon fa-solid fa-cart-plus"></i>
+        </NavLink>
+>>>>>>> 7e8e0be1d121bc2b636bd61b1aabe4dd007bf2de
 
 
           <div>
@@ -94,11 +124,23 @@ const Nav = () => {
         )
       }
     </div>
+    {isOpen && (
+    <div className="nav-items-mobile">
+      <ul>
+        <NavLink to="/AboutPage"><li>About</li></NavLink>
+        <NavLink to="/BlogPage"><li>Blog</li></NavLink>
+        <li>Feedback</li>
+        <li>Services</li>
+      </ul>
+    </div>
+  )}
+</div>
   )
 }
 
 export default Nav
 
+<<<<<<< HEAD
 // -----------------------------------------------------------------
 
 // import "./Nav.css"
@@ -206,3 +248,6 @@ export default Nav
 // }
 
 // export default Nav;
+=======
+
+>>>>>>> 7e8e0be1d121bc2b636bd61b1aabe4dd007bf2de

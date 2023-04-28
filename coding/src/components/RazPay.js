@@ -21,9 +21,15 @@ function RazPay() {
   const url = "https://jsonplaceholder.typicode.com/comments";
 
   async function fetchData() {
+<<<<<<< HEAD
     const data = fetch(url)
       .then((res) => res.json())
       .then((getData) => setAmount(getData[0].id));
+=======
+    const data = fetch(url).then((res) => res.json())
+      .then((getData) => console.log(setAmount(getData[0].id)))
+      
+>>>>>>> 7e8e0be1d121bc2b636bd61b1aabe4dd007bf2de
   }
 
   useEffect(() => {

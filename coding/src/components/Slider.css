@@ -44,16 +44,47 @@
 }
 
 }
+<<<<<<< HEAD
 .image-slider{
   position:relative;
 }
 .image-slider img{
+=======
+
+
+/* ==================================== */
+
+
+.image-slider {
+  position: relative;
+}
+
+.image-slider img {
+>>>>>>> 7e8e0be1d121bc2b636bd61b1aabe4dd007bf2de
   display: block;
   height: 220px;
   width: 100%;
   object-fit: cover;
 }
 
+<<<<<<< HEAD
+=======
+/* @media (min-width: 768px) {
+  .image-slider img {
+    height: 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .image-slider img {
+    height: 400px;
+  }
+} */
+
+/* media queries=================== */
+/* Add these media queries to the existing SideBar.css file */
+
+>>>>>>> 7e8e0be1d121bc2b636bd61b1aabe4dd007bf2de
 @media only screen and (max-width: 991px) {
     .header {
       margin-top: 100px;
@@ -105,9 +136,14 @@
   }
   
 
+<<<<<<< HEAD
   @media screen and (min-width: 480px) and (max-width: 999px){
     .slider-img {
       width: 200%;
     }
     
   }
+=======
+
+
+>>>>>>> 7e8e0be1d121bc2b636bd61b1aabe4dd007bf2de

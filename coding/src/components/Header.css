@@ -7,7 +7,7 @@
     background-size:cover;
     background-position: center center;
     z-index: -9999;
-
+   
 }
 
 
@@ -63,6 +63,7 @@
     color: white;
 
 }
+<<<<<<< HEAD
 
 /* media query */
 
@@ -116,3 +117,48 @@
       padding: 12px 24px;
     }
   }
+=======
+ 
+/* media query */
+
+@media (max-width: 768px) {
+  .header-heading {
+    font-size: 36px;
+  }
+
+  .header-heading-1 {
+    font-size: 36px;
+  }
+
+  .header-caption {
+    font-size: 16px;
+  }
+
+  .header-start-btn {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-heading {
+    font-size: 24px;
+  }
+  .header-image{
+    max-width: 100%;
+
+  }
+
+  .header-heading-1 {
+    font-size: 24px;
+  }
+
+  .header-caption {
+    font-size: 14px;
+  }
+
+  .header-start-btn {
+    font-size: 12px;
+    padding: 12px 24px;
+  }
+}
+>>>>>>> 7e8e0be1d121bc2b636bd61b1aabe4dd007bf2de
