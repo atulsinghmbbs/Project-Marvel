@@ -49,6 +49,15 @@ const Checkout = () => {
             </div>
         </div>
     )
+
+    //<div className='order-summary-wrapper'>
+//     <p>Order Summary</p>
+//     <hr />
+//     <h4>Subtotal:  {total}</h4>
+//     <button onClick={()=>setbtnpop(true)}>Continue To Pay</button>
+//     {/* <NavLink to="/RazPay"><button>Continue To Pay</button></NavLink> */}
+//     <RazPay trigger={btnpopup}></RazPay>
+// </div>
 }
 
 export default Checkout

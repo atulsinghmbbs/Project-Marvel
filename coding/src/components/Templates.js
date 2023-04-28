@@ -38,10 +38,10 @@ const Templates = () => {
             {/* -------------after images */}
 
             <div className="template-second-heading">
-                <p>What Our Client Say?</p>
+                {/* <p>What Our Client Say?</p> */}
             </div>
             <div className="client-say-heading">
-                <p>Read What Our Client Say!</p>
+                {/* <p>Read What Our Client Say!</p> */}
             </div>
 
         </div>

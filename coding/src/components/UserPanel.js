@@ -1,29 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./UserPanel.css"
 import { useEffect } from 'react'
 
 const UserPanel = () => {
 
-
-    const onLoad = () => {
+    const [name, setName] = useState("")
+    const baseUrl = "http://192.168.1.50:8888"
+    const baseImageUrl = baseUrl+"/static/images/"
+    const onLoad = (event) => {
         // event.preventDefault();
-        const baseUrl="http://localhost:8888/users/"
-        fetch(baseUrl, {
+       
+       
+        fetch(baseUrl+"/users/", {
             method: 'GET',
             headers: {
-                
+
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': 'Bearer eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJoYWFybWsiLCJzdWIiOiJKV1QgVG9rZW4iLCJpYXQiOjE2ODI0MDkxODUsImV4cCI6MTY4MjQ5NTU4NSwiYXV0aG9yaXRpZXMiOiJST0xFX1VTRVIiLCJ1c2VybmFtZSI6IkhJUEwzIn0.OsdkcIXBro9Ug-SmqeylJStlnudSjp0DipO0bXlo6EyeFkmBi2EmsQIudx2WCFM-'
+                'Authorization': 'Bearer eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJoYWFybWsiLCJzdWIiOiJKV1QgVG9rZW4iLCJpYXQiOjE2ODI2ODA0NDAsImV4cCI6MTY4Mjc2Njg0MCwiYXV0aG9yaXRpZXMiOiJST0xFX1VTRVIiLCJ1c2VybmFtZSI6IkhJUEwyIn0.55KJ2v8DVltPPrTV9p_INh7_HV4zzYOO55xoGvfa4Ag2aA0AhFSms0S8QEd0gt1x'
             },
         }).then((response) => response.json())
-            .then((json) => console.log("ghfdgsu", json));
+            .then((json) => { setName(json) });
     }
 
     useEffect(() => {
         onLoad()
     }, [])
 
-
+    console.log(name)
 
     return (
         <div className="user-main">
@@ -60,16 +63,18 @@ const UserPanel = () => {
                         <div className="card1 card-design">
                             <div className='profile'>Profile</div>
                             <div className='edit'>
-                                <div className='pic'></div>
-                                <div className='phone' aria-readonly>8585484</div>
-                                <div className='email' aria-readonly>.com</div>
-                                <button>Edit Profile</button>
+                                <div className='pic'>
+                                    <img src={baseImageUrl + name.image} alt="" />
+                                </div>
+                                <div className='name' aria-readonly>{name.firstName}{" "}{name.lastName}</div>
+                                <div className='email' aria-readonly>{name.email}</div>
+                                <button onClick={openPopup}>Edit Profile</button>
                             </div>
 
                             <div className='box'>
-                                <div className='order box-design'>Total Order</div>
-                                <div className='domain box-design'>Active Domain</div>
-                                <div className='transactions box-design'>Last Transaction</div>
+                                <div className='order box-design'>Services</div>
+                                <div className='domain box-design'>Domain</div>
+                                <div className='transactions box-design'></div>
                             </div>
                         </div>
 
