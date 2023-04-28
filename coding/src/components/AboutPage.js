@@ -19,16 +19,6 @@ const AboutPage = () => {
                 <div className='hr-parent'>
                     <hr className='hr ' />
                 </div>
-
-
-            <h1 className='text-center text-success our-website-heading'>
-                Our Website benefits and features that we provide include:-
-            </h1>
-            <div className='hr-parent'>
-                <hr className='hr ' />
-
-            </div>
-
             <div className="about-icon-wrapper">
                 <div className='image-and-title-wrapper'>
                     <img src="./images/free-domain-hosting.png" alt="" height="120" width="100" />

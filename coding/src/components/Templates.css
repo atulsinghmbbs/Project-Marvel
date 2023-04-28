@@ -153,58 +153,8 @@
       font-size: 24px;
     }
 
-
-/* media query================== */
-/* 
-    @media (max-width: 767px) {
-      .template-heading {
-        font-size: 24px;
-      }
-      .explore-heading {
-        font-size: 16px;
-      }
-      .upper-two-img, .lower-two-img {
-        display: flex;
-        flex-direction: column;
-      }
-      .upper-image, .lower-image {
-        width: 100%;
-        height: auto;
-      }
-      .naming-upper-first-image, .naming-upper-second-image,
-      .naming-lower-first-image, .naming-lower-second-image {
-        margin-top: 10px;
-        margin-bottom: 0;
-      }
-    }
-  
-    /* Modify the styles for tablet screens */
-    /* @media (min-width: 768px) and (max-width: 1023px) {
-      .template-heading {
-        font-size: 32px;
-      }
-      .explore-heading {
-        font-size: 24px;
-      }
-      .upper-two-img, .lower-two-img {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-bottom: 20px;
-      }
-      .upper-image, .lower-image {
-        width: 45%;
-        height: auto;
-      }
-      .naming-upper-first-image, .naming-upper-second-image,
-      .naming-lower-first-image, .naming-lower-second-image {
-        margin-top: 20px;
-        margin-bottom: 10px;
-      }
-    } 
-   */
-
-   @media (max-width: 768px) {
+/* media query================================ */
+   @media screen and (max-width: 768px) {
     .template-body {
       padding: 20px;
     }
@@ -233,9 +183,16 @@
     .naming-upper-first-image, .naming-upper-second-image, .naming-lower-first-image, .naming-lower-second-image {
       text-align: center;
       margin-top: 10px;
+      left: 1px;
     }
   }
 
+  @media screen and (max-width:480px) {
+    .naming-upper-first-image .naming-upper-second-image{
+        left: 1px;
+    }
+    
+  }
 
 
  

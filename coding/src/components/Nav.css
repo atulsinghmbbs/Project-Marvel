@@ -6,54 +6,39 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    z-index: 9999;
+    z-index: 1;
     position: fixed;
     width: 100%;
-    top: 0px;
-    
+    top: 0px; 
 }
-
 .logo img{
     height: 3rem;
     margin-left: 3.3rem;
 }
-
 .nav-items ul {
-    display: flex;  
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
+    display: flex;
     margin-right: 510px;
     font-size: 1.1rem;
 }
-
 .nav-items ul li{
-    list-style: none; 
+    list-style: none;
     margin: 0 19px;
     position: relative;
     top: 7px;
-     color: white;
-    cursor: pointer;
-  transition:0.2s; 
- 
+    color: white;
+    cursor: pointer;   
 }
-
-
 .sign-up-details ul{
     display: flex;
     margin-right: 2rem;
     position: relative;
 }
-
 .sign-up-details ul li{
     list-style-type: none;
     font-size: 1.1rem;
     margin: 0 1rem;
-
 }
-
 /* button sign up */
-
 .sign-up-btn{
     font-size: 12px;
     padding: 7px;
@@ -65,104 +50,21 @@
     outline: none;
     border: none;
     background: #F99751;
-    height: 30px;
-    
+    height: 30px;   
 }
-
 .sign-up-btn:hover{
     background-color: #9EF01A;
     transition: .3s ease;
     color: white;
-
 }
-
-
-
-/* Media Queries for Mobile  */
-/* 
-@media only screen and (max-width: 480px) {
-    .nav-items ul {
-      margin: 0;
-      padding: 0;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .nav-items ul li {
-      margin: 10px 0;
-      text-align: center;
-      flex-basis: 100%; 
-    }
-    
-    .sign-up-details ul {
-      display: none;
-    }
-    
-    .sign-up-btn {
-      right: 20px;
-      position: static;
-      margin-top: 10px;
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
-    }
-    
-    .logo img {
-      margin-left: 20px;
-    }
-  } */
-
- /* Media Queries for Tablet */ 
-/*  
- @media only screen and (max-width: 768px) {
-    .nav-items ul {
-      margin-right: 200px;
-    }
-    
-    .sign-up-btn {
-      right: 60px;
-    }
-  }  */
-
-
-  .menu-icon {
-    display: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .nav-items-mobile {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .nav-items-mobile ul {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-items-mobile ul li {
-    margin-bottom: 10px;
-  }
-  
-
-
-
-  
-
 .cart-icon{
     font-size: 20px;
     position: relative;
     bottom: 8px;
     color: white;
 }
-
 .cart-icon:hover{
     color: #9EF01A;
 }
 
+/* media query================= */
