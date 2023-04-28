@@ -45,7 +45,6 @@ function Signup() {
         }
     };
 
-
     console.log("data")
 
     //console.log("datafjskf", event)
@@ -129,6 +128,8 @@ function Signup() {
                 </div>
 
             </form>
+ 
+
 
 
         </div >

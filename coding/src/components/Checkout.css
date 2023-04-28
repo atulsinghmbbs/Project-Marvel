@@ -71,6 +71,13 @@
 }
 
 
+
+.error{
+    font-size: 50px;
+    color: #FF4500;
+    margin-top: 100px;
+    word-spacing: -8px;
+
 /* media queryyy================= */
 @media screen and (max-width:468px) {
     .order-summary-wrapper {
@@ -92,4 +99,5 @@
         width: 70%;
     }
     
+
 }

@@ -52,6 +52,13 @@
 }
 
 
+ 
+@media screen and (max-width:400px) {
+    .search-domain-wrapper{
+        width: 200%;
+    }
+    
+
 /* media queryyy================================== */
 @media only screen and (max-width: 991px){
 .search-domain-wrapper {
@@ -91,4 +98,5 @@
         position: relative;
         top: 21px;
     }
+ 
 }

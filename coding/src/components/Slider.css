@@ -5,9 +5,15 @@
 
 
 .slider-img{
+ 
+    bottom: 220px;
+    left: 1348px;
+    margin-top: -220px;
+
   /* position: relative;
   bottom: 220px; */
   margin-top: -222px;
+ 
 }
 
 
@@ -24,6 +30,25 @@
 
 
 @keyframes moving-image{
+ 
+    0%{
+        left: 0px;
+        opacity: 1;
+    }
+    25%{
+      opacity: .8;
+    }
+    50%{
+        opacity: .7;
+    }
+    75%{
+        opacity: .5;
+    }
+
+    100%{
+        left: 100vw;
+        opacity: .2;
+
   0%{
       left: 0px;
       opacity: 1;
@@ -38,9 +63,16 @@
   100%{
       left: 100vw;
       opacity: .2;
+ 
 }
 
 }
+ 
+.image-slider{
+  position:relative;
+}
+.image-slider img{
+
 
 
 /* ==================================== */
@@ -51,11 +83,21 @@ position: relative;
 }
 
 .image-slider img {
+ 
+ 
+  display: block;
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+
 display: block;
 height: 220px;
 width: 100%;
 object-fit: cover;
+ 
 }
+
+ 
 
 /* @media (min-width: 768px) {
 .image-slider img {
@@ -72,6 +114,7 @@ object-fit: cover;
 /* media queries=================== */
 /* Add these media queries to the existing SideBar.css file */
 
+ 
 @media only screen and (max-width: 991px) {
   .header {
     margin-top: 100px;
@@ -123,5 +166,14 @@ object-fit: cover;
 }
 
 
+ 
+  @media screen and (min-width: 480px) and (max-width: 999px){
+    .slider-img {
+      width: 200%;
+    }
+    
+  }
 
 
+
+ 

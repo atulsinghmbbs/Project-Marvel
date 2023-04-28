@@ -16,12 +16,16 @@ import Checkout from './components/Checkout';
 import DisplayFeedback from './components/DisplayFeedback';
 import DomainAvalibility from './components/DomainAvalibility';
 import EmailVerification from './components/EmailVerification';
+
+import CheckoutForm from './components/CheckoutForm';
+
 import FeedbackPanel from './components/FeedbackPanel';
 import ResetPassword from './components/ResetPassword';
 import SearchDomain from './components/SearchDomain';
 import StarRating from './components/StarRating';
 import UserPanel from './components/UserPanel';
 import CheckoutForm from './components/CheckoutForm';
+
 
 
 
@@ -48,8 +52,14 @@ const App = () => {
         <Route path='DomainAvalibility' element={<DomainAvalibility />} />
         {/* <Route path='RazPay' element={<RazPay/>}></Route> */}
         <Route path='EmailVerification' element={<EmailVerification />} />
+
+        <Route path='razorpay' element={<RazPay />} />
+        <Route path='CheckoutForm' element={<CheckoutForm />} />
+
+
         <Route path='FeedbackPanel' element={<FeedbackPanel />}/>
         <Route path='DisplayFeedback' element={<DisplayFeedback />} />
+
       </Routes>
       <Footer />
 
