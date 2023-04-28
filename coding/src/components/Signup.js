@@ -44,7 +44,6 @@ function Signup() {
         }
     };
 
-
     console.log("data")
 
     //console.log("datafjskf", event)
@@ -122,7 +121,6 @@ function Signup() {
                     <button type="submit" className='btn-sign-in' >Submit</button>
                 </div>
             </form>
-
         </div >
 
     )

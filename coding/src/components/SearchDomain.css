@@ -44,3 +44,11 @@
     background-color: black;
     transition: .3s;
 }
+
+
+@media screen and (max-width:400px) {
+    .search-domain-wrapper{
+        width: 200%;
+    }
+    
+}

@@ -6,6 +6,7 @@ import { addToCart } from './redux/action'
 import { useDispatch } from 'react-redux'
 import { bakendBaseUrl } from './BaseUrl'
 import { bakendHeader } from './BaseUrl'
+import { error } from 'jquery'
 
 
 const DomainAvalibility = () => {
@@ -14,6 +15,14 @@ const DomainAvalibility = () => {
     const [isLoading, setLoading] = useState(true)
     const [price, setPrice] = useState("")
     const [newPrice, setNewPrice] = useState("")
+
+    const [changeCartIcon, setChangeCartIcon] = useState(true)
+
+    const [error, setError] = useState("")
+
+    const [isLoadingError, setIsLoadingError] = useState("")
+
+
 
     const dispatch = useDispatch()
 
@@ -24,11 +33,17 @@ const DomainAvalibility = () => {
 
 
     const getDomainData = async () => {
-        const getData = await fetch(`${bakendBaseUrl}/domains/search?searchTerm=${location.state.inputData}`)
-            .then((res) => res.json())
-            .then((data) => setDomainResult(data))
-            .catch((err) => console.log("error", err))
-        setLoading(false)
+        try {
+            const getData = await fetch(`${bakendBaseUrl}/domains/search?searchTerm=${location.state.inputData}`)
+                .then((res) => res.json())
+                .then((data) => setDomainResult(data))
+            // .catch((err) => console.log("error", err))
+            setLoading(false)
+        } catch (error) {
+            console.log("new error", error)
+            setIsLoadingError(false)
+            setError(error)
+        }
     }
     console.log("Your Result data", domainResult)
 
@@ -58,10 +73,8 @@ const DomainAvalibility = () => {
             .then((response) => response.json())
             .then((data) => console.log(setPrice(data)))
 
-    }, [newPrice])
+    }, [newPrice],)
     console.log("price", price)
-
-
 
     function resultText() {
         let resultText
@@ -86,7 +99,9 @@ const DomainAvalibility = () => {
         }
     }
 
-
+    function changeIcon() {
+        setChangeCartIcon(false)
+    }
 
 
 
@@ -94,8 +109,7 @@ const DomainAvalibility = () => {
         <div style={{ marginTop: 100 }}>
             <div className="result-box">
                 <h1>
-                    {!isLoading ? resultText() : "loading..."}
-
+                    {!isLoading ? resultText() : ""}
                 </h1>
             </div>
 
@@ -107,20 +121,26 @@ const DomainAvalibility = () => {
                             <div className='suggestion'>
                                 <h3 className='suggestion-heading'>{item.domainName}</h3>
                                 <p className='item-price'>{item.purchasePrice}</p>
-                                <i style={{ cursor: "pointer" }} className="fa-solid fa-cart-plus" onClick={() => dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }))} ></i>
+
+                                {changeCartIcon ? (
+
+                                    <i className="fa-solid fa-cart-plus icon" onClick={() => {
+                                        dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }));
+                                        changeIcon()
+                                    }}
+                                    ></i>
+                                ) : (<button>Add To Cart </button>)}
                             </div>
                         </div>
                     ))
                 ) : (
-                    <p className='no-suggestion'>No suggestions available.</p>
+                    <p className='no-suggestion text-center'>We Are Searching Please Wait..</p>
                 )}
-
             </div>
-
         </div>
-
     )
+
+
 }
 
-export default DomainAvalibility
-
+export default DomainAvalibility;

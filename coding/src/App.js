@@ -20,7 +20,7 @@ import Checkout from './components/Checkout';
 import RazPay from './components/RazPay';
 import ResetPassword from './components/ResetPassword';
 import EmailVerification from './components/EmailVerification';
-
+import CheckoutForm from './components/CheckoutForm';
 
 
 
@@ -52,6 +52,8 @@ const App = () => {
         <Route path='DomainAvalibility' element={<DomainAvalibility />} />
         <Route path='Checkout' element={<Checkout />} />
         <Route path='EmailVerification' element={<EmailVerification />} />
+        <Route path='razorpay' element={<RazPay />} />
+        <Route path='CheckoutForm' element={<CheckoutForm />} />
 
       </Routes>
       <Footer />

@@ -137,7 +137,24 @@
 
 
 .no-suggestion{
-    color: red;
-    font-size: 20px;
+    color: green;
+    font-size: 35px;
     font-weight: bold;
+}
+
+.icon {
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.icon:hover{
+    color: green;
+    transition: .3s ease;
+}
+
+.domain-error{
+    font-size: 50px;
+    color: #FF4500;
+    margin-top: 100px;
+    word-spacing: -8px;
 }
