@@ -80,7 +80,7 @@ function Signup() {
     return (
 
 
-        <div className="background-image-signup" style={{ marginTop: 0 }}>
+        <div className="background-image-signup" style={{ marginTop: 900 }}>
             <form onSubmit={handleSubmit} className='sign-root'>
                 {error && <Alert variant="danger">{error}</Alert>}
 
@@ -128,7 +128,7 @@ function Signup() {
                 </div>
 
             </form>
- 
+
 
 
 

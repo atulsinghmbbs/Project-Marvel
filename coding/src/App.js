@@ -24,7 +24,7 @@ import ResetPassword from './components/ResetPassword';
 import SearchDomain from './components/SearchDomain';
 import StarRating from './components/StarRating';
 import UserPanel from './components/UserPanel';
-import CheckoutForm from './components/CheckoutForm';
+// import CheckoutForm from './components/CheckoutForm';
 
 
 
@@ -57,17 +57,18 @@ const App = () => {
         <Route path='CheckoutForm' element={<CheckoutForm />} />
 
 
-        <Route path='FeedbackPanel' element={<FeedbackPanel />}/>
+        <Route path='FeedbackPanel' element={<FeedbackPanel />} />
         <Route path='DisplayFeedback' element={<DisplayFeedback />} />
+        <Route path='Checkout' element={<Checkout />} />
 
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
 
-      <CheckoutForm/>
+      {/* <CheckoutForm /> */}
       {/* <RazPay/> */}
-        {/* <Checkout/> */}
+      {/* <Checkout/> */}
       {/* <ResetPassword /> */}
-      <UserPanel />
+      {/* <UserPanel /> */}
     </BrowserRouter>
 
   )

@@ -1,103 +1,83 @@
-
-.image-slider{
+.image-slider {
   height: 220px;
 }
 
-
-.slider-img{
- 
-    bottom: 220px;
-    left: 1348px;
-    margin-top: -220px;
+.slider-img {
+  bottom: 220px;
+  left: 1348px;
+  margin-top: -220px;
 
   /* position: relative;
   bottom: 220px; */
   margin-top: -222px;
- 
 }
 
-
-.slider-img{
+.slider-img {
   animation-name: moving-image;
   animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  animation-direction:alternate-reverse;
-
+  animation-direction: alternate-reverse;
 }
 
-
-
-
-@keyframes moving-image{
- 
-    0%{
-        left: 0px;
-        opacity: 1;
-    }
-    25%{
-      opacity: .8;
-    }
-    50%{
-        opacity: .7;
-    }
-    75%{
-        opacity: .5;
-    }
-
-    100%{
-        left: 100vw;
-        opacity: .2;
-
-  0%{
-      left: 0px;
-      opacity: 1;
+@keyframes moving-image {
+  0% {
+    left: 0px;
+    opacity: 1;
   }
-  50%{
-      opacity: .7;
+  25% {
+    opacity: 0.8;
   }
-  75%{
-      opacity: .5;
+  50% {
+    opacity: 0.7;
+  }
+  75% {
+    opacity: 0.5;
   }
 
-  100%{
-      left: 100vw;
-      opacity: .2;
- 
+  100% {
+    left: 100vw;
+    opacity: 0.2;
+  }
+
+  0% {
+    left: 0px;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  75% {
+    opacity: 0.5;
+  }
+
+  100% {
+    left: 100vw;
+    opacity: 0.2;
+  }
 }
 
+.image-slider {
+  position: relative;
 }
- 
-.image-slider{
-  position:relative;
-}
-.image-slider img{
-
-
 
 /* ==================================== */
 
-
 .image-slider {
-position: relative;
+  position: relative;
 }
 
 .image-slider img {
- 
- 
   display: block;
   height: 220px;
   width: 100%;
   object-fit: cover;
 
-display: block;
-height: 220px;
-width: 100%;
-object-fit: cover;
- 
+  display: block;
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
 }
-
- 
 
 /* @media (min-width: 768px) {
 .image-slider img {
@@ -114,7 +94,6 @@ object-fit: cover;
 /* media queries=================== */
 /* Add these media queries to the existing SideBar.css file */
 
- 
 @media only screen and (max-width: 991px) {
   .header {
     margin-top: 100px;
@@ -141,7 +120,7 @@ object-fit: cover;
     transition: 0.5s;
     z-index: 9999;
   }
-  .show+.body-pd {
+  .show + .body-pd {
     padding-left: 80px;
   }
   .show .nav {
@@ -165,15 +144,8 @@ object-fit: cover;
   }
 }
 
-
- 
-  @media screen and (min-width: 480px) and (max-width: 999px){
-    .slider-img {
-      width: 200%;
-    }
-    
+@media screen and (min-width: 480px) and (max-width: 999px) {
+  .slider-img {
+    width: 200%;
   }
-
-
-
- 
+}

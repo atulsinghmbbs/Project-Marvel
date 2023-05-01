@@ -1,7 +1,7 @@
 
 
 
-export const bakendBaseUrl = "http://192.168.1.43:8888"
+
 
 export const bakendBaseUrl = "http://192.168.1.50:8888"
 

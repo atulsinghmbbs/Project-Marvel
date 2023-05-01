@@ -64,17 +64,17 @@ const DomainAvalibility = () => {
 
 
 
-    useEffect(() => {
-        fetch(`https://api.apilayer.com/exchangerates_data/convert?to=INR&from=USD&amount=${newPrice}`, {
-            headers: {
-                'apiKey': API_KEY
-            }
-        })
-            .then((response) => response.json())
-            .then((data) => console.log(setPrice(data)))
+    // useEffect(() => {
+    //     fetch(`https://api.apilayer.com/exchangerates_data/convert?to=INR&from=USD&amount=${newPrice}`, {
+    //         headers: {
+    //             'apiKey': API_KEY
+    //         }
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => console.log(setPrice(data)))
 
-    }, [newPrice],)
-    console.log("price", price)
+    // }, [newPrice],)
+    // console.log("price", price)
 
     function resultText() {
         let resultText
@@ -143,8 +143,4 @@ const DomainAvalibility = () => {
 
 }
 
-<<<<<<< HEAD
 export default DomainAvalibility;
-=======
-export default DomainAvalibility
->>>>>>> 7e8e0be1d121bc2b636bd61b1aabe4dd007bf2de

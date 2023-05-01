@@ -2,16 +2,18 @@ import React, { useState } from 'react'
 import "./UserPanel.css"
 import { useEffect } from 'react'
 
+import openPopup from "reactjs-popup"
+
 const UserPanel = () => {
 
     const [name, setName] = useState("")
     const baseUrl = "http://192.168.1.50:8888"
-    const baseImageUrl = baseUrl+"/static/images/"
+    const baseImageUrl = baseUrl + "/static/images/"
     const onLoad = (event) => {
         // event.preventDefault();
-       
-       
-        fetch(baseUrl+"/users/", {
+
+
+        fetch(baseUrl + "/users/", {
             method: 'GET',
             headers: {
 

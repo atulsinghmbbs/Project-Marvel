@@ -5,10 +5,6 @@ import { NavLink, json } from "react-router-dom";
 import { bakendHeader, bakendBaseUrl } from "./BaseUrl";
 
 
-
-// import { loginWithJWT } from "../services/userService";
-// import  NavLink  from "react-router-dom";
-
 import { loginWithJWT } from "../services/userService";
 
 
@@ -23,7 +19,7 @@ function LoginWithMe() {
     const { user, loginWithRedirect } = useAuth0()
     console.log("current user details", user)
     console.log(loginWithRedirect);
- 
+
 
     //const {http}= loginWithJWT();
 
@@ -79,8 +75,8 @@ function LoginWithMe() {
 
 
 
-    console.log('dsjlk', loginToken)
-    console.log('fnssl', expirationTime)
+    console.log('token', loginToken)
+    console.log('expiry time', expirationTime)
 
 
 
