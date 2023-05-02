@@ -21,30 +21,23 @@ const Nav = () => {
       "lastName": user.family_name,
       "email": user.email,
       "password": null,
-
     }
-    //   signUp(userGoogleData).then((resp) => {
-
-    //     console.log(resp);
-    //     console.log("succesfully signUp.....")
-    //     console.log("=========================================================================")
-
-    //   }).catch((err) => {
-
-    //     console.log(err);
-    //     console.log("signup failed....")
-    //     console.log("=========================================================================")
-
-
-    //   })
-    // } else {
-    //   console.log("Invalid User credentials...")
   }
 
 
   return (
 
-    <div className='wrapper'>
+    <div className='navbar-container'>
+      <div className="hamburger-menu" onClick={() => setIsOpen(!isOpen)}>
+        <i className="fa fa-bars"></i>
+        <div className="dropdown-menu">
+          <NavLink to="/AboutPage"><li>About</li></NavLink>
+          <NavLink to="/BlogPage"><li>Blog</li></NavLink>
+          <li>Feedback</li>
+          <li>Services</li>
+        </div>
+      </div>
+      <div className={`wrapper ${isOpen ? 'open-menu' : ''}`}></div>
       <div className='logo'>
         <NavLink to="/">
           <img src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" />

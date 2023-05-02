@@ -5,8 +5,6 @@ import { useState } from 'react';
 import { signUp } from '../services/userService';
 import Animation from './Animation';
 
-
-
 function Signup() {
 
 
@@ -82,6 +80,7 @@ function Signup() {
 
 
         <div className="background-image-signup" style={{ marginTop: 0 }}>
+
             <form onSubmit={handleSubmit} className='sign-root'>
                 {error && <Alert variant="danger">{error}</Alert>}
 
@@ -91,51 +90,43 @@ function Signup() {
                     <img src="" alt="" />
                     <div>
                         <label className="signup-label">
-
                             <br />
                             <input type="text" name="firstName" value={formData.firstName} className="signup-input" placeholder=' First Name' onChange={handleInputChange} />
                         </label>
                     </div>
                     <div>
                         <label className="signup-label">
-
                             <br />
                             <input type="text" name="lastName" value={formData.lastName} className="signup-input" placeholder='Last Name' onChange={handleInputChange} />
                         </label>
                     </div>
                     <div>
                         <label className="signup-label">
-
                             <br />
                             <input type="email" name="email" value={formData.email} className="signup-input" placeholder='  Email' onChange={handleInputChange} />
                         </label>
                     </div>
                     <div>
                         <label className="signup-label">
-
                             <br />
                             <input type="password" name="password" value={formData.password} className="signup-input" placeholder=' Password' onChange={handleInputChange} />
                         </label>
                     </div>
                     <div>
                         <label className="signup-label">
-
                             <br />
                             <input type="password" name="confirmPassword" placeholder='  Confirm Password' value={formData.confirmPassword} className="signup-input" onChange={handleInputChange} />
                         </label>
                     </div>
+
                     <button type="submit" className='btn-sign-in' >Submit</button>
                     <Animation />
+
                 </div>
-
             </form>
-
-
         </div >
-
-
     )
 }
-
 export default Signup;
+
 

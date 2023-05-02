@@ -18,7 +18,8 @@ function LoginWithMe() {
     const { user, loginWithRedirect } = useAuth0()
     console.log("current user details", user)
     console.log(loginWithRedirect);
- 
+
+
 
     //const {http}= loginWithJWT();
 
@@ -72,20 +73,16 @@ function LoginWithMe() {
 
     return (
         <>
-            <div style={{ marginTop: 60 }} className="background-image">
+            <div style={{ marginTop: 60 }} className="login-page-container">
                 <div className="log-in-wrapper">
-                    <h1 className="login-page-heading">Project Marvel</h1>
+                    <h1 className="login-page-heading">Welcome Back!</h1>
 
                     <form onSubmit={handleSubmit} className="form">
                         <label className="login-label">
-                            User ID
-                            <br />
-                            <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Enter User Id" className="login-input" />
+                            <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Enter User Name" className="login-input" />
                         </label>
                         <br />
                         <label className="login-label">
-                            Password
-                            <br />
                             <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Enter Password" className="login-input" lassName="login-input" />
                         </label>
 
@@ -94,8 +91,9 @@ function LoginWithMe() {
                         </NavLink>
 
                         <button type="submit" className="login-withme-submit-btn">Submit</button>
+                        <br />
+                        <button onClick={() => loginWithRedirect()} className="continue-with-google-btn" ><i class="fa-brands fa-google"></i>Sign in with Google</button>
                     </form>
-                    <button onClick={() => loginWithRedirect()} className="continue-with-google-btn" ><i class="fa-brands fa-google"></i>Sign in with Google</button>
                     <br />
 
                 </div>

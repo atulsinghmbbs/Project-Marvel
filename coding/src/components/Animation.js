@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./Animation.css"
 import Lottie from 'react-lottie';
 import animationData from './lotties/animate.json';
 
@@ -15,7 +15,7 @@ export default function Animation() {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', marginLeft: '-1600px' }}>
+        <div className='lottie-animation' style={{ display: 'flex', justifyContent: 'center', marginLeft: '-1600px' }}>
             <Lottie
                 options={defaultOptions}
                 height={400}
@@ -24,3 +24,4 @@ export default function Animation() {
         </div>
     );
 }
+
