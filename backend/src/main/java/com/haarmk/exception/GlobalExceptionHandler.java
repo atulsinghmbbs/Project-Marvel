@@ -212,5 +212,21 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
+	
+	
+	@ExceptionHandler(CountryException.class)
+	public ResponseEntity<ErrorDetails> CountryExceptionHandler(CountryException e,WebRequest req){
+		
+		
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+
 
 }

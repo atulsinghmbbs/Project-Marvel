@@ -1,159 +1,140 @@
-.template-heading{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: 10px;
-    font-size: 55px;
-    
+.template-heading {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 10px;
+  font-size: 55px;
 }
 
-.explore-heading{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: -5px;
-    font-size: 20px;
-    color: #166AEA; 
+.explore-heading {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -5px;
+  font-size: 20px;
+  color: #166aea;
 }
 /* newww================= */
-.template-heading, .explore-heading {
+.template-heading,
+.explore-heading {
   text-align: center;
   margin: 20px 0;
   font-size: 24px;
 }
 
-.parent-template-btn{
-    display: flex;
-    justify-content: center;
+.parent-template-btn {
+  display: flex;
+  justify-content: center;
 }
 
-
-.template-btn{
-    height: 75px;
-    width: 220px;
-    border-radius: 100px;
-    font-size: 22px;
-    border: none;
-    background: #F99751;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-   cursor: pointer;
-   position: relative;
-   top: 1px;
+.template-btn {
+  height: 75px;
+  width: 220px;
+  border-radius: 100px;
+  font-size: 22px;
+  border: none;
+  background: #f99751;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+  position: relative;
+  top: 1px;
 }
-.template-btn:hover{
-    background-color: #9EF01A;
-    transition: .3s ease;
-    color: white;
-
+.template-btn:hover {
+  background-color: #9ef01a;
+  transition: 0.3s ease;
+  color: white;
 }
 
-.template-body{
-    background: #EDF6F9;
-    margin-top: -20px;
+.template-body {
+  background: #edf6f9;
+  margin-top: -20px;
 }
 
 /* image css */
 
-.upper-two-img{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 65px;
+.template-image-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -39px;
 }
 
-
-.upper-image{
-    border-radius: 12px;
-    transition: .3s;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+.template-img-and-title {
+  width: 48%;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.upper-image:hover{
-    transition: .3s;
-    scale: 1.1
+.template-img-and-title img {
+  border-radius: 20px;
+  transition: 0.3s;
 }
 
-.lower-two-img{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 65px;
+.template-img-and-title img:hover {
+  scale: 1.1;
+  transition: 0.3s;
 }
 
-.lower-image{
-    border-radius: 12px;
-    transition: .3s;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-
-}
-
-.lower-image:hover{
-    transition: .3s;
-    scale: 1.1;
-}
 /* ///////////////////////////////naming of upper images */
-
-.upper-img-naming{
-    display: flex;
-    justify-content: space-around;
-}
-
-.naming-upper-first-image{
-    position: relative;
-    right: 101px;
-    margin-top: 12px;
-    font-size: 22px;
-}
-
-.naming-upper-second-image{
-    position: relative;
-    right: 159px;
-    margin-top: 12px;
-    font-size: 22px;
-}
 
 /* naming of lower images */
 
-.lower-img-naming{
-    display: flex;
-    justify-content: space-around;
-}
-
-.naming-lower-first-image{
-    position: relative;
-    right: 101px;
-    margin-top: 12px;
-    font-size: 22px;
-}
-.naming-lower-second-image{
-    position: relative;
-    right: 157px;
-    margin-top: 12px;
-    font-size: 22px;
-}
-
 /* new heading second template-heading */
 
-
-.template-second-heading{
-    display: flex;
-    justify-content: center;
-    font-size: 55px;
+.template-second-heading {
+  display: flex;
+  justify-content: center;
+  font-size: 55px;
 }
 
+.client-say-heading {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  color: #166aea;
+}
+/* media query============================================ */
+@media only screen and (max-width: 997px) {
+  .template-body {
+    width: 200%;
+  }
+  .template-image-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: -39px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 28px;
+  }
+}
 
+@media only screen and (max-width: 768px) {
+  .template-body {
+    padding: 20px;
+  }
+  .template-heading {
+    font-size: 24px;
+  }
+  .explore-heading {
+    font-size: 18px;
+  }
+  .template-heading,
+  .explore-heading {
+    font-size: 20px;
+  }
+  .template-second-heading,
+  .client-say-heading {
+    font-size: 20px;
+  }
 
-.client-say-heading{
-        display: flex;
-        justify-content: center;
-        font-size: 20px;
-        color: #166AEA;
-    }
-
-    .template-second-heading,.client-say-heading{
-      text-align: center;
-      margin: 20px 0;
-      font-size: 24px;
-    }
-
+  .template-second-heading,
+  .client-say-heading {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+  }
+}
 
 /* media query================== */
 /* 
@@ -180,7 +161,7 @@
     }
   
     /* Modify the styles for tablet screens */
-    /* @media (min-width: 768px) and (max-width: 1023px) {
+/* @media (min-width: 768px) and (max-width: 1023px) {
       .template-heading {
         font-size: 32px;
       }
@@ -205,38 +186,65 @@
     } 
    */
 
-   @media (max-width: 768px) {
-    .template-body {
-      padding: 20px;
-    }
-    .template-heading {
-      font-size: 24px;
-    }
-    .explore-heading {
-      font-size: 18px;
-    }
-    .template-heading, .explore-heading {
-        font-size: 20px;
-      }
-      .template-second-heading,.client-say-heading{
-        font-size: 20px;
-      }
-
-    .upper-two-img, .lower-two-img {
-      display: flex;
-      flex-direction: column;
-    }
-    .upper-image, .lower-image {
-      width: 100%;
-      height: auto;
-      margin-bottom: 20px;
-    }
-    .naming-upper-first-image, .naming-upper-second-image, .naming-lower-first-image, .naming-lower-second-image {
-      text-align: center;
-      margin-top: 10px;
-    }
+/* media query================================ */
+@media screen and (max-width: 768px) {
+  .template-body {
+    padding: 20px;
+  }
+  .template-heading {
+    font-size: 24px;
+  }
+  .explore-heading {
+    font-size: 18px;
+  }
+  .template-heading,
+  .explore-heading {
+    font-size: 20px;
+  }
+  .template-second-heading,
+  .client-say-heading {
+    font-size: 20px;
   }
 
+  .upper-two-img,
+  .lower-two-img {
+    display: flex;
+    flex-direction: column;
+  }
+  .upper-image,
+  .lower-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .naming-upper-first-image,
+  .naming-upper-second-image,
+  .naming-lower-first-image,
+  .naming-lower-second-image {
+    text-align: center;
+    margin-top: 10px;
+    left: 1px;
+  }
+}
 
+@media screen and (max-width: 480px) {
+  .naming-upper-first-image .naming-upper-second-image {
+    left: 1px;
+  }
+}
 
- 
+@media only screen and (min-width: 280px) and (max-width: 450px) {
+  .template-body {
+    width: 200%;
+  }
+  .upper-two-img {
+    width: 80%;
+    margin-left: 35px;
+  }
+  .upper-img-naming {
+    width: 3px;
+  }
+  .template-image-wrapper {
+    flex-wrap: wrap;
+  }
+}

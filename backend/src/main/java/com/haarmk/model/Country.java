@@ -13,9 +13,9 @@ import lombok.Data;
  */
 
 @Data
-@Entity
+//@Entity
 public class Country {
-	@Id
-	private Integer code;
+//	@Id
+//	private Integer code;
 	private String name;
 }

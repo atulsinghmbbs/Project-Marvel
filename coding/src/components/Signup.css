@@ -1,45 +1,57 @@
 
 .sign-up-wrapper{
 
-    height: 508px;
-    background-image: url("../images/gradientbg.jpg");
+    height: 450px;
+    /* background-image: url("../images/gradientbg.jpg"); */
+
     background-size: cover;
     width: 30%;
-    border: 2px solid grey;
+    border: 1px solid whitesmoke;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     position: absolute;
     margin-top: -830px;
-    margin-left: 450px;
+    margin-left: 809px;
     justify-content: center;
     align-items: center;
-    box-shadow: none;
+    box-shadow: 5px 10px 8px #888888;
+    background-color: white;
 
 }
+
 
 input{
     border:1px solid grey;
 }
 
-.signup-input::placeholder{
+.signup-input:placeholder-shown{
     font-size: 15px;
-    justify-content: center;
-
+    background-color: #F3F6F8;
 }
 
-.sign-up-wrapper h1{
-    color: #FF6551;  
+.sign-up-wrapper h2{
+    color: black;  
     font-size: 30px;
     position: relative;
-    right: -2px;
-    margin-bottom: 10px;
+    right: 38px;
+    margin-bottom: 1px;
+    margin-top: 23px;
+}
+.sign-up-wrapper p{
+  margin-left: -92px;
+  color: gray;
+  margin-top: 3px;
 }
 
 .signup-label{
+  display: flex;
     font-size: 20px;
     margin-bottom: 8px;
     color: azure;
+    margin-left: 33px;
+    margin-bottom: 13px;
+
 }
 
 .signup-input{
@@ -47,13 +59,14 @@ input{
     text-indent: 5px;
     width: 300px;
     border-color: grey;
+    
 }
 
 
 .btn-sign-in{
 
     width: 30%;
-    margin-left: 10px;
+    margin-left: 15px;
     padding: 13px;
     border-radius: 8px;
     font-size: 20px;
@@ -74,46 +87,5 @@ input{
 
 /* media query================== */
 
-@media screen and (max-width: 575px)  {
-    .sign-up-wrapper {
-      height: 520px;
-      width: 497px;
-      margin-left: 76px;
-      margin-top: -702px;
-  }
-    }
-  
-  @media screen and (min-width: 576px) and (max-width: 991px) {
-    .sign-up-wrapper {
-      height: 561px;
-      width: 423px;
-      margin-left: 176px;
-      margin-top: -907px;
-  
-    }
-  
-    .signup-label {
-      font-size: 1rem;
-      margin-bottom: 5px;
-    }
-  
-    .signup-input {
-      font-size: 1rem;
-      margin-bottom: 10px;
-      padding: 8px;
-    }
-  
-    .btn-sign-in {
-      font-size: 1rem;
-      margin-bottom: 10px;
-      padding: 10px;
-    }
-  
-  
-  .background-image-signup{
-    background: black;
-  }
-}
-.background-image-signup{
-  color: #FF6551;
-}
+
+

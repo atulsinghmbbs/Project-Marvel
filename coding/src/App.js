@@ -16,14 +16,22 @@ import Checkout from './components/Checkout';
 import DisplayFeedback from './components/DisplayFeedback';
 import DomainAvalibility from './components/DomainAvalibility';
 import EmailVerification from './components/EmailVerification';
+
+import CheckoutForm from './components/CheckoutForm';
+
 import FeedbackPanel from './components/FeedbackPanel';
 import ResetPassword from './components/ResetPassword';
 import SearchDomain from './components/SearchDomain';
 import StarRating from './components/StarRating';
 import UserPanel from './components/UserPanel';
+
 import CheckoutForm from './components/CheckoutForm';
 import UserOrder from './components/UserOrder';
 import ActiveServices from './components/ActiveServices';
+
+// import CheckoutForm from './components/CheckoutForm';
+
+
 
 
 
@@ -49,20 +57,34 @@ const App = () => {
         <Route path='Signup' element={<Signup />} />
         <Route path='DomainAvalibility' element={<DomainAvalibility />} />
         <Route path='EmailVerification' element={<EmailVerification />} />
-        <Route path='FeedbackPanel' element={<FeedbackPanel />}/>
+
+        <Route path='razorpay' element={<RazPay />} />
+        <Route path='CheckoutForm' element={<CheckoutForm />} />
+
+
+        <Route path='FeedbackPanel' element={<FeedbackPanel />} />
         <Route path='DisplayFeedback' element={<DisplayFeedback />} />
+
         <Route path='ResetPassword' element={<ResetPassword />} />
         <Route path='/'></Route>
         <Route path='/UserPanel' element={<UserPanel />}></Route>
         <Route path='/UserOrder' element={<UserOrder/>}></Route>
         <Route path='/ActiveServices' element={<ActiveServices />}></Route>
-      </Routes>
-      <Footer />
 
-      <CheckoutForm/>
+        <Route path='Checkout' element={<Checkout />} />
+
+ 
+      </Routes>
+      {/* <Footer /> */}
+
+      {/* <CheckoutForm /> */}
       {/* <RazPay/> */}
-        {/* <Checkout/> */}
+      {/* <Checkout/> */}
       {/* <ResetPassword /> */}
+ 
+
+      {/* <UserPanel /> */}
+ 
     </BrowserRouter>
 
   )

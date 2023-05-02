@@ -2,13 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import "./UserPanel.css"
 
+import openPopup from "reactjs-popup"
+
 const UserPanel = () => {
 
     const [name, setName] = useState("")
     const baseUrl = "http://192.168.1.50:8888"
     const baseImageUrl = baseUrl + "/static/images/"
     const onLoad = (event) => {
+
         fetch(baseUrl + "/orders/getAllOrders", {
+
+        // event.preventDefault();
+
+
+        fetch(baseUrl + "/users/", {
+
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
