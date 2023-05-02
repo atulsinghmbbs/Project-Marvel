@@ -1,15 +1,3 @@
-/* 
-body{
-  background-image: linear-gradient(to left,rgb(0, 13, 255), rgb(255, 255, 255));
-  background-repeat: no-repeat;
-  height: 760px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-
-} */
-
 .App{
   height: 550px;
   width: 120%;

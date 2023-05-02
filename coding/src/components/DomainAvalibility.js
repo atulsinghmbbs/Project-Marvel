@@ -37,7 +37,6 @@ const DomainAvalibility = () => {
             const getData = await fetch(`${bakendBaseUrl}/domains/search?searchTerm=${location.state.inputData}`)
                 .then((res) => res.json())
                 .then((data) => setDomainResult(data))
-            // .catch((err) => console.log("error", err))
             setLoading(false)
         } catch (error) {
             console.log("new error", error)
@@ -129,7 +128,7 @@ const DomainAvalibility = () => {
                                         changeIcon()
                                     }}
                                     ></i>
-                                ) : (<button>Add To Cart </button>)}
+                                ) : (<button>Add To Cart</button>)}
                             </div>
                         </div>
                     ))

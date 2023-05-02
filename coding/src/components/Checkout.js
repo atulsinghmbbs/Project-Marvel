@@ -4,15 +4,15 @@ import { useDispatch } from 'react-redux'
 import { removeFromCart } from './redux/action'
 import "./Checkout.css"
 import { bakendBaseUrl, bakendHeader } from './BaseUrl'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { updateItem } from './redux/action'
 
 
 
 const Checkout = () => {
 
-    const navigate = useNavigate()
 
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const dispatch = useDispatch()
 
     const select = useSelector((state) => state.cartData)
     console.log("selector checkout-page", select.cartData);
@@ -20,18 +20,17 @@ const Checkout = () => {
     const [updatedReduxData, setUpdatedReduxData] = useState([])
     const [loading, setLoading] = useState(true)
     const [totalPay, setTotalPay] = useState('')
-    const [selectedYear, setSelectedYear] = useState("1")
     const [razorpayOrderId, setRazorpayOrderId] = useState("")
 
 
+    const [sendYearsToBackend, setSendYearsToBackend] = useState("")
 
-    const dispatch = useDispatch()
+
 
     function removeDomain(productId) {
         console.log("id", productId)
         dispatch(removeFromCart(productId))
     }
-    // const total = Math.round(select.cartData.reduce((acc, domain) => acc + domain.domainPrice, 0));
 
 
     const getCart = async () => {
@@ -49,58 +48,40 @@ const Checkout = () => {
         }
     }
     console.log("updated redux store", updatedReduxData);
+    console.log("years", updatedReduxData.items)
 
-
-    //total payment and years wali api
-
-    const handleSelectChange = (event) => {
-        setSelectedYear(event.target.value);
+    const handleSelectChange = (event, id) => {
+        dispatch(updateItem({ event: event, id: id }))
     }
-    // console.log("selected year", selectedYear);
 
-    // const getTotalPayment = async () => {
-    //     try {
-    //         const response = await fetch(`${bakendBaseUrl}/orders/addOrder`, {
-    //             method: 'POST',
-    //             body: JSON.stringify(
-    //                 {
-    //                     "products": [
-    //                         {
-    //                             "qty": 1,
-    //                             "productId": "33",
-
-    //                         }
-    //                     ]
-    //                 }
-    //             ),
-    //             headers: bakendHeader,
-    //         })
-    //         const payment = await response.json()
-    //         setTotalPay(payment)
-    //         setRazorpayOrderId(payment)
-    //         setLoading(false)
-    //     } catch (error) {
-    //         console.log(error)
+    //         const getYearsUpdates = async () => {
+    //             try {
+    // 
+    //                 const response = await fetch(`${bakendBaseUrl}/carts/change-item-qty?cartItemId=${id}&qty=${event.target.value}`, {
+    //                     method: 'PUT',
+    //                     headers: bakendHeader
+    //                 })
+    //                 const year = await response.json()
+    //                 setSendYearsToBackend(year)
+    //                 setLoading(false)
+    //                 console.log("years", year);
+    //             } catch (error) {
+    //                 console.log(error)
+    //                 getYearsUpdates()
+    //             }
+    //         }
+    // 
     //     }
-    // }
-    // console.log("orderTotal", totalPay);
-    // console.log('RazorPayId', razorpayOrderId.razorpayOrderId) //this id send to razor payment
-
-    // function sendOrderId() {
-    //     navigate("/razorpay", { state: { razorpayOrderId: razorpayOrderId.razorpayOrderId, totalPay: totalPay } })
-
-    // }
 
     useEffect(() => {
         getCart()
-        // getTotalPayment()
         window.scroll(0, 0)
-    }, [selectedYear])
+    }, [select])
 
 
     try {
         return (
-            <div style={{ marginTop: 0 }} >
+            <div style={{ marginTop: 90 }} >
                 <h1 className='mycart-heading' style={{ fontSize: 100 }}>Your Cart</h1>
                 <div>
                     {!loading ? (updatedReduxData.items.map((item, i) => (
@@ -108,7 +89,7 @@ const Checkout = () => {
                         <div className='main-container' key={i}>
                             <h2>{item.product.uniqueName}</h2>
                             <h5 className='price'>{item.price}</h5>
-                            <select value={selectedYear} onChange={handleSelectChange}>
+                            <select value={item.qty} onChange={(e) => handleSelectChange(e, item.id)}>
                                 <option value="1">year 1</option>
                                 <option value="2">year 2</option>
                                 <option value="3">year 3</option>
@@ -130,26 +111,16 @@ const Checkout = () => {
                     {!loading ? (<div className='order-summary-wrapper'>
                         <p>Order Summary</p>
                         <hr />
-                        <h4>Subtotal:{updatedReduxData.totalSum}</h4>
-                        {/* <button onClick={sendOrderId}>Continue To Pay</button> */}
+                        <h4>Subtotal:{updatedReduxData.subTotal}</h4>
+                        <NavLink to='/checkoutform'>
+                            <button>Place Order</button>
+                        </NavLink>
                     </div>)
                         :
                         (<p>Domain is loading</p>)
                     }
-                    {/* <div className='order-summary-wrapper'>
-                    <p>Order Summary</p>
-                    <hr />
-                    <h4>Subtotal:{totalPay}</h4>
-                    <NavLink to='/razorpay'>
-                        <button>Continue To Pay</button>
-                    </NavLink> */}
-                    {/* </div> */}
                 </div>
-                <NavLink to='/CheckoutForm'>
-                    <button>add address</button>
-                </NavLink>
             </div >
-
         )
     } catch (error) {
         <div>
@@ -161,14 +132,6 @@ const Checkout = () => {
 
 
 
-    //<div className='order-summary-wrapper'>
-    //     <p>Order Summary</p>
-    //     <hr />
-    //     <h4>Subtotal:  {total}</h4>
-    //     <button onClick={()=>setbtnpop(true)}>Continue To Pay</button>
-    //     {/* <NavLink to="/RazPay"><button>Continue To Pay</button></NavLink> */}
-    //     <RazPay trigger={btnpopup}></RazPay>
-    // </div>
 
 }
 

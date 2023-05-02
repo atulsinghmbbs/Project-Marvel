@@ -24,8 +24,7 @@ import ResetPassword from './components/ResetPassword';
 import SearchDomain from './components/SearchDomain';
 import StarRating from './components/StarRating';
 import UserPanel from './components/UserPanel';
-// import CheckoutForm from './components/CheckoutForm';
-
+import OrderSummary from './components/OrderSummary';
 
 
 
@@ -50,7 +49,6 @@ const App = () => {
         <Route path='BlogPage' element={<BlogPage />} />
         <Route path='Signup' element={<Signup />} />
         <Route path='DomainAvalibility' element={<DomainAvalibility />} />
-        {/* <Route path='RazPay' element={<RazPay/>}></Route> */}
         <Route path='EmailVerification' element={<EmailVerification />} />
 
         <Route path='razorpay' element={<RazPay />} />
@@ -60,9 +58,12 @@ const App = () => {
         <Route path='FeedbackPanel' element={<FeedbackPanel />} />
         <Route path='DisplayFeedback' element={<DisplayFeedback />} />
         <Route path='Checkout' element={<Checkout />} />
+        <Route path='checkoutform' element={<CheckoutForm />} />
+        <Route path='ordersummary' element={<OrderSummary />} />
+        <Route path='razorpay' element={<RazPay />} />
 
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
 
       {/* <CheckoutForm /> */}
       {/* <RazPay/> */}

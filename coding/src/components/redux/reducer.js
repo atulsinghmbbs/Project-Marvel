@@ -1,5 +1,6 @@
 import { ADD_TO_CART } from "./Constant";
 import { REMOVE_FROM_CART } from "./Constant";
+import { UPDATE_ITEM } from "./Constant";
 
 
 export const cartData = (state = { cartData: [] }, action) => {
@@ -17,7 +18,17 @@ export const cartData = (state = { cartData: [] }, action) => {
                     (item) => item.productId !== removedProductId
                 ),
             };
+
+
+        case UPDATE_ITEM:
+            // console.log("years in reducer", action.years.items);
+            const items = action.years
+            console.log("items in  reducer", items);
+            // return [items.years, ...state]
+            return { ...state, cartData: [...[action.years, ...state.cartData]] };
+
         default:
             return state;
     }
 };
+
