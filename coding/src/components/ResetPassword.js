@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import "./ResetPassword.css"
 
 const ResetPassword = () => {
-    // const url = "https://www.example.com/load_simulation?token=uZVTLBCWcw33RIhvnbxTKxTxM2rKJ7YJrwyUXhXn"
     const url = window.location.href;
 
     const token = url.split("=")
@@ -11,8 +10,6 @@ const ResetPassword = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [matchPassword, setMatchPassword] = useState(true)
-    // console.log("token",finalToken)
-
 
 
 

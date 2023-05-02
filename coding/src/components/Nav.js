@@ -43,7 +43,6 @@ const Nav = () => {
 
 
   return (
-
     <div className='wrapper'>
       <div className='logo'>
         <NavLink to="/">
@@ -52,6 +51,7 @@ const Nav = () => {
       </div>
       <div className='nav-items'>
         <ul>
+          <NavLink to="/UserPanel" className="hello"><li>Your Dashborad</li></NavLink>
           <NavLink to="/AboutPage"  className="hello"><li>About</li></NavLink>
           <NavLink to="/BlogPage" className="hello"><li>Blog</li></NavLink>
           <NavLink to="/FeedbackPanel"  className="hello"><li>Feedback</li></NavLink>

@@ -1,22 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import "./UserPanel.css"
-import { useEffect } from 'react'
 
 const UserPanel = () => {
 
     const [name, setName] = useState("")
     const baseUrl = "http://192.168.1.50:8888"
-    const baseImageUrl = baseUrl+"/static/images/"
+    const baseImageUrl = baseUrl + "/static/images/"
     const onLoad = (event) => {
-        // event.preventDefault();
-       
-       
-        fetch(baseUrl+"/users/", {
+        fetch(baseUrl + "/orders/getAllOrders", {
             method: 'GET',
             headers: {
-
                 'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': 'Bearer eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJoYWFybWsiLCJzdWIiOiJKV1QgVG9rZW4iLCJpYXQiOjE2ODI2ODA0NDAsImV4cCI6MTY4Mjc2Njg0MCwiYXV0aG9yaXRpZXMiOiJST0xFX1VTRVIiLCJ1c2VybmFtZSI6IkhJUEwyIn0.55KJ2v8DVltPPrTV9p_INh7_HV4zzYOO55xoGvfa4Ag2aA0AhFSms0S8QEd0gt1x'
+                'Authorization': 'Bearer eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJoYWFybWsiLCJzdWIiOiJKV1QgVG9rZW4iLCJpYXQiOjE2ODI5MjgyODUsImV4cCI6MTY4MzAxNDY4NSwiYXV0aG9yaXRpZXMiOiJST0xFX1VTRVIiLCJ1c2VybmFtZSI6IkhJUEwzIn0.MfSsSJS3JencJaDcmgvZSzNeTg0AttB2Bpicw8OqLqH_XPZ4o3GnxX5ud_ASGuPD'
             },
         }).then((response) => response.json())
             .then((json) => { setName(json) });
@@ -26,31 +22,75 @@ const UserPanel = () => {
         onLoad()
     }, [])
 
-    console.log(name)
+
+
+
+
+    //upload an image
+    const [showpopup, setpopup] = useState(false);
+    function handleClick() {
+        setpopup(true);
+    }
+
+    function handleUploadImg(event) {
+        event.preventDefault();
+        const file = event.target.elements.image.files[0];
+        const formData = new FormData();
+        formData.append("image", file);
+        setpopup(false);
+        fetch(baseUrl + "/users/upload-pic", {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJoYWFybWsiLCJzdWIiOiJKV1QgVG9rZW4iLCJpYXQiOjE2ODMwMTMxNDEsImV4cCI6MTY4MzA5OTU0MSwiYXV0aG9yaXRpZXMiOiJST0xFX1VTRVIiLCJ1c2VybmFtZSI6IkhJUEw0In0.bqZp0X6KFPjWE4t2WrcM6efPSaOAycAEtv459cZHoMHnCtap392174PRdogDsnS6',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => {
+                window.alert("image uploaded sucessfully....")
+                console.log(json)
+            })
+            .catch(error => {
+                window.alert("Something went wrong.....")
+            })
+
+    }
+
+
+
 
     return (
         <div className="user-main">
             <div className="user-nav">
                 <div className='logo'>HAARMK</div>
-                <div className='user-dashboard'>USER DASHBOARD</div>
-                <div className='status'>Active</div>
+                <div className='user-dashboard'>{name.firstName} DASHBOARD</div>
+                <NavLink to="/ActiveServices" className="reset-nav">
+                    <div className='status'>Active Services</div>
+                </NavLink>
             </div>
-
 
 
             <div className="user-home">
                 <div className="user-menu">
                     <div className="upper-box">
-                        <div className='home one'>Home</div>
+                        <NavLink to="/" className="reset-nav">
+                            <div className='home one'>Home</div>
+                        </NavLink>
                         <div className='transactions one'>Transactions</div>
-                        <div className='order one'>Order</div>
-                        <div className='reset-password one'>Reset Password</div>
-                        <div className='subscirption one'>Logout</div>
+                        <NavLink to="/UserOrder" className="reset-nav">
+                            <div className='order one'>Order</div>
+                        </NavLink>
+                        <NavLink to="/ResetPassword" className="reset-nav">
+                            <div className='reset-password one'>Reset Password</div>
+                        </NavLink>
+                        <NavLink to="/LoginWithMe" className="reset-nav">
+                            <div className='subscirption one'>Logout</div>
+                        </NavLink>
                     </div>
                     <div className="lower-box">
-                        <button>Upgrade</button>
+                        <button>Renew</button>
                     </div>
-
                 </div>
 
 
@@ -64,11 +104,19 @@ const UserPanel = () => {
                             <div className='profile'>Profile</div>
                             <div className='edit'>
                                 <div className='pic'>
-                                    <img src={baseImageUrl + name.image} alt="" />
+                                    <img src={baseImageUrl + name.image} alt="" onClick={handleClick} />
+                                    {showpopup && (
+                                        <div className="popup">
+                                            <form onSubmit={handleUploadImg}>
+                                                <input type="file" name="image" />
+                                                <button type="submit">Upload</button>
+                                            </form>
+                                        </div>
+                                    )}
                                 </div>
                                 <div className='name' aria-readonly>{name.firstName}{" "}{name.lastName}</div>
                                 <div className='email' aria-readonly>{name.email}</div>
-                                <button onClick={openPopup}>Edit Profile</button>
+                                <button>Edit Profile</button>
                             </div>
 
                             <div className='box'>
@@ -118,18 +166,6 @@ const UserPanel = () => {
                                         </tr>
                                         <tr>
                                             <th scope="row">5</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">6</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">7</th>
                                             <td>Jacob</td>
                                             <td>Thornton</td>
                                             <td>@fat</td>
