@@ -1,8 +1,7 @@
+
 .sign-up-wrapper{
 
     height: 450px;
-    /* background-image: url("../images/gradientbg.jpg"); */
-
     background-size: cover;
     width: 30%;
     border: 1px solid whitesmoke;
@@ -15,20 +14,24 @@
     justify-content: center;
     align-items: center;
     box-shadow: 5px 10px 8px #888888;
-    background-color: white;
+   border-radius: 20px;
+   background-color: rgb(168, 190, 190);
+    /* background-color: white; */
    
 }
-
+/* .bg-color {
+    background-color: #bb2424 !important;
+    z-index: 3;
+  }
+   */
 
 input{
     border:1px solid grey;
 }
-
 .signup-input:placeholder-shown{
     font-size: 15px;
     background-color: #F3F6F8;
 }
-
 .sign-up-wrapper h2{
     color: black;  
     font-size: 30px;
@@ -39,7 +42,7 @@ input{
 }
 .sign-up-wrapper p{
   margin-left: -92px;
-  color: gray;
+  color: black;
   margin-top: 3px;
 }
 
@@ -57,13 +60,9 @@ input{
     border-radius: none;
     text-indent: 5px;
     width: 300px;
-    border-color: grey;
-    
+    border-color: grey;   
 }
-
-
 .btn-sign-in{
-
     width: 30%;
     margin-left: 15px;
     padding: 13px;
@@ -76,17 +75,11 @@ input{
     transition: .3s;
     margin-top: 10px;
 }
-
-
 .btn-sign-in:hover{
    transition: .3s;
    background: #FF6551;
 }
-
-
-
 /* media query========= */
-
 @media screen and (max-width:900px) {
     .sign-up-wrapper{
         right: 12%;
@@ -94,13 +87,11 @@ input{
         position: fixed;   
     } 
 }
-
 @media screen and (max-width:480px){
     .sign-up-wrapper{
         width: fit-content;
         height: 550px;
-        width: 70%;
-       
+        width: 70%;      
     }
     .signup-input {
         border-radius: none;
@@ -108,10 +99,8 @@ input{
         width: 221px;
         border-color: grey;
         margin-left: -31px;
-
 }
-.sign-up-wrapper h2{
-  
+.sign-up-wrapper h2{ 
         font-size: 21px;
         margin-left: 88px;
         margin-top: -102px;
@@ -126,4 +115,7 @@ input{
     .btn-sign-in {
         width: 50%;
 }
+}
+.body{
+    background-color: #FF6551;
 }

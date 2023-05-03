@@ -4,6 +4,8 @@ import { Alert } from "react-bootstrap";
 import { useState } from 'react';
 import { signUp } from '../services/userService';
 import Animation from './Animation';
+import { colors } from '@mui/material';
+
 
 function Signup() {
 
@@ -77,17 +79,13 @@ function Signup() {
     //console.log(formData)
 
     return (
-
-
-        <div className="background-image-signup" style={{ marginTop: 0 }}>
-
-            <form onSubmit={handleSubmit} className='sign-root'>
+        <div className="bg-color" style={{ marginTop: 0 }}>
+            <form onSubmit={handleSubmit}>
                 {error && <Alert variant="danger">{error}</Alert>}
 
                 <div className='sign-up-wrapper'>
                     <h2 text-3xl font-semibold text-gray-900>Create an account</h2>
                     <p>Already have an account?</p>
-                    <img src="" alt="" />
                     <div>
                         <label className="signup-label">
                             <br />
@@ -112,6 +110,7 @@ function Signup() {
                             <input type="password" name="password" value={formData.password} className="signup-input" placeholder=' Password' onChange={handleInputChange} />
                         </label>
                     </div>
+
                     <div>
                         <label className="signup-label">
                             <br />
@@ -121,6 +120,7 @@ function Signup() {
 
                     <button type="submit" className='btn-sign-in' >Submit</button>
                     <Animation />
+
 
                 </div>
             </form>

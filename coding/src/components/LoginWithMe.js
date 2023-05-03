@@ -4,7 +4,6 @@ import "./LoginWithMe.css"
 import { NavLink, json } from "react-router-dom";
 import { bakendHeader, bakendBaseUrl } from "./BaseUrl";
 
-
 // import { loginWithJWT } from "../services/userService";
 // import  NavLink  from "react-router-dom";
 
@@ -79,20 +78,22 @@ function LoginWithMe() {
 
                     <form onSubmit={handleSubmit} className="form">
                         <label className="login-label">
-                            <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Enter User Name" className="login-input" />
+                            <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder=" User Name" className="login-input" />
                         </label>
                         <br />
                         <label className="login-label">
-                            <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Enter Password" className="login-input" lassName="login-input" />
+                            <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder=" Password" className="login-input" lassName="login-input" />
                         </label>
 
                         <NavLink to="/EmailVerification">
                             <p className=" forgot-password text-primary" style={{ fontWeight: 600 }}>Forgot Password?</p>
                         </NavLink>
 
-                        <button type="submit" className="login-withme-submit-btn">Submit</button>
+                        <button type="submit" className="login-withme-submit-btn">Login</button>
                         <br />
+                        <h4>      ----------or----------</h4>
                         <button onClick={() => loginWithRedirect()} className="continue-with-google-btn" ><i class="fa-brands fa-google"></i>Sign in with Google</button>
+
                     </form>
                     <br />
 
