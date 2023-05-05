@@ -1,4 +1,4 @@
-.about-image{
+/* .about-image{
     background-image: url(../images/about-header1.jpg);
     background-repeat: no-repeat;
     height: 430px;
@@ -58,7 +58,6 @@
     margin-bottom: 60px;
     text-align: center;
   }
-  /* --------------------------------------------------get started start from here */
 
   .get-started-about{
     background: #5EFFCF;
@@ -95,49 +94,38 @@
     color: white;
 
 }
- 
-/* ======================== */
-/* for screens smaller than 768px (tablets and phones) */
 @media only screen and (max-width: 900px) {
-  /* adjust the padding to fit the screen */
   .about-image {
     padding: 20px;
     width: 200%;
   }
- /* decrease the font size of the heading */
   .about-heading {
     font-size: 28px;
     left: 128px;
     top: 28px;
     position: relative;
   }
-  /* decrease the font size of the paragraphs */
   .para-1, .para-2 {
     font-size: 16px;
     line-height: 1.5;
     left: -2px;
     margin: 20px 0;
   }
-  /* decrease the font size of the section heading */
   .our-website-heading {
       font-size: 15px;
-      /* margin: 30px 0; */
       margin-top: 182px;
       margin-left: -308px; 
   }
 }
-  /* center the horizontal line */
   .hr-parent {
     display: flex;
     justify-content: center;
     width: 70%;
     margin-left: -33px;
   } 
-  /* adjust the width of the horizontal line */
   .hr {
     width: 80%;
   }
-  /* use relative units for the images and titles */
   .about-icon-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -159,7 +147,6 @@
     font-size: 14px;
     margin: 10px 0;
   }
-  /* adjust the font size and padding of the button */
   .about-start-btn {
     font-size: 16px;
     padding: 10px 20px;
@@ -176,4 +163,245 @@
       font-size: 20px;
       width: 823px;
       font-weight: 450;
+} */
+
+
+/* ketan css============ */
+
+.about-image{
+  background-image: url(../images/about-header1.jpg);
+  background-repeat: no-repeat;
+  height: 430px;
+  /* margin-top: 60px; */
+  background-size:cover;
+  background-position: center center;
+  background-position: top;
+  z-index: 1;
 }
+.about-heading{
+  color: white;
+  position: relative;
+  left: 937px;
+  top: 42px;
+}
+.para-1{
+  color: white;
+  font-size: 20px;
+  width: 415px;
+  position: relative;
+  left: 839px;
+  top: 41px;
+  font-weight: 300;
+}
+.para-2{
+  color: white;
+  font-size: 20px;
+  width: 415px;
+  position: relative;
+  left: 839px;
+  top: 15px;
+  font-weight: 300;
+}
+.our-website-heading{
+  margin-top: 130px;
+}
+.hr-parent{
+  display: flex;
+  margin-left: 124px;
+  width: 80%;
+}
+.hr{
+  margin: 1rem 0;
+  border: 0;  
+  border-top: 3px solid;
+  opacity: .30;
+  width: 1200px;
+}
+.about-icon-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+
+.image-and-title-wrapper {
+  flex-basis: calc(33.33% - 10px);
+  margin-bottom: 60px;
+  text-align: center;
+}
+/* --------------------------------------------------get started start from here */
+
+.get-started-about{
+  background: #5EFFCF;
+  display: flex;
+  align-items: center;
+  height: 300px;
+}
+
+.get-started-about p{
+    font-size: 35px;
+    width: 1016px;
+    font-weight: 450;
+    margin-left: 283px;
+    margin-top: -104px;
+}
+
+.about-start-btn{
+  height: 73px;
+  width: 203px;
+  position: relative;
+  top: 48px;
+  left: -581px;
+  border-radius: 100px;
+  font-size: 22px;
+  border: none;
+  background: #F99751;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.about-start-btn:hover{
+  background-color: #9EF01A;
+  transition: .3s ease;
+  color: white;
+}
+
+/* ======================== */
+/* for screens smaller than 768px (tablets and phones) */
+@media screen and (max-width:1300px){
+.get-started-about p{
+  margin-left: 192px;
+  font-size: 35px;
+}
+.about-image{
+  width: 114%;
+}
+}
+@media only screen and (min-width: 960px) and (max-width:1024px){
+.about-image{
+  width: 170%;
+}
+.para-1, .para-2{
+  margin-left: -131px;
+}
+.about-heading {
+  margin-left: -130px;
+}
+.our-website-heading{
+  margin-left: -532px;
+}
+.hr-parent{
+  margin-left: 136px;
+  width: 50%;
+}
+.get-started-about p {
+  margin-left: 95px;
+}
+.about-start-btn{
+  margin-left: -83px;
+}
+}
+@media only screen and (max-width: 960px) {
+/* adjust the padding to fit the screen */
+.about-image {
+  padding: 20px;
+  width: 200%;
+}
+/* decrease the font size of the heading */
+.about-heading {
+  font-size: 28px;
+  left: 128px;
+  top: 40px;
+  position: relative;
+}
+/* decrease the font size of the paragraphs */
+.para-1, .para-2 {
+  font-size: 20px;
+  line-height: 1.5;
+  left: -2px;
+  margin: 20px 50px;
+}
+/* decrease the font size of the section heading */
+.our-website-heading {
+  font-size: 33px;
+  /* margin: 30px 0; */
+  margin-top: 85px;
+  margin-left: -662px;
+}
+
+/* adjust the width of the horizontal line */
+.hr {
+  width: 50%;
+}
+.hr-parent{
+  margin-left: 90px;
+  width: 100%;
+}
+/* use relative units for the images and titles */
+.about-icon-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -91px;
+}
+.image-and-title-wrapper {
+  width: 48%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.image-and-title-wrapper img {
+  height: 60%;
+  width: auto;
+  max-height: 80px;
+  max-width: 80px;
+}
+.image-and-title-wrapper h3 {
+  font-size: 14px;
+  margin: 10px 0;
+}
+/* adjust the font size and padding of the button */
+
+.get-started-about {
+   margin-left: -33px;
+}
+.get-started-about p{
+  font-size: 33px;
+  margin-left: 89px;
+}
+.about-start-btn{
+  margin-left: -73px;
+}
+}
+@media screen and (max-width:480px) {
+  .about-image{
+    background-size: cover;
+  }
+  .about-heading{
+    font-size: 40px;
+    top: 1px;
+
+  }
+  .our-website-heading{
+    font-size: 16px;
+  margin-left: -213px;
+  margin-top: 58px;
+}
+.para-1, .para-2 {
+  margin-left: 10px;
+}
+.hr-parent{
+  margin-left: 49px;
+  width: 100%;
+}
+.about-icon-wrapper{
+  padding-left: 77px;
+}
+.get-started-about p{
+  font-size: 20px;
+  margin-left: 23px;
+}
+.about-start-btn{
+  left: -339px;
+ 
+}
+  }

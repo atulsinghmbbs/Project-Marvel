@@ -1,4 +1,4 @@
-.wrapper{
+/* .wrapper{
     display: flex;
     height: 3.75rem;
     background-color: #166AEA;
@@ -38,7 +38,6 @@
     font-size: 1.1rem;
     margin: 0 1rem;
 }
-/* button sign up */
 .sign-up-btn{
     font-size: 12px;
     padding: 7px;
@@ -67,11 +66,138 @@
     color: #9EF01A;
 }
 
-
-/* media query================= */
-
-
 .hello{
   text-decoration: none;
+} */
+
+
+ /* ketan wali css ==================================== */
+
+ .navbar-container{
+    display: flex;
+    height: 3.75rem;
+    background-color: #166AEA;
+    background: #3F5193;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    top: 0px; 
+}
+.nav-items a{
+  text-decoration: none;
+}
+.logo img{
+    height: 3rem;
+    margin-left: 3.3rem;
+}
+.nav-items ul {
+    display: flex;
+    margin-right: 510px;
+    font-size: 1.1rem;
+}
+.nav-items ul li{
+    list-style: none;
+    margin: 0 19px;
+    position: relative;
+    top: 7px;
+    color: white;
+    cursor: pointer;   
+}
+.sign-up-details ul{
+    display: flex;
+    margin-right: 2rem;
+    position: relative;
+}
+.sign-up-details ul li{
+    list-style-type: none;
+    font-size: 1.1rem;
+    margin: 0 1rem;
+}
+.sign-up-btn{
+    font-size: 12px;
+    padding: 7px;
+    position: absolute;
+    width: 100px;
+    top: 3px;
+    right: 150px;
+    border-radius: 14px;
+    outline: none;
+    border: none;
+    background: #F99751;
+    height: 30px;   
+}
+.sign-up-btn:hover{
+    background-color: #9EF01A;
+    transition: .3s ease;
+    color: white;
+}
+.cart-icon{
+    font-size: 20px;
+    position: relative;
+    bottom: 8px;
+    color: white;
+}
+.cart-icon:hover{
+    color: #9EF01A;
 }
 
+.hamburger-menu:hover .dropdown-menu {
+  display: grid;
+  justify-content: center;
+  background-color: white;
+}
+.dropdown-menu li {
+  display: flex;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 35%;
+  height: 30vh;
+  color: #fff;
+  z-index: 1;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+
+  .hamburger-menu {
+    display:flex;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+  }
+  @media (max-width: 900px) {
+    .hamburger-menu {
+      display: block;
+    }
+    .nav-items {
+      display: none;
+    }
+    .sign-up-details {
+      display: none;
+    }
+    .open-menu .nav-items {
+      display: block;
+      position: absolute;
+      top: 50px;
+      width: 100%;
+      background-color: #000;
+    }
+    .open-menu .nav-items ul {
+      display: flex;
+    }
+    
+
+}

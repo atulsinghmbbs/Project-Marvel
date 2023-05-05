@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { Auth0Provider } from "@auth0/auth0-react"
 import { Provider } from 'react-redux';
 import store from './components/redux/store';
+// eslint-disable-next-line import/no-unresolved
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -2,12 +2,17 @@ import './RazPay.css';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import { bakendBaseUrl } from './BaseUrl';
+import { bakendHeader } from './BaseUrl';
 
 function RazPay() {
   const [amount, setAmount] = useState("");
 
   const [payId, setPayId] = useState("")
+
+  const [redirectToDashboard, setredirectToDashboard] = useState("")
+
+  const [loading, setLoading] = useState(true)
 
   const location = useLocation()
   console.log('razorpay me id', location.state.razorPayAllData)
@@ -15,6 +20,7 @@ function RazPay() {
   useEffect(() => {
     setPayId(location.state.razorPayAllData.razorpayOrderId)
     setAmount(location.state.razorPayAllData.total)
+    window.scroll(0, 0)
   }, [location.state.razorPayAllData])
 
   console.log("payId", payId)
@@ -32,6 +38,11 @@ function RazPay() {
         key: "rzp_test_MfVx6zeC4NgkKw",
         currency: "INR",
         order_id: payId,
+        handler: function (response) {
+          // setPaymentResponse(response)
+          sendPaymentToBackend(response)
+
+        },
         image: "https://example.com/your_logo",
         prefill: {
           contact: "",
@@ -71,17 +82,42 @@ function RazPay() {
     }
   };
 
+  // console.log("payement Response", paymentResponse);
+
+  const sendPaymentToBackend = (response) => {
+    console.log("res data", response);
+    fetch(`${bakendBaseUrl}/services/activate`, {
+      method: 'POST',
+      body: JSON.stringify({
+        ...response
+      }),
+      headers: bakendHeader
+    })
+
+      .then((response) => response.json())
+      .then((json) => (setredirectToDashboard(json)));
+    setLoading(false)
+  }
+
+  console.log("get payment response from backend", redirectToDashboard)
+
+  // 
+  //   if (loading === false) {
+  //     window.location.href = "/UserPanel"
+  //   }
+
+
+
   return (
-    <div className="App" style={{ marginTop: 100 }}>
-      <h2>HAARMK Payment Portal</h2>
-      <br />
-      <div className="input">
-        <p>You are paying</p>
+    <div className='payment-portal-wrapper' style={{ marginTop: 100 }}>
+      <div className="payment-container">
+        <h2 className=' text-center payment-heading'>Haarmk Payment Portal</h2>
+        <p className='you-paying'>You are paying!</p>
         <input type="number" value={amount} readOnly />
+        <button onClick={handleSubmit}>
+          Click here to pay
+        </button>
       </div>
-      <button className="btn" onClick={handleSubmit}>
-        Click here to pay
-      </button>
     </div>
   );
 }

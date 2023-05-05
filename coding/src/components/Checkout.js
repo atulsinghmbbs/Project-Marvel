@@ -5,7 +5,13 @@ import { removeFromCart } from './redux/action'
 import "./Checkout.css"
 import { bakendBaseUrl, bakendHeader } from './BaseUrl'
 import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { updateItem } from './redux/action'
+import Lottie from 'react-lottie';
+import animationData from './lotties/cart.json';
+import Loader from './CartAnimate'
+import CartAnimate from './CartAnimate'
+
 
 
 
@@ -79,59 +85,54 @@ const Checkout = () => {
     }, [select])
 
 
-    try {
-        return (
-            <div style={{ marginTop: 90 }} >
-                <h1 className='mycart-heading' style={{ fontSize: 100 }}>Your Cart</h1>
-                <div>
-                    {!loading ? (updatedReduxData.items.map((item, i) => (
 
-                        <div className='main-container' key={i}>
-                            <h2>{item.product.uniqueName}</h2>
-                            <h5 className='price'>{item.price}</h5>
-                            <select value={item.qty} onChange={(e) => handleSelectChange(e, item.id)}>
-                                <option value="1">year 1</option>
-                                <option value="2">year 2</option>
-                                <option value="3">year 3</option>
-                                <option value="4">year 4</option>
-                                <option value="5">year 5</option>
-                                <option value="6">year 6</option>
-                                <option value="7">year 7</option>
-                                <option value="8">year 8</option>
-                                <option value="9">year 9</option>
-                                <option value="10">year 10</option>
-                            </select>
-                            <button onClick={() => removeDomain(item.id)}>Remove</button>
-                        </div>
-                    ))) :
-
-                        (<p>You don't have any items in your cart</p>)
-                    }
-
-                    {!loading ? (<div className='order-summary-wrapper'>
-                        <p>Order Summary</p>
-                        <hr />
-                        <h4>Subtotal:{updatedReduxData.subTotal}</h4>
-                        <NavLink to='/checkoutform'>
-                            <button>Place Order</button>
-                        </NavLink>
-                    </div>)
-                        :
-                        (<p>Domain is loading</p>)
-                    }
+    return (
+        <div style={{ marginTop: 90 }} >
+            <p className='mycart-heading'>Your Cart</p>
+            {!loading ? (updatedReduxData.items.map((item, i) => (
+                <div className='checkout-main-container' key={i}>
+                    <div className='unique-name-and-price'>
+                        <h2>{item.product.uniqueName}</h2>
+                        <h5 className='price-item'>{item.price}</h5>
+                    </div>
+                    <div className='years-and-remove-btn'>
+                        <select value={item.qty} onChange={(e) => handleSelectChange(e, item.id)}>
+                            <option value="1">year 1</option>
+                            <option value="2">year 2</option>
+                            <option value="3">year 3</option>
+                            <option value="4">year 4</option>
+                            <option value="5">year 5</option>
+                            <option value="6">year 6</option>
+                            <option value="7">year 7</option>
+                            <option value="8">year 8</option>
+                            <option value="9">year 9</option>
+                            <option value="10">year 10</option>
+                        </select>
+                        <button className='remove-btn' onClick={() => removeDomain(item.id)}>Remove</button>
+                    </div>
                 </div>
-            </div >
-        )
-    } catch (error) {
-        <div>
-            <h1 className='error text-center'>Please Refresh The Page</h1>
-            <button className='refresh-btn' onClick={() => window.location.reload()}>Refresh</button>
+            ))) :
+
+                (<p></p>)
+            }
+
+            {!loading ? (
+                <div className='order-summary-wrapper'>
+                    <p>Order Summary</p>
+                    <hr />
+                    <h4>Subtotal:{updatedReduxData.subTotal}</h4>
+                    <p className='text-center mt-3 text-primary '>Subtotal does not include applicable taxes.</p>
+                    <p className='text-center mt-2 text-primary '>You are getting the best price we got!</p>
+                    <Link to='/checkoutform'>
+                        <button>Place Order</button>
+                    </Link>
+                </div>
+            )
+                :
+                (<CartAnimate />)
+            }
         </div>
-
-    }
-
-
-
+    )
 
 }
 

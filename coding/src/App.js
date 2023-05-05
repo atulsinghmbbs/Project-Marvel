@@ -16,15 +16,22 @@ import Checkout from './components/Checkout';
 import DisplayFeedback from './components/DisplayFeedback';
 import DomainAvalibility from './components/DomainAvalibility';
 import EmailVerification from './components/EmailVerification';
-
-import CheckoutForm from './components/CheckoutForm';
-
 import FeedbackPanel from './components/FeedbackPanel';
 import ResetPassword from './components/ResetPassword';
 import SearchDomain from './components/SearchDomain';
 import StarRating from './components/StarRating';
 import UserPanel from './components/UserPanel';
 import OrderSummary from './components/OrderSummary';
+import UserOrder from './components/UserOrder';
+import ActiveServices from './components/ActiveServices';
+import DNSService from './components/DNSService';
+
+
+
+
+import CheckoutForm from './components/CheckoutForm';
+
+
 
 
 
@@ -33,7 +40,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <Nav />
-      {/* <SideBar /> */}
       <Routes>
         <Route path='/' element={
           <React.Fragment>
@@ -52,24 +58,22 @@ const App = () => {
         <Route path='EmailVerification' element={<EmailVerification />} />
 
         <Route path='razorpay' element={<RazPay />} />
-        <Route path='CheckoutForm' element={<CheckoutForm />} />
-
-
         <Route path='FeedbackPanel' element={<FeedbackPanel />} />
         <Route path='DisplayFeedback' element={<DisplayFeedback />} />
         <Route path='Checkout' element={<Checkout />} />
-        <Route path='checkoutform' element={<CheckoutForm />} />
         <Route path='ordersummary' element={<OrderSummary />} />
         <Route path='razorpay' element={<RazPay />} />
+        <Route path='UserPanel' element={<UserPanel />}></Route>
+        <Route path='UserOrder' element={<UserOrder />}></Route>
+        <Route path='checkoutform' element={<CheckoutForm />}></Route>
+        <Route path='reset-password' element={<ResetPassword />}></Route>
+        <Route path='ActiveServices' element={<ActiveServices />}></Route>
+        <Route path='DNSService' element={<DNSService />}></Route>
+
+
 
       </Routes>
       <Footer />
-
-      {/* <CheckoutForm /> */}
-      {/* <RazPay/> */}
-      {/* <Checkout/> */}
-      {/* <ResetPassword /> */}
-      {/* <UserPanel /> */}
     </BrowserRouter>
 
   )

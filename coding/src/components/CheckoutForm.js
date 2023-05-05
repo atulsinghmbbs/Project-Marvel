@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react'
 import "./CheckoutForm.css"
 import countrydata from "./../Countrydata.json"
@@ -7,8 +5,6 @@ import { bakendBaseUrl } from './BaseUrl'
 import { bakendHeader } from './BaseUrl'
 import { json } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
-import RazPay from './RazPay'
 
 
 
@@ -68,46 +64,6 @@ const CheckoutForm = () => {
     function sendOrderIdToRazorPay(razorPayId) {
         navigate("/ordersummary", { state: { razorPayId } });
     }
-
-
-
-    // function handleSubmit() {
-    //     const createOrder = async () => {
-    //         const response = fetch(`${bakendBaseUrl}/orders/addOrder`, {
-    //             method: 'POST',
-    //             body: JSON.stringify({
-    //                 firstName: firstName,   
-    //                 lastName: lastName,
-    //                 addressLine1: building,
-    //                 addressLine2: landmark,
-    //                 city: city,
-    //                 state: stateName,
-    //                 phone: mobileNo,
-    //                 fax: "string",
-    //                 email: "string",
-    //                 organization: organization,
-    //                 gstin: gstin,
-    //                 postalCode: postal,
-    //                 country: countryName
-    //             }),
-    //             headers: bakendHeader,
-    //         })
-    //             .then((response) => response.json())
-    //             .then((json) => {
-    //                 setRazorPayId(json)
-    //                 console.log("orderId", razorPayId)
-    //             })
-    //     }
-    //     createOrder()
-    //     sendOrderIdToRazorPay()
-    // }
-
-
-    // function sendOrderIdToRazorPay() {
-    //     navigate("/ordersummary", { state: { razorPayId: razorPayId } })
-    // }
-
-
 
     //get the countryid states and country name
     const handlecountry = (e) => {
@@ -234,4 +190,4 @@ const CheckoutForm = () => {
     )
 }
 
-export default CheckoutForm
+export default CheckoutForm;
