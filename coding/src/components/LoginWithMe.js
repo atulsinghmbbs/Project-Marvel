@@ -6,6 +6,10 @@ import { bakendHeader, bakendBaseUrl } from "./BaseUrl";
 
 // import { loginWithJWT } from "../services/userService";
 // import  NavLink  from "react-router-dom";
+// import Lottie from 'react-lottie';
+// import animationData from './lotties/login.json';
+// import Loader from './Animatelogin'
+import Animatelogin from "./Animatelogin";
 
 
 
@@ -28,6 +32,8 @@ function LoginWithMe() {
         console.log('password', password);
 
 
+
+
         // const loginFormData = { "username": email, "password": password }
 
         //     loginWithJWT(loginFormData).then((resp) => {
@@ -48,6 +54,7 @@ function LoginWithMe() {
         //     console.log("========================Akash yadav ===========================")
 
         // };
+
 
         fetch(`${bakendBaseUrl}/auth/login`, {
             method: 'POST',
@@ -72,7 +79,7 @@ function LoginWithMe() {
 
     return (
         <>
-            <div style={{ marginTop: 60 }} className="login-page-container">
+            <div id="page-123" style={{ marginTop: 60 }} className="login-page-container">
                 <div className="log-in-wrapper">
                     <h1 className="login-page-heading">Welcome Back!</h1>
 
@@ -96,6 +103,7 @@ function LoginWithMe() {
 
                     </form>
                     <br />
+                    <Animatelogin />
 
                 </div>
             </div>

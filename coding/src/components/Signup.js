@@ -79,7 +79,7 @@ function Signup() {
     //console.log(formData)
 
     return (
-        <div className="bg-color" style={{ marginTop: 0 }}>
+        <div className="bg-color" style={{ marginTop: 10 }}>
             <form onSubmit={handleSubmit}>
                 {error && <Alert variant="danger">{error}</Alert>}
 

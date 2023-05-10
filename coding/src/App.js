@@ -10,10 +10,7 @@ import React from 'react'
 import LoginWithMe from './components/LoginWithMe';
 import AboutPage from './components/AboutPage';
 import BlogPage from './components/BlogPage';
-
 import Signup from './components/Signup';
-// import SideBar from './components/SideBar';
-
 import SearchDomain from './components/SearchDomain';
 import DomainAvalibility from './components/DomainAvalibility';
 import Checkout from './components/Checkout';
@@ -28,12 +25,9 @@ import StarRating from './components/StarRating';
 
 
 const App = () => {
-
   return (
-
     <BrowserRouter>
       <Nav />
-      {/* <SideBar /> */}
       <Routes>
         <Route path='/' element={
           <React.Fragment>
@@ -41,9 +35,7 @@ const App = () => {
             <Slider />
             <Templates />
             <SearchDomain />
-            <RazPay/>
-            <FeedbackPanel/>
-            <DisplayFeedback/>
+            <Footer />
           </React.Fragment>
         } />
 
@@ -59,16 +51,12 @@ const App = () => {
         <Route path='EmailVerification' element={<EmailVerification />} />
 
       </Routes>
-      <Footer />
-
-      {/* <ResetPassword/> */}
-
-      <ResetPassword/>
-<StarRating/>
-
     </BrowserRouter>
 
   )
 }
 
 export default App
+
+
+

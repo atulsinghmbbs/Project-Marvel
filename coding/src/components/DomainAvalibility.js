@@ -6,6 +6,9 @@ import { addToCart } from './redux/action'
 import { useDispatch } from 'react-redux'
 import { bakendBaseUrl } from './BaseUrl'
 import { bakendHeader } from './BaseUrl'
+import Lottie from 'react-lottie';
+import animationData from './lotties/loader.json';
+import Loader from './Loader'
 
 
 const DomainAvalibility = () => {
@@ -94,7 +97,7 @@ const DomainAvalibility = () => {
         <div style={{ marginTop: 100 }}>
             <div className="result-box">
                 <h1>
-                    {!isLoading ? resultText() : "loading..."}
+                    {!isLoading ? resultText() : " "}
 
                 </h1>
             </div>
@@ -112,7 +115,8 @@ const DomainAvalibility = () => {
                         </div>
                     ))
                 ) : (
-                    <p className='no-suggestion'>No suggestions available.</p>
+
+                    <Loader />
                 )}
 
             </div>

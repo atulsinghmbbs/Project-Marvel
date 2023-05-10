@@ -45,6 +45,7 @@ const Nav = () => {
       </div>
       <div className='nav-items'>
         <ul>
+          <a href="https://twitter.com/Dave_Conner" class="btn btn-2">Hover</a>
           <NavLink to="/AboutPage"><li>About</li></NavLink>
           <NavLink to="/BlogPage"><li>Blog</li></NavLink>
           <li>Feedback</li>

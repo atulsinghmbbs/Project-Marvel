@@ -12,7 +12,7 @@ const Templates = () => {
                 <p>Explore 100s of Templates Designed for Bussiness Like Yours</p>
             </div>
             <div className='parent-template-btn'>
-                <NavLink to="/Domain">
+                <NavLink to="/Domain" style={{ textDecoration: 'none' }}>
                     <button className='template-btn'>Get Started</button>
                 </NavLink >
             </div>

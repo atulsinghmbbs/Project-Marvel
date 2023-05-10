@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
 }
-
 .user-image{
     position:relative;
     right: 108px;
@@ -12,21 +11,16 @@
     transition: .3s ease;
     bottom: 7px;
 }
-
 .user-image:hover{
     max-width: 100px;
     border-radius: 10%;
     scale: 1.1;
 }
-
-
-
 .user-name{
     position: absolute;
     top: 40px;
     width: 100%;
     right: -991px;
-
 }
 .btn-log-in{
     font-size: 12px;
@@ -34,21 +28,18 @@
     position: absolute;
     width: 100px;
     top: 14px;
-    right: 64px;
+    right: 81px;
     border-radius: 14px;
     outline: none;
     border: none;
     background: #F99751;
     height: 30px;
 }
-
 .btn-log-in:hover{
     background-color: #9EF01A;
     transition: .3s ease;
     color: white;
 }
-
-
 .btn-log-out{
     font-size: 12px;
     padding: 7px;
@@ -61,9 +52,7 @@
     border: none;
     background: #F99751;
     height: 30px;
-
 }
-
 .btn-log-out:hover{
     background-color: #9EF01A;
     transition: .3s ease;

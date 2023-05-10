@@ -1,52 +1,53 @@
-
-/* 
-.first-heading{
-    font-size: 46px;
-    font-weight: 500;
-}
-.packing-info-heading{
-    font-size: 23px;
-    font-weight: 600;
-} */
-
 .pricing-wrapper{
     display: flex;
-    margin-top: 100px;
-    justify-content: space-around;
-   
-}
+    margin-top: 60px;
+    justify-content:space-evenly;
+    background-color:#151419;
+    height:650px;
 
+}
+.pricing-wrapper-margin{
+  margin-top: -50px;
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: space-evenly;
+}
 .checked-image{
     height: 32px;
     width: 32px;
+    margin-top: -20px;
 }
 
 .free-list{
     display: flex;
     margin-top: 40px;
+    height: 0px;
+}
+.plans{
+  color: white;
 }
 
 .price-list-free{
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    width: 280px;
-    
+    background: #23242a;
+    width: 300px;
+    height: 500px; 
+    margin-top: 20px;   
 }
 .image-logo{
     margin-top: 30px;
 }
 
-
 .free-heading {
-    font-size: 21px;
+    font-size: 30px;
     font-weight: 650;
-    color: #252B42;
-
+    color: white
 }
 
 .free-package{
     color: #848484;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 500;
 }
 
@@ -59,6 +60,9 @@
     background: #FF6551;
     color: white;
 }
+.move-free-btn{
+  margin-top: 40px;
+}
 
 
 
@@ -69,6 +73,7 @@
 .plans{
     margin-bottom: 10px;
     margin-left: 13px;
+    margin-top: -20px;
 }
 
 
@@ -77,20 +82,29 @@
 .premium-list{
     display: flex;
     margin-top: 40px;
+    height: 0px;
+}
+.premium-header{
+  color: black;
+  font-weight: 600;
+}
+.premium-bg{
+  background-color: white;
 }
 
-
 .price-list-premimum{
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    width: 280px;
+  background: #23242a;
+   
+    width: 300px;
+    height: 580px; 
+    margin-top: 20px;  
     
 }
 
 .premium-heading {
-    font-size: 21px;
+    font-size: 30px;
     font-weight: 650;
-    color: #252B42;
+    color: white
     
 }
 
@@ -108,93 +122,59 @@
         background: #FF6551;
         color: white;
     }
+    .move-premium{
+      margin-top: 24px;
+    }
 
     .ruppee{
         position: relative;
-        left: 113px;
-        font-size: 22px;
+        left: 1px;
+        font-size: 28px;
+        color: white;
     }
-        
- .ruppee-img{
-     left: 114px;
-     position: relative;
-            
-}
+
+
 /* media query=========== */
-
-@media only screen and (max-width: 991px) {
- .free-heading,
-    .premium-heading {
-      font-size: 20px;
-    }
-  
-    .free-package {
-      font-size: 16px;
-    }
-  
-    .plans {
-      font-size: 16px;
-    }
-  
-    .btn-for-free,
-    .btn-for-premium {
-      margin-top: 20px;
-    }
-  
-    .checked-image {
-      margin-right: 8px;
-      margin-top: 2px;
-    }
+@media screen and (max-width:480px){
+  .pricing-wrapper{
+    height: 200%;
   }
-  
-  @media only screen and (max-width: 768px) {
-    .free-heading,
-    .premium-heading {
-      font-size: 18px;
-    }
-    .pricing-wrapper{
-        flex-wrap: wrap;
-    }
-    .price-list-free{
-        margin-bottom: 150px;
-        margin-left: 170px;
-    }
-    .price-list-premimum{
-        margin-left: 170px;
-    }
-    .price-list-premimum .ruppee {
-        font-size: 20px;
-        line-height: 28px;
-        margin-left: -1px;
-
-    }
-    .ruppee-img{
-        margin-left: -42px;
-    }
-
-    .free-package {
-      font-size: 14px;
-    }
-  
-    .plans {
-      font-size: 14px;
-    }
-  
-    .btn-for-free,
-    .btn-for-premium {
-      margin-top: 15px;
-    }
-  
-    .checked-image {
-      margin-right: 6px;
-      margin-top: 2px;
-    }
-  
-    .price-list-premimum .ruppee {
-      font-size: 20px;
-      line-height: 28px;
-    }
+  .price-list-premimum{
+    width: 56%;
+    height: 86%;
   }
+  .price-list-free{
+    width: 40%;
+  }
+  .plans{
+    margin-left: 8px;
+    margin-top: -20px;
+  }
+  .checked-image{
+    margin-left: 12px;
+  }
+  .btn-for-free{
+    height: 35px;
+    width: 131px;
+  }
+  .premium-heading{
+    font-size: 17px;
+  }
+  .premium-package{
+    font-size: 15px;
+    margin-top: -18px;
+  }
+  .ruppee{
+    top: -19px;
+  }
+  .premium-list{
+    height: 10px;
+    width: 255px;
+  }
+  .text-primary{
+    display: none;
+  }
+}
 
 
  

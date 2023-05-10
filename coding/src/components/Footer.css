@@ -1,54 +1,43 @@
-
 .first-list-items{
     margin-left: 75px;
     font-size: 19px;
-
 }
-
 .second-list-heading{
     margin-left: 80px;
     font-size: 19px;
 }
 
+
 .third-list-heading{
     margin-left: 154px;
     font-size: 19px;
 }
-
 .footer-container{
     margin-top: auto;
-    margin-top: 143vh;
+    
 }
-
 /* media query */
 /* Mobile */
 @media only screen and (max-width: 767px) {
     .footer-container {
       padding: 30px;
     }
-
     .first-list-items {
       margin-top: 20px;
     }
-
     .second-list-heading {
       margin-top: 20px;
     }
-
     .third-list-heading {
       margin-top: 20px;
     }
-
     .second-list-items {
       margin-bottom: 20px;
     }
-
     .third-list-items {
       margin-bottom: 20px;
     }
-
     .col-lg-3 {
       margin-bottom: 20px;
-    }
-
+   }
 }

@@ -1,6 +1,4 @@
-
 .sign-up-wrapper{
-
     height: 450px;
     background-size: cover;
     width: 30%;
@@ -15,16 +13,9 @@
     align-items: center;
     box-shadow: 5px 10px 8px #888888;
    border-radius: 20px;
-   background-color: rgb(168, 190, 190);
-    /* background-color: white; */
-   
+   background-color: rgb(243, 231, 217);
+    /*background-color: white; */
 }
-/* .bg-color {
-    background-color: #bb2424 !important;
-    z-index: 3;
-  }
-   */
-
 input{
     border:1px solid grey;
 }
@@ -45,7 +36,6 @@ input{
   color: black;
   margin-top: 3px;
 }
-
 .signup-label{
   display: flex;
     font-size: 20px;
@@ -53,9 +43,7 @@ input{
     color: azure;
     margin-left: 33px;
     margin-bottom: 13px;
-
 }
-
 .signup-input{
     border-radius: none;
     text-indent: 5px;

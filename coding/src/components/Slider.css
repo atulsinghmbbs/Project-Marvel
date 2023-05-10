@@ -1,28 +1,18 @@
-
 .image-slider{
   height: 220px;
 }
-
-
 .slider-img{
   /* position: relative;
   bottom: 220px; */
   margin-top: -222px;
 }
-
-
 .slider-img{
   animation-name: moving-image;
   animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction:alternate-reverse;
-
 }
-
-
-
-
 @keyframes moving-image{
   0%{
       left: 0px;
@@ -34,22 +24,15 @@
   75%{
       opacity: .5;
   }
-
   100%{
       left: 100vw;
       opacity: .2;
 }
-
 }
-
-
 /* ==================================== */
-
-
 .image-slider {
 position: relative;
 }
-
 .image-slider img {
 display: block;
 height: 220px;
@@ -57,27 +40,16 @@ width: 100%;
 object-fit: cover;
 }
 
-/* @media (min-width: 768px) {
-.image-slider img {
-  height: 320px;
-}
-}
-
-@media (min-width: 1024px) {
-.image-slider img {
-  height: 400px;
-}
-} */
-
-/* media queries=================== */
-/* Add these media queries to the existing SideBar.css file */
-
-@media only screen and (max-width: 991px) {
-  .header {
-    margin-top: 100px;
+@media screen and (min-width:480px) and (max-width:768px){
+  .image-slider img{
+    width: 170%;
   }
 }
-
+@media screen and (min-width:768px) and (max-width:1000px){
+  .image-slider img{
+    width: 170%;
+  }
+}
 @media only screen and (max-width: 767px) {
   .header {
     margin-top: 80px;
@@ -121,7 +93,14 @@ object-fit: cover;
     margin-right: 10px;
   }
 }
-
+@media screen and (max-width:480px){
+  .image-slider img {
+    display: block;
+    height: 220px;
+    width: 200%;
+    object-fit: cover;
+}
+}
 
 
 
