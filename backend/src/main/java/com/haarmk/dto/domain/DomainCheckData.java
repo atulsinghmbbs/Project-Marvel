@@ -12,4 +12,5 @@ public class DomainCheckData {
     private double purchasePrice;
     private String purchaseType;
     private double renewalPrice;
+    private Boolean isPresentInCart;
 }

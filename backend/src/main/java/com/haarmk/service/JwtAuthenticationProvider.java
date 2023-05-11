@@ -7,6 +7,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,12 +25,17 @@ public class JwtAuthenticationProvider implements AuthenticationProvider{
 	    
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-
-		User user = userService.getUserByEmail(authentication.getName());
+		User user = null;
+		try {
+			user = userService.getUserByEmail(authentication.getName());
+		} catch (UsernameNotFoundException e) {
+			throw new BadCredentialsException("invalid credentials");
+		}
+//		User user = userService.getUserByEmail(authentication.getName());
 		if(passwordEncoder.matches((String)authentication.getCredentials(), user.getPassword())) {
 			return new UsernamePasswordAuthenticationToken(user,null,user.getAuthorities());
 		}else {
-			throw new BadCredentialsException("invalid password");
+			throw new BadCredentialsException("invalid credentials");
 		}
 	}
 

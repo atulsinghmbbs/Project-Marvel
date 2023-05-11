@@ -6,12 +6,8 @@ import lombok.Data;
 
 @Data
 public class DomainReq {
-	private String domainName;
-//	@JsonIgnores
-//    private List<String> nameservers;
-    private DomainRegisterContactsReq contacts;
-    @JsonIgnore
-    private boolean locked;
-    @JsonIgnore
-    private boolean autorenewEnabled;
+	String domainName;
+    DomainRegisterContactsReq domainRegisterContactsReq;
+    boolean locked;
+    boolean autorenewEnabled;
 }

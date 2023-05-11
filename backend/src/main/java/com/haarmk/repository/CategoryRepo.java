@@ -1,19 +1,12 @@
-/**
- * 
- */
 package com.haarmk.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import com.haarmk.model.ProductCategory;
+import com.haarmk.model.Product;
+import com.haarmk.model.Category;
 
-/**
- * @author HMK05
- *
- */
-
-@Repository
-public interface CategoryRepo  extends JpaRepository<ProductCategory, Integer>{
-
+public interface CategoryRepo extends JpaRepository<Category, Integer>{
+	Optional<Category> findByName(String name);
 }

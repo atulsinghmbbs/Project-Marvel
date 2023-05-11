@@ -10,6 +10,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ser.std.StdArraySerializers.BooleanArraySerializer;
 import com.haarmk.dto.EmailDetails;
 import com.haarmk.exception.EmailException;
 import com.haarmk.service.interfaces.EmailService;

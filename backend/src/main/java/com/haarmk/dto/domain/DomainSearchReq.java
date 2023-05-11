@@ -11,5 +11,5 @@ public class DomainSearchReq {
 
 	int timeout;
 	String keyword;
-	List<String> tldFilter;
+	String[] tldFilter;
 }

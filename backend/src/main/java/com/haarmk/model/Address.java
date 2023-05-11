@@ -25,17 +25,24 @@ import lombok.Data;
 public class Address {
 	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private String firstName;
+	private String lastName;
 	private String addressLine1;
 	private String addressLine2;
 	private String city;
+	private String state;
+	private String phone;
+	private String fax;
+	private String email;
+	private String organization;
+	private String gstin;
 	private String postalCode;
 	@CreationTimestamp
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false, updatable = false, insertable = false)
 	private OffsetDateTime createdAt;
-	@ManyToOne
-	private Country country;
-	@OneToOne
-	private User user;
+//	@ManyToOne
+	private String country;
+
 	
 	
 	
