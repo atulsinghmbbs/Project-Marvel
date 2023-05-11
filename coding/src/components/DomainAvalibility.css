@@ -1,48 +1,24 @@
-/* .result-box{
-    width: 38%;
-    background: white;
-    height: 222px;
-    border: 1px solid grey;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    margin-left: 80px;
-    margin-top: 120px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-
-
-.suggestion-box{
-    margin-top: 100px;
-}
-
-.suggestion-heading{
-    margin-left: 40px;
-    margin-bottom: 30px;
-} */
 
 .available{
     overflow: hidden;
     padding: 10px;
     height: 80px;
-    width: 80%;
+    width: 86%;
     display: flex;
     background-color: white;
-    color: black;
-    border: 2px solid gray;
-    margin-left: 150px;
-    align-items: center;
-    justify-content: space-between;
+    border: 2px solid grey;
+    margin-left: 100px;
+
+    
 }
 
 .price{
     margin-top: 15px;
-    margin-left: 500px;
+    width: 100%;
     height: 40px;
-    width: 150px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 25px;
     
 }
@@ -50,14 +26,15 @@
 .available button{
     background-color: black;
     color: white;
-    padding: 2px;
-    width: 180px;
+    width: 120px;
+    padding: 3px 0;
     border-radius: 5px;
-    font-size: 25px;
+    font-size: 20px;
+    border: none;
 }
 
 .available button:hover{
-    background-color: rgb(41, 41, 41);
+    background: green;
 }
 
 .price i{
@@ -67,11 +44,17 @@
 }
 
 .item{
-    font-size: 35px;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    color:green;
 }
 
 
-
+.price :nth-child(2){
+    margin-left: 470px;
+    font-size: 20px;
+}
 .suggestion{
     border: 2px solid gray;
     padding: 10px;
@@ -113,31 +96,65 @@
 }
 
 
-.doller{
-    height: 20px;
-    width: 20px;
-    border: 2px solid gray;
-    margin-top: -12px;
-    font-size: 18px;
-    margin-left: 600px;
-}
-
 
 .item-price{
-    margin-left: 980px;
+    margin-left: 800px;
+    font-size: 20px;
     position: absolute;
+    margin-top: 6px;
 }
 
 
 .not-available{
-    font-size: 22px;
-    margin-left: 155px;
+    font-size: 20px;
+    color: red;
+    margin: 25px 0;
 
 }
 
 
 .no-suggestion{
-    color: red;
-    font-size: 20px;
+    color: green;
+    font-size: 35px;
     font-weight: bold;
+}
+
+.icon {
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.icon:hover{
+    color: green;
+    transition: .3s ease;
+}
+
+.domain-error{
+    font-size: 50px;
+    color: #FF4500;
+    margin-top: 100px;
+    word-spacing: -8px;
+}
+
+.continue-btn{
+    padding: 1px 10px;
+    border: none;
+    background: green;
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.continue-btn:hover{
+  transition: .3s;
+  background: black;
+
+}
+
+.similar-domain{
+    font-size: 25px;
+    color: green;
+    font-weight: 700;
 }

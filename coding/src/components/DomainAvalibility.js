@@ -4,14 +4,28 @@ import { useLocation } from 'react-router-dom'
 import "./DomainAvalibility.css"
 import { addToCart } from './redux/action'
 import { useDispatch } from 'react-redux'
+import { bakendBaseUrl } from './BaseUrl'
+import { bakendHeader } from './BaseUrl'
+import { NavLink } from 'react-router-dom'
+import Lottie from 'react-lottie';
+import animationData from './lotties/loader.json';
+import Loader from './Loader'
 
 
 const DomainAvalibility = () => {
 
-    const [domainResult, setdomainResult] = useState([])
+    const [domainResult, setDomainResult] = useState([])
     const [isLoading, setLoading] = useState(true)
-    const [price, setPrice] = useState("")
-    const[newPrice,setNewPrice] = useState("")
+    // const [newPrice, setNewPrice] = useState("")
+
+
+
+    const [error, setError] = useState("")
+
+    const [isLoadingError, setIsLoadingError] = useState("")
+
+
+
 
     const dispatch = useDispatch()
 
@@ -22,71 +36,81 @@ const DomainAvalibility = () => {
 
 
     const getDomainData = async () => {
-        const getData = await fetch(`http://localhost:8888/domains/search?searchTerm=${location.state.inputData}`)
-        .then((res) => res.json())
-        .then((data) => console.log(setdomainResult(data)))
-        setLoading(false)
+        try {
+            const getData = await fetch(`${bakendBaseUrl}/domains/search?searchTerm=${location.state.inputData}`, {
+                headers: bakendHeader
+            })
+                .then((res) => res.json())
+                .then((data) => setDomainResult(data))
+            setLoading(false)
+        } catch (error) {
+            console.log("new error", error)
+            setIsLoadingError(false)
+            setError(error)
+        }
     }
     console.log("Your Result data", domainResult)
-    
-    
+
+
+
     useEffect(() => {
         window.scroll(0, 0)
         getDomainData()
-    }, [location.state.inputData])
-    
-    useEffect(() => {
-        if (domainResult.result) {
-            setNewPrice(domainResult.result.purchasePrice)
-        }
-    }, [domainResult])
-    
-    console.log("new price",newPrice)
-
-   
-
-    useEffect(() => {
-        fetch(`https://api.apilayer.com/exchangerates_data/convert?to=INR&from=USD&amount=${newPrice}`,{
-            headers:{
-                'apiKey':API_KEY
-            }
-        })
-            .then((response) => response.json())
-            .then((data) => console.log(setPrice(data)))
-
-    }, [newPrice])
-
-    console.log("price", price)
+    }, [location.state.inputData],)
 
 
 
+    function resultTextt() {
+        try {
+            let resultText;
+            if (domainResult.result.purchasable === true) {
+                resultText = (
+                    <div>
+                        <p className='item text-center'>This is available</p>
+                        <div className='available'>
+                            <div className="price">
+                                <p>{domainResult.result.domainName}</p>
+                                <p>{domainResult.result.purchasePrice}</p>
+                                {!domainResult.result.isPresentInCart ? (
+                                    <div>
+                                        <button onClick={() => {
+                                            dispatch(addToCart({ domainName: domainResult.result.domainName, domainPrice: domainResult.result.purchasePrice }));
+                                            domainResult.result.isPresentInCart = true
+                                            setDomainResult({ ...domainResult, result: { ...domainResult.result } })
+                                        }}
+                                        >Buy Now</button>
+                                    </div>
 
-
-    function resultText() {
-
-        let resultText;
-        if (domainResult.result.purchasable === true) {
-            resultText =
-                <div className='available'>
-                    <p className='item'>This is available</p>
-                    <div className="price">
-                        <i class="fa-sharp fa-solid fa-dollar-sign"></i><p>{price}</p>
+                                ) : (
+                                    <NavLink to="/Checkout">
+                                        <button className='continue-btn'>continue</button>
+                                    </NavLink>
+                                )
+                                }
+                            </div>
+                        </div>
                     </div>
-                    <button>Buy Now</button>
-                </div>
-        } else {
-            resultText = <p className='not-available'>This domain is not available <br /> Some domains are given below, you can select</p>;
+                );
+            } else {
+                resultText = (
+                    <div>
+                        <p className='not-available text-center'>This domain is not available Some domains are given below, you can select</p>
+                        <p className='similar-domain text-center'>Some similar domains are available </p>
+                    </div>
+                );
+            }
+            return resultText;
+        } catch (error) {
+            console.log("why this error is coming", error)
         }
-        return resultText
     }
-
 
     return (
         <div style={{ marginTop: 100 }}>
             <div className="result-box">
-                <h1>
-                    {!isLoading ? resultText() : "loading..."}
 
+                <h1>
+                    {!isLoading ? resultTextt() : ""}
                 </h1>
             </div>
 
@@ -98,19 +122,32 @@ const DomainAvalibility = () => {
                             <div className='suggestion'>
                                 <h3 className='suggestion-heading'>{item.domainName}</h3>
                                 <p className='item-price'>{item.purchasePrice}</p>
-                                <i style={{ cursor: "pointer" }} className="fa-solid fa-cart-plus" onClick={() => dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }))} ></i>
+
+                                {!item.isPresentInCart ? (
+                                    <i className="fa-solid fa-cart-plus icon" onClick={() => {
+                                        console.log("items", item)
+                                        dispatch(addToCart({ domainName: item.domainName, domainPrice: item.purchasePrice }));
+                                        item.isPresentInCart = true
+                                        setDomainResult({ ...domainResult, suggestions: [...domainResult.suggestions] })
+                                    }}
+                                    ></i>
+                                ) : (
+                                    <NavLink to="/Checkout">
+                                        <button className='continue-btn'>continue</button>
+                                    </NavLink>
+                                )
+                                }
                             </div>
                         </div>
                     ))
                 ) : (
-                    <p className='no-suggestion'>No suggestions available.</p>
+                    <Loader />
                 )}
-
             </div>
-
         </div>
-
     )
+
+
 }
 
-export default DomainAvalibility
+export default DomainAvalibility;

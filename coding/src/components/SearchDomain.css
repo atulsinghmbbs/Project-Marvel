@@ -1,46 +1,193 @@
-.search-domain-wrapper{
-    background-color: greenyellow;
-    height: 300px;
-    background-image: linear-gradient(#008080,white);
+/* .search-domain-wrapper {
+  background-color: greenyellow;
+  height: 300px;
+  background-image: linear-gradient(#008080, white);
+  margin-top: -20px;
+  padding-top: 50px;
 }
 
+.domain-heading {
+  display: flex;
+  font-family: "Oswald", sans-serif;
+  justify-content: center;
+}
+.domain-input-field {
+  display: flex;
+  justify-content: center;
+}
+
+.domain-input-field input {
+  margin-top: 60px;
+  width: 41%;
+  text-indent: 7px;
+  height: 38px;
+  border-radius: 8px;
+  border: none;
+  outline: 1px solid gray;
+}
+
+.domain-search-btn {
+  display: flex;
+  justify-content: center;
+  margin-left: 45px;
+}
+
+.domain-search-btn button {
+  width: 10%;
+  height: 38px;
+  border-radius: 8px;
+  background: white;
+  border: none;
+  position: relative;
+  left: 22rem;
+  bottom: 2.4rem;
+  transition: 0.3s;
+}
+
+.domain-search-btn button:hover {
+  color: white;
+  background-color: black;
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 400px) {
+  .search-domain-wrapper {
+    width: 200%;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .search-domain-wrapper {
+    width: 100%;
+  }
+  .domain-search-btn {
+    margin-left: -228px;
+  }
+  .domain-heading {
+    font-size: calc(1.375rem + 1.5vw);
+    margin-top: 14px;
+    position: relative;
+  }
+  .domain-heading h1 {
+    position: relative;
+    top: 21px;
+  }
+  .domain-input-field {
+    margin-left: -79px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .domain-search-btn {
+    margin-left: -460px;
+  }
+  .domain-input-field {
+    margin-left: -85px;
+  }
+  .domain-heading {
+    font-size: calc(1.375rem + 1.5vw);
+    margin-top: 2px;
+    position: relative;
+  }
+
+  .domain-heading h1 {
+    position: relative;
+    top: 21px;
+  }
+} */
+
+/* ketan csss=============== */
+.search-domain-wrapper{
+  background-color: greenyellow;
+  height: 300px;
+  background-image: linear-gradient(#008080,white);
+  margin-top: -24px;
+}
 .domain-heading{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .domain-input-field{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-
 .domain-input-field input{
-    margin-top: 60px;
-    width: 41%;
-    text-indent: 7px;
-    height: 38px;
-    border-radius: 8px;
-    border: none;
+  margin-top: 60px;
+  width: 41%;
+  text-indent: 7px;
+  height: 38px;
+  border-radius: 8px;
+  border: none;
 }
-
 .domain-search-btn{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-
 .domain-search-btn button{
-    width: 10%;
-    height: 38px;
-    border-radius: 8px;
-    background: white;
-    border: none;
-    position: relative;
-    left: 22rem;
-    bottom: 2.4rem;
-    transition: .3s;
+  width: 10%;
+  height: 38px;
+  border-radius: 8px;
+  background: white;
+  border: none;
+  position: relative;
+  left: 22rem;
+  bottom: 2.4rem;
+  transition: .3s;
 }
-
 .domain-search-btn button:hover{
-    color: white;
-    background-color: black;
-    transition: .3s;
+  color: white;
+  background-color: black;
+  transition: .3s;
+}
+/* media queryyy================================== */
+@media only screen and (max-width: 768px){
+.search-domain-wrapper {
+  width: 200%;
+}
+.domain-search-btn{
+  margin-left: -228px;
+}
+ .domain-heading {
+  font-size: calc(1.375rem + 1.5vw);
+  margin-top: 14px;
+  position: relative;
+}
+.domain-heading h1{
+  position: relative;
+  top: 21px;
+}
+.domain-input-field{
+  margin-left: -79px;
+}
+.domain-input-field input{
+  margin-left: -138px;
+}
+}
+@media screen and (max-width:480px){
+  .domain-search-btn{
+      margin-left: -460px;
+  }
+  .domain-input-field{
+      margin-left: -85px;
+  }
+  .domain-heading{
+      font-size: calc(1.375rem + 1.5vw);
+      margin-top: 2px;
+      position: relative;
+  }   
+  .domain-heading h1{
+      position: relative;
+      top: 21px;
+      margin-left: -78px;
+  }
+  .search-domain-wrapper{
+      width: 200%;
+  }
+  .domain-input-field input {
+      margin-left: -116px
+  };
+}
+@media screen and (min-width:768px) and (max-width:1000px){
+  .search-domain-wrapper{
+    width: 170%;
+  }
 }

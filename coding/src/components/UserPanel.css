@@ -1,0 +1,344 @@
+.user-main{
+    height: 700px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 2;
+    margin-top: 61px;
+}
+
+.user-nav{
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    color: black;
+    box-shadow: 0px 3px 8px 3px rgb(211, 209, 209);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.user-nav .logo{
+    font-size: 30px;
+    font-weight: bolder;
+    padding: 20px;
+    padding-top: 18px;
+    color: purple;
+}
+
+.user-nav .user-dashboard{
+    font-size: 25px;
+    font-weight: bold;
+    
+    padding-top: 18px;
+    color: black;
+}
+
+.user-nav .status{
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    background-color: green;
+    color: white;
+    height: 30px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.user-nav .status:hover{
+    color: red;
+    background-color: aqua;
+}
+
+
+
+
+.user-home{
+    display: flex;
+    height: 620px;
+    width: 100%;
+
+    
+}
+
+.user-menu{
+    flex: 1;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.user-home .card{
+    border-radius: 0%;
+    flex: 4;
+    background-color: rgba(193, 230, 248, 0.377);
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.upper-box{
+    display: flex;
+    margin-left: 30px;
+    margin-top: 30px;
+    font-weight: 600;
+    gap: 10px;
+    flex-direction: column;
+    height: 300px;
+    width: 250px;
+}
+
+
+.one{
+    height: 40px;
+    width: 150px;
+    padding-left: 10px;
+    padding-top: 5px;
+    transition: width 2s;
+}
+
+
+.one:hover{
+    background-color: rgba(51, 145, 233, 0.573);
+    transition: .5s;
+}
+
+
+.lower-box{
+    height: 150px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 100px;
+    background-image: linear-gradient(rgba(29, 71, 195, 0.903),rgba(26, 197, 216, 0.788));
+
+}
+
+.lower-box button{
+    height: 35px;
+    width: 100px;
+    background-color: rgba(1, 134, 201, 0.775);
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.lower-box button:hover{
+    font-size: 17px;
+    transition: .3s;
+    background-color: rgba(0, 0, 255, 0.518);
+}
+
+
+
+
+
+
+.both-card{
+    height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-design{
+    height: 400px;
+    width: 380px;
+    margin: 50px;
+    box-shadow: 0px 0px 8px 3px rgb(211, 209, 209);
+    background-color: white;
+    
+}
+
+
+.card1{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    flex: 1.4;
+}
+.card2{
+    flex: 2;
+}
+
+
+.profile{
+    height: 50px;
+    width: 100%;
+    background-color: rgba(193, 230, 248, 0.377);
+    padding: 10px;
+    font-weight: bold;
+    font-size: 17px;
+    color: rgb(0, 0, 118);
+    margin-top: -31px;
+    border-bottom: 2px solid gray;
+}
+
+
+
+.edit{
+    height: 160px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.reset-nav{
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+.reset-nav:hover{
+    color: black;
+}
+
+.popup{
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    margin-top: -100px;
+    margin-left: -100px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 5px;
+}
+.popup form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+
+.pic{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: rgb(173, 225, 230);
+    cursor: pointer;
+}
+.pic img{
+    width: 100%;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.email{
+    margin-top: -20px;
+    color: gray;
+    height: 30px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.name{
+    color: gray;
+    height: 30px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.box{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-design{
+    height: 80px;
+    width: 100px;
+    margin: 10px;
+    font-size: 12px;
+    box-shadow: 0px 0px 8px 3px rgb(211, 209, 209);
+    margin-bottom: 0px;
+}
+
+.edit button{
+    height: 35px;
+    width: 100px;
+    background-color: rgba(1, 134, 201, 0.775);
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.edit button:hover{
+    font-size: 17px;
+    transition: .3s;
+    background-color: rgba(5, 5, 219, 0.778);
+}
+
+
+.card2 .latest-transactions{
+    height: 50px;
+    width: 100%;
+    background-color: rgba(193, 230, 248, 0.377);
+    padding: 10px;
+    font-weight: bold;
+    font-size: 17px;
+    color: rgb(0, 0, 118);
+    border-bottom: 2px solid gray;
+}
+
+.terms{
+    height: 30px;
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.terms :nth-child(1){
+    height: 30px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.terms :nth-child(2){
+    height: 30px;
+    width: 300px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+

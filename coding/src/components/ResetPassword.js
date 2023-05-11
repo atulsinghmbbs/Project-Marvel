@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./ResetPassword.css"
+import { bakendBaseUrl } from './BaseUrl'
 
 const ResetPassword = () => {
     // const url = "https://www.example.com/load_simulation?token=uZVTLBCWcw33RIhvnbxTKxTxM2rKJ7YJrwyUXhXn"
@@ -14,18 +15,16 @@ const ResetPassword = () => {
     // console.log("token",finalToken)
 
 
-
-
     function handleSubmit(e) {
         e.preventDefault();
         if (password === confirmPassword) {
             setMatchPassword(true);
 
-            fetch('https://jsonplaceholder.typicode.com/posts', {
+            fetch(`${bakendBaseUrl}/auth/reset-password`, {
                 method: 'POST',
                 body: JSON.stringify({
                     finalToken: finalToken,
-                    pass: password
+                    password: password
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',

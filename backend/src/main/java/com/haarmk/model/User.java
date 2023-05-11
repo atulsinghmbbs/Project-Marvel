@@ -56,6 +56,7 @@ public class User implements UserDetails{
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
+
     
     private AuthProvider provider;
 
@@ -65,6 +66,13 @@ public class User implements UserDetails{
 //	private OffsetDateTime createdAt;
 //    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 //    private Address addresses;
+
+	@CreationTimestamp
+	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false, updatable = false, insertable = false)
+	private OffsetDateTime createdAt;
+//    @OneToOne(mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+//    private Address addresses;;
+
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.REFRESH})
     @Builder.Default
     @JsonIgnore

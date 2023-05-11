@@ -3,9 +3,12 @@ import "./Footer.css"
 
 
 
+
 const Footer = () => {
     return (
         <>
+            <img src=" https://lottiefiles.com/40234-loading-rocket" alt="" />
+
             <div className="container-fluid footer-container bg-dark footer-container">
                 <div className="row h-50 justify-content-between">
                     <div className="col-lg-3 fs-3 text-xl text-white mt-4">

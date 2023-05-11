@@ -1,0 +1,76 @@
+.order-sum{
+    height: 500px;
+    padding: 22px;
+    margin-bottom: 300px;
+    width: 32%;
+    background: #f3f6f8;
+    margin-left: 860px;
+    margin-top: -40px;
+}
+.order-sum h1{
+    font-size: 30px;
+}
+.order-sum h2{
+    font-size: 23px;
+    margin: 30px 0;
+}
+
+.bill-address-heading{
+    margin-left: 255px;
+    color: #2F4F4F;
+}
+
+.billing-address-info{
+    color: black;
+    font-weight: 600;
+    margin-left: -4px;
+    margin-top: -29px;
+}
+
+.bill-details{
+    color: black;
+    background: white;
+    font-size: 33px;
+    padding: 45px;
+    margin-top: -700px;
+    width: 50%;
+    margin-left: 71px;
+    margin-bottom: 80px;
+    border: 1px solid grey;
+    /* overflow-x: auto; */
+
+}
+
+.first-name{
+    color: #808080;
+    font-weight: 500;
+}
+
+.other-info{
+    display: flex;
+    font-size: 40px;
+    font-size: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.payment-btn {
+    padding: 4px;
+    width: 80%;
+    margin-left: 35px;
+    height: 40px;
+    background: #228b22;
+    color: white;
+    font-weight: 600;
+    margin:20px 0
+    ;
+    border: none;
+    transition: 0.3s;
+    border-radius: 15px;
+  }
+  
+  .payment-btn :hover {
+    transition: 0.3s;
+    color: black;
+    background: #40e0d0;
+  }

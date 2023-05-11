@@ -11,13 +11,14 @@
 }
 
 .third-list-heading{
-    margin-left: 80px;
+    margin-left: 154px;
     font-size: 19px;
 }
 
 .footer-container{
     margin-top: auto;
     margin-top: 143vh;
+    /* position: relative; */
 }
 
 /* media query */

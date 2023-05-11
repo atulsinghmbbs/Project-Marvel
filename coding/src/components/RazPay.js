@@ -1,77 +1,127 @@
-import '../css/RazorPay.css';
-
-
-import React, { useEffect, useState } from 'react';
+import './RazPay.css';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { bakendBaseUrl } from './BaseUrl';
+import { bakendHeader } from './BaseUrl';
 
 function RazPay() {
-
   const [amount, setAmount] = useState("");
-  const [solve, setSolve] = useState(amount)
 
-  const url = "https://jsonplaceholder.typicode.com/comments"
+  const [payId, setPayId] = useState("")
 
+  const [redirectToDashboard, setredirectToDashboard] = useState("")
 
-  async function fetchData() {
-    const data = fetch(url).then((res) => res.json())
-      .then((getData) => console.log(setAmount(getData[0].id)))
-      
-  }
+  const [loading, setLoading] = useState(true)
+
+  const location = useLocation()
+  console.log('razorpay me id', location.state.razorPayAllData)
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    setPayId(location.state.razorPayAllData.razorpayOrderId)
+    setAmount(location.state.razorPayAllData.total)
+    window.scroll(0, 0)
+  }, [location.state.razorPayAllData])
+
+  console.log("payId", payId)
+  console.log(amount)
 
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("amount wala data", amount)
 
     if (amount === "") {
       alert("please enter a valid amount");
     } else {
       var options = {
-        key: "rzp_test_yKt32uKI6iM9vt",
-        key_secret: "WdkV3mRiU6pFEy7AtPUNJ58i",
-        amount: amount * 100,
+        key: "rzp_test_MfVx6zeC4NgkKw",
         currency: "INR",
-        name: "HAARMK_PROJECTS",
-        description: "for testing purpose",
+        order_id: payId,
         handler: function (response) {
-          alert(response.razorpay_payment_id);
+          // setPaymentResponse(response)
+          sendPaymentToBackend(response)
+
         },
+        image: "https://example.com/your_logo",
         prefill: {
-          name: "",
-          email: "Dummy0@gmail.com",
-          contact: "0000000000"
+          contact: "",
         },
         notes: {
-          address: "Razorpay Corporate office"
+          address: "Razorpay Corporate office",
         },
         theme: {
-          color: "#3399cc"
-        }
+          color: "#3399cc",
+        },
       };
-      
+
+      // try {
+      //   const response = await fetch("/your-server-side-script", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       amount: options.amount,
+      //       currency: options.currency,
+      //     }),
+      //   });
+
+      //   const data = await response.json();
+      //   options.handler = function (response) {
+      //     alert("Payment successful. Transaction ID: " + response.razorpay_payment_id);
+      //   };
+      // } catch (err) {
+      //   options.handler = function (response) {
+      //     alert("Payment failed. Transaction ID: " + response.razorpay_payment_id);
+      //   };
+      // }
+
       var pay = new window.Razorpay(options);
       pay.open();
-      
     }
+  };
+
+  // console.log("payement Response", paymentResponse);
+
+  const sendPaymentToBackend = (response) => {
+    console.log("res data", response);
+    fetch(`${bakendBaseUrl}/services/activate`, {
+      method: 'POST',
+      body: JSON.stringify({
+        ...response
+      }),
+      headers: bakendHeader
+    })
+
+      .then((response) => response.json())
+      .then((json) => (setredirectToDashboard(json)));
+    setLoading(false)
   }
 
+  console.log("get payment response from backend", redirectToDashboard)
+
+  // 
+  //   if (loading === false) {
+  //     window.location.href = "/UserPanel"
+  //   }
+
+
+
   return (
-    <div className="App">
-      <h2>HAARMK Payment Portal</h2>
-      <br />
-      <div className='input'>
-        <p>You are paying</p>
-        <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} readOnly />
+    <div className='payment-portal-wrapper' style={{ marginTop: 100 }}>
+      <div className="payment-container">
+        <h2 className=' text-center payment-heading'>Haarmk Payment Portal</h2>
+        <p className='you-paying'>You are paying!</p>
+        <input type="number" value={amount} readOnly />
+        <button onClick={handleSubmit}>
+          Click here to pay
+        </button>
       </div>
-      <button className='btn' onClick={handleSubmit}>Click here to pay</button>
     </div>
   );
 }
 
 export default RazPay;
-
 
 

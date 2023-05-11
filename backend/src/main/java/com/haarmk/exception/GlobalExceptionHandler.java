@@ -248,6 +248,7 @@ public class GlobalExceptionHandler{
 		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
+
 	@ExceptionHandler(BadCredentialsException.class)
 	public ResponseEntity<ErrorDetails> badCredentialsExceptionHandler(BadCredentialsException e,WebRequest req){
 		
@@ -276,6 +277,12 @@ public class GlobalExceptionHandler{
 	}
 	@ExceptionHandler(JsonParseException.class)
 	public ResponseEntity<ErrorDetails> exceptionHandler(JsonParseException e,WebRequest req){
+
+	
+	
+	@ExceptionHandler(CountryException.class)
+	public ResponseEntity<ErrorDetails> CountryExceptionHandler(CountryException e,WebRequest req){
+
 		
 		
 		ErrorDetails err = new ErrorDetails();
@@ -287,6 +294,7 @@ public class GlobalExceptionHandler{
 		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
+
 	
 	@ExceptionHandler(EmailNotVerifiedException.class)
 	public ResponseEntity<ErrorDetails> exceptionHandler(EmailNotVerifiedException e,WebRequest req){
@@ -300,5 +308,6 @@ public class GlobalExceptionHandler{
 		return new ResponseEntity<ErrorDetails>(err,HttpStatus.FORBIDDEN);
 		
 	}
+
 
 }

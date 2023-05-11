@@ -42,7 +42,9 @@ const SearchDomain = () => {
                 <input type="text" value={inputData} onChange={(e) => setInputData(e.target.value)} placeholder="Seach Your domain Here" />
             </div>
             <div className="domain-search-btn">
-                <button onClick={submitDomain}>Search</button>
+                <button onClick={submitDomain}>
+                <i class="fi fi-br-search"></i>
+                </button>
             </div>
 
         </div>
