@@ -72,6 +72,7 @@ public class UserController {
 	
 	@GetMapping(value = "/")
 	public ResponseEntity<User> getUser(Principal principal) {
+		System.out.println(principal.getName());
 		return new ResponseEntity<User>(userService.getUserByUsername(principal.getName()), HttpStatus.OK);
 	}
 	

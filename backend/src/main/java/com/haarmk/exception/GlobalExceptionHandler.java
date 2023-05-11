@@ -4,14 +4,25 @@ import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import com.fasterxml.jackson.core.JsonParseException;
+
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.security.SignatureException;
+import jakarta.servlet.http.HttpServletRequest;
+
+
+
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalExceptionHandler{
 
 
 	@ExceptionHandler(IllegalArgumentException.class)
@@ -27,6 +38,31 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
 		
 		
+	}
+	
+	@ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ErrorDetails> handleAccessDeniedException(AccessDeniedException e, HttpServletRequest request){
+		ErrorDetails err = new ErrorDetails();
+		err.setMessage(e.getMessage());
+        return ResponseEntity.status(403).body(err);
+    }
+
+	@ExceptionHandler(SignatureException.class)
+	public ResponseEntity<ErrorDetails> handleSignatureException(SignatureException e, HttpServletRequest request){
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(request.getContextPath());
+		return ResponseEntity.status(403).body(err);
+	}
+	
+	@ExceptionHandler(JwtException.class)
+	public ResponseEntity<ErrorDetails> handleJwtException(JwtException e, HttpServletRequest request){
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(request.getContextPath());
+		return ResponseEntity.status(403).body(err);
 	}
 	
 	
@@ -187,7 +223,7 @@ public class GlobalExceptionHandler {
 	}
 	
 	@ExceptionHandler(AuthenticationException.class)
-	public ResponseEntity<ErrorDetails> athenticationExceptionHandler(TokenException e,WebRequest req){
+	public ResponseEntity<ErrorDetails> athenticationExceptionHandler(AuthenticationException e,WebRequest req){
 		
 		
 		ErrorDetails err = new ErrorDetails();
@@ -196,7 +232,7 @@ public class GlobalExceptionHandler {
 		err.setDetails(req.getDescription(false));
 		
 		
-		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.FORBIDDEN);
 		
 	}
 	@ExceptionHandler(HaarmkException.class)
@@ -212,10 +248,9 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
 		
 	}
-	
-	
-	@ExceptionHandler(CountryException.class)
-	public ResponseEntity<ErrorDetails> CountryExceptionHandler(CountryException e,WebRequest req){
+
+	@ExceptionHandler(BadCredentialsException.class)
+	public ResponseEntity<ErrorDetails> badCredentialsExceptionHandler(BadCredentialsException e,WebRequest req){
 		
 		
 		ErrorDetails err = new ErrorDetails();
@@ -225,6 +260,52 @@ public class GlobalExceptionHandler {
 		
 		
 		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	@ExceptionHandler(MalformedJwtException.class)
+	public ResponseEntity<ErrorDetails> exceptionHandler(MalformedJwtException e,WebRequest req){
+		
+		
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	@ExceptionHandler(JsonParseException.class)
+	public ResponseEntity<ErrorDetails> exceptionHandler(JsonParseException e,WebRequest req){
+
+	
+	
+	@ExceptionHandler(CountryException.class)
+	public ResponseEntity<ErrorDetails> CountryExceptionHandler(CountryException e,WebRequest req){
+
+		
+		
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+
+	
+	@ExceptionHandler(EmailNotVerifiedException.class)
+	public ResponseEntity<ErrorDetails> exceptionHandler(EmailNotVerifiedException e,WebRequest req){
+		
+		
+		ErrorDetails err = new ErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(e.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.FORBIDDEN);
 		
 	}
 

@@ -1,14 +1,17 @@
-package com.haarmk.util;
+package com.haarmk.config;
 
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2LoginAuthenticationProvider;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -21,12 +24,16 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.razorpay.RazorpayClient;
+import com.razorpay.RazorpayException;
 
 
 
 
 @Configuration
 public class Beans {
+	
+	@Autowired Environment environment;
 	
 	@Bean
     PasswordEncoder passwordEncoder(){
@@ -42,7 +49,7 @@ public class Beans {
 		return new GsonBuilder().create();
 	}
 	
-	@Primary
+	
 	@Bean ObjectMapper getObjectMapper() {
 		
 	    
@@ -63,5 +70,11 @@ public class Beans {
 	    
 
 	}
+	
+	@Bean RazorpayClient getRazorpayClient() throws RazorpayException {
+		return new RazorpayClient(environment.getProperty("razorpay_key"), environment.getProperty("razorpay_secret"));
+	}
+
+
 
 }

@@ -15,9 +15,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class OrderReqDto {
-
 	
-    private List<OrderItemReqDto> items = new ArrayList<>();
+    private List<OrderItemReqDto> products = new ArrayList<>();
 
 
 }

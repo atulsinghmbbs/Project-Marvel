@@ -30,7 +30,7 @@ import com.google.gson.Gson;
  */
 
 @RestController
-@RequestMapping(value = "cpanel")
+@RequestMapping(value = "/cpanel")
 public class CPanelController {
 	
 	@Autowired	private RestTemplate restTemplate;

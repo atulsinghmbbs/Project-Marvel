@@ -10,10 +10,11 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import okhttp3.internal.http2.ErrorCode;
 
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class ErrorDetails {
 
@@ -22,6 +23,13 @@ public class ErrorDetails {
 	private LocalDateTime timestamp;
 	private String message;
 	private String details;
+	public ErrorDetails(LocalDateTime timestamp, String message, String details) {
+		this.timestamp = timestamp;
+		this.message = message;
+		this.details = details;
+	}
+	
+	
 		
 
 }
