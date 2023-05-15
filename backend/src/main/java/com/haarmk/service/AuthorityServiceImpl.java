@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.haarmk.model.Authority;
+import com.haarmk.model.User;
 import com.haarmk.repository.AuthorityRepo;
 import com.haarmk.service.interfaces.AuthorityService;
+import com.haarmk.service.interfaces.UserService;
 
 /**
  * @author HMK05
@@ -41,5 +43,6 @@ public class AuthorityServiceImpl implements AuthorityService{
 		
 	}
 
+	
 
 }

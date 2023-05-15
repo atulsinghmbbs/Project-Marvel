@@ -11,6 +11,6 @@ import com.haarmk.model.Services;
 public interface ServiceRepo extends JpaRepository<Services, Long>{
 	@Query("from Services s where s.id=:id")
 	Optional<Services> getServiceById(Long id);
-	@Query("select s from Services s where s.product.category.name=:categoryName")
-	Set<Services> getServiceByCategoryName(String categoryName);
+	@Query("select s from Services s where s.product.category.name=:categoryName and s.user.username=:username")
+	Set<Services> getServiceByCategoryName(String categoryName, String username);
 }

@@ -16,4 +16,5 @@ import com.haarmk.model.Authority;
 public interface AuthorityService {
 	Authority getAuthorityByAuthorityName(String authority);
 	Authority addAuthority(Authority authority);
+	
 }

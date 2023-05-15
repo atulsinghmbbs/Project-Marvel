@@ -218,7 +218,7 @@ public class GlobalExceptionHandler{
 		err.setDetails(req.getDescription(false));
 		
 		
-		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.FORBIDDEN);
 		
 	}
 	
@@ -258,7 +258,7 @@ public class GlobalExceptionHandler{
 		err.setDetails(req.getDescription(false));
 		
 		
-		return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorDetails>(err, HttpStatus.UNAUTHORIZED);
 		
 	}
 	@ExceptionHandler(MalformedJwtException.class)

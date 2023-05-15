@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,16 +41,11 @@ public class AuthController {
 //	    @Autowired private UserService userService;
 	    @Autowired private AuthService authService;
 //	    @Autowired private JwtUtil jwtUtil;
-	    @Autowired private AuthorityService authorityService;
 //	    @Autowired private EmailService emailService;
 //	    Integer timeDelta = 1000*60*60*24;
 
 
-	    @PostMapping(value = "/add-authority")
-	    public ResponseEntity<Authority> addAuthority(@Valid @RequestBody Authority authority) {
-	    	System.out.println(OffsetDateTime.now());
-			return new ResponseEntity<Authority>(authorityService.addAuthority(authority),HttpStatus.OK);
-		}
+	    
 	    
 //	    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 	    @PostMapping(value = "/login")
@@ -135,9 +131,9 @@ public class AuthController {
 		}
 	    
 	    
-	    @GetMapping(value = "/varify-email")
-	    public ResponseEntity<OperationStatusDto>  varifyEmail(@RequestParam String token) {
-	    	authService.verifyEmail(token);
+	    @PostMapping(value = "/verify-email")
+	    public ResponseEntity<OperationStatusDto>  varifyEmail(@RequestBody LoginResDto loginResDto) {
+	    	authService.verifyEmail(loginResDto);
 			OperationStatusDto operationStatusDto = new OperationStatusDto();
 			operationStatusDto.setOperation("Reset Password");
 			operationStatusDto.setStatus("Success");
@@ -145,9 +141,8 @@ public class AuthController {
 		}
 	    
 	    
-	    
-//	    refresh 
-	    
+
+//	    refresh
 //	    @PostMapping(value = "/login-refresh")
 //	    public ResponseEntity<LoginResponse> login(
 //	            @CookieValue(name = "accessToken", required = false) String accessToken,
@@ -160,8 +155,8 @@ public class AuthController {
 //	        String decryptedAccessToken = SecurityCipher.decrypt(accessToken);
 //	        String decryptedRefreshToken = SecurityCipher.decrypt(refreshToken);
 //	        return authService.loginRef(loginRequest, decryptedAccessToken, decryptedRefreshToken);
-//	    }
-//
+
+	    
 	    @GetMapping(value = "/refresh-token")
 	    public ResponseEntity<LoginResponse> refreshToken(@CookieValue(required = false) String refreshToken) {
 	    	System.out.println("refresh token : "+refreshToken);

@@ -18,7 +18,7 @@ import jakarta.validation.Valid;
 public interface AuthService {
 	void requestPasswordReset(String email);
 	void resetPassword(String token, String newPassword);
-	void verifyEmail(String token);
+	void verifyEmail(LoginResDto loginResDto);
 	void verifyEmailRequest(String email);
 	ResponseEntity<LoginResDto> login(LoginDto loginDto);
 	User signup(SignupDto signupDto);

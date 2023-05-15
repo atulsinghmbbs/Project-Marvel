@@ -38,6 +38,13 @@ public class OrderController {
     	return new ResponseEntity<Set<Orders>>(orders, HttpStatus.OK);
 
     }
+    
+    @GetMapping("/admin-getAllOrders")
+    public ResponseEntity<Set<Orders>> findAllForAdmin() {
+    	Set<Orders> orders = orderService.getAllOrders();
+    	return new ResponseEntity<Set<Orders>>(orders, HttpStatus.OK);
+    	
+    }
 
     @GetMapping("/getOrder/{id}")
     public ResponseEntity<Orders> findById(@PathVariable("id") Long id) {

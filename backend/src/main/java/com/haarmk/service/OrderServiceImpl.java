@@ -1,6 +1,8 @@
 package com.haarmk.service;
 
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.json.JSONObject;
@@ -51,6 +53,13 @@ public class OrderServiceImpl implements OrderService {
 		User currentUser = userService.getUserByUsername(username);
 		
 		return currentUser.getOrders();
+	}
+	
+	@Override
+	public Set<Orders> findAllForAdmin() throws OrderException {
+		List<Orders> orders = orderRepo.findAll();
+		if(orders.isEmpty()) throw new OrderException("No order is placed yet!");
+		return new HashSet<>(orders);
 	}
 
 	@Override

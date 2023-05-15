@@ -355,7 +355,8 @@ public class ServiceServiceImpl implements ServiceService{
 	
 	@Override
 	public Set<Services> getServiceByCategoryName(String categoryName) {
-		Set<Services> services = serviceRepo.getServiceByCategoryName(categoryName);
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		Set<Services> services = serviceRepo.getServiceByCategoryName(categoryName, username);
 		if(services.isEmpty()) throw new HaarmkException("No record found for category name: "+categoryName);
 		return services;
 	}

@@ -25,7 +25,7 @@ import com.haarmk.dto.LoginResponse;
 import com.haarmk.dto.RefreshTokenDto;
 import com.haarmk.dto.SignupDto;
 import com.haarmk.dto.TokenDto;
-import com.haarmk.exception.AuthenticationException;
+import com.haarmk.exception.EmailNotVerifiedException;
 import com.haarmk.exception.TokenException;
 import com.haarmk.model.AuthProvider;
 import com.haarmk.model.Token;
@@ -147,7 +147,7 @@ public class AuthServiceImpl implements AuthService {
 		String[] recipients = {email};
 		EmailDetails emailDetails = EmailDetails.builder()
 				.recipients(recipients)
-				.subject("HAARMK Rest password")
+				.subject("HAARMK, verify email")
 				.isHtml(Boolean.TRUE)
 				.msgBody("<p>Please click the <a href="+environment.getProperty("frontend_baseurl")+"/verify-email?token="+token.getToken()+">link</a> to verify your email.</p>")
 				.build();
@@ -157,7 +157,8 @@ public class AuthServiceImpl implements AuthService {
 	
 	
 	@Override
-	public void verifyEmail(String token) {
+	public void verifyEmail(LoginResDto loginResDto) {
+		String token = loginResDto.getToken();
 		Claims claims = jwtUtil.validateToken(token);
 		try {
 			tokenService.getToken(token);
@@ -187,10 +188,10 @@ public class AuthServiceImpl implements AuthService {
 	public ResponseEntity<LoginResDto> login(LoginDto loginDto) {
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
         User user =  (User) authentication.getPrincipal();
-//        if(!user.isEnabled()) {
-//        	verifyEmailRequest(user.getEmail());
-//        	throw new EmailNotVerifiedException("Please verify your email. A link has been sent to your registered email");
-//        }
+        if(!user.isEnabled()) {
+        	verifyEmailRequest(user.getEmail());
+        	throw new EmailNotVerifiedException("Please verify your email. A link has been sent to your registered email");
+        }
         
         Map<String, String> claims = new HashMap<>();
         claims.put("username", user.getUsername());
@@ -242,7 +243,7 @@ public class AuthServiceImpl implements AuthService {
     	
     	user.setProvider(AuthProvider.haarmk);
 //    	user.setProviderId(AuthProvider.haarmk.toString());
-    	user.setImage("ankit.jpg");
+    	
 //    	user.getAuthorities().add(authority);
 //    	user.getCart().setUser(user);
 //    	if(user.getPassword()!=null) {

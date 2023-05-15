@@ -83,28 +83,35 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth->{
                     auth
                         .requestMatchers("/","/auth/login","/auth/signup").permitAll()
+                        .requestMatchers("/","/auth","/auth/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**","/swagger-ui.html", "/api-docs").permitAll()
                         .requestMatchers("/secure").authenticated()
                         .requestMatchers("/home","/domains/search").permitAll()
                         .requestMatchers(HttpMethod.GET, "/feedbacks/**", "/feedback").permitAll()
                         .requestMatchers(HttpMethod.GET,"/products", "/products/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/static", "/static/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/static/images", "/static/images/**").permitAll()
+                        
      
-                        .requestMatchers("/users", "/users/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+                        .requestMatchers("/users/","/users/upload-pic").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                         .requestMatchers("/carts", "/carts/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                         .requestMatchers("/services", "/services/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+                        
                         .requestMatchers("/users", "/users/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                         .requestMatchers(HttpMethod.POST, "/feedbacks/**", "/feedback").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/feedbacks/**", "/feedback").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/feedbacks/**", "/feedback").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                         .requestMatchers(HttpMethod.PATCH, "/feedbacks/**", "/feedback").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
-                        
+                        .requestMatchers("/orders", "/orders/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                         
                         .requestMatchers("/categories", "/categories/**").hasAnyAuthority("ROLE_ADMIN")
+                        .requestMatchers("/users/all-users").hasAnyAuthority("ROLE_ADMIN")
                         .requestMatchers("/cpanel", "/cpanel/**").hasAnyAuthority("ROLE_ADMIN")
                         .requestMatchers("/emails", "/emails/**").hasAnyAuthority("ROLE_ADMIN")
-                        .requestMatchers("/orders", "/orders/**").hasAnyAuthority("ROLE_ADMIN")
+                        .requestMatchers("/name", "/name/**").hasAnyAuthority("ROLE_ADMIN")
+                        .requestMatchers("/admin-getAllOrders").hasAnyAuthority("ROLE_ADMIN")
+                        
                         .requestMatchers("/payment", "/payment/**").hasAnyAuthority("ROLE_ADMIN")
                         .requestMatchers("/whm", "/whm/**").hasAnyAuthority("ROLE_ADMIN")
                         .requestMatchers(HttpMethod.POST,"/products", "/products/**").hasAnyAuthority("ROLE_ADMIN")
@@ -204,7 +211,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
       CorsConfiguration configuration = new CorsConfiguration();
-      configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://localhost:5500","http://127.0.0.1:5500","https://dev.haarmk.com/"));
+      configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://localhost:5500","http://127.0.0.1:5500","https://dev.haarmk.com/","http://dev.haarmk.com/"));
       configuration.setAllowedMethods(Arrays.asList("GET","POST","PATCH", "PUT", "DELETE", "OPTIONS", "HEAD"));
       configuration.setAllowCredentials(true);
       configuration.setAllowedHeaders(Arrays.asList("Authorization", "Requestor-Type","Content-type","*"));

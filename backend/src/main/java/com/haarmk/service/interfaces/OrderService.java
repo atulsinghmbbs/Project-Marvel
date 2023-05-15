@@ -23,4 +23,6 @@ public interface OrderService {
 //	Orders addOrder(OrderReqDto orderReqDto) throws OrderException;
 
 	Orders addOrder(Address billingAddress) throws OrderException;
+
+	Set<Orders> findAllForAdmin() throws OrderException;
 }
